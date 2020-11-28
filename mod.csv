@@ -22,6 +22,7 @@ character,c_usa_dempsey_zt
 rawfile,maps/zombie_ww.gsc
 rawfile,maps/_zombiemode.gsc
 rawfile,maps/_loadout.gsc
+rawfile,maps/_custom_zapper_system.gsc
 
 //CLIENTSCRIPTS
 rawfile,clientscripts/_zombiemode_weap_tesla.csc

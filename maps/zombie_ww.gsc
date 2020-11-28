@@ -83,6 +83,8 @@ main()
 	//maps\zombie_theater_teleporter::teleport_pad_hide_use();
 	//level.round_number = 1245;
 
+	thread maps\_custom_zapper_system::init();
+
 	level thread give_points();
 }
 #using_animtree( "generic_human" );
