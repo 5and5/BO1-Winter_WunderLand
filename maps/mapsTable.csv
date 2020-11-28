@@ -16,4 +16,4 @@ zombie_cod5_factory,,,WAW_MENU_ZOMBIE_FACTORY_CAPS,preview_zombie_cod5_factory,,
 locked,,,MPUI_LOCKED_MODE,loadscreen_locked,,MENU_LOCKED_MODE_DESC,11,locked,,,,
 
 #yourmap,,,YOURMAP_CAPS,preview_yourmap,,YOURMAP_DESC,12,,,,,
-zombie_ww,,,MOD_ZOMBIE_WINTER_CAPS,preview_zombie_apment,,MOD_ZOMBIE_DEPOT_WINTER_CAPS,12,,,,,
+zombie_ww,,,MOD_ZOMBIE_WWL_CAPS,preview_zombie_apment,,MOD_ZOMBIE_WWL_DESC_CAPS,12,,,,,
