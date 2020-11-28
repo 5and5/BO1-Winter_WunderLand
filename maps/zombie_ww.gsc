@@ -72,7 +72,7 @@ main()
 	maps\_compass::setupMiniMap("menu_map_zombie_ww"); 
 	//level.ignore_spawner_func = ::zombie_ww_ignore_spawner;
 	level.zone_manager_init_func = ::zombie_ww_zone_init;
-	init_zones[0] = "test_zone";
+	init_zones[0] = "start_zone";
 	//init_zones[0] = "foyer_zone";
 	//init_zones[1] = "foyer2_zone";	
 	level thread maps\_zombiemode_zone_manager::manage_zones( init_zones );
@@ -332,17 +332,11 @@ zombie_ww_zone_init()
 {
 	flag_init( "always_on" );
 	flag_set( "always_on" );
-	// foyer_zone
-	//add_adjacent_zone( "start_zone", "test_zone", "always_on" );	
-	// theater_zone
-	//add_adjacent_zone( "theater_zone", "foyer2_zone", "power_on" );
-	//add_adjacent_zone( "theater_zone", "stage_zone", "power_on" );
 
-	add_adjacent_zone( "start_zone", "zone1", "always_on" ); // Spawn to PM63 Porch
+	add_adjacent_zone( "start_zone", "zone1", "enter_zone1" ); // Spawn to PM63 Porch
 	add_adjacent_zone( "start_zone", "zone2", "enter_zone2_from_spawn" ); // Spawn to Power
 	add_adjacent_zone( "zone1", "zone2", "enter_zone2_from_zone1" ); // PM63 Porch to Power
 	add_adjacent_zone( "zone1", "zone3", "enter_zone3" ); // PM63 Porch to Courtyard
-	// add_adjacent_zone( "zone3", "zone4", "enter_zone4" ); // Courtyard to Speed Floor
 	add_adjacent_zone( "zone4", "zone5", "enter_zone5" ); // Speed Floor to Jug Floor
 	add_adjacent_zone( "zone5", "zone4", "enter_zone4" ); // Jug Floor to Speed Floor
 }	
