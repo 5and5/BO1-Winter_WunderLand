@@ -1,0 +1,5 @@
+*.files
+*.tmp
+console.log
+missingasset.csv
+
