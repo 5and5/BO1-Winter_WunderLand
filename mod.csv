@@ -16,3 +16,13 @@ character,c_ger_richtofen_zt
 character,c_jap_takeo_zt
 character,c_rus_nikolai_zt
 character,c_usa_dempsey_zt
+
+//MAPS
+rawfile,maps/zombie_ww.gsc
+rawfile,maps/_zombiemode_weap_thundergun.gsc
+rawfile,maps/_zombiemode_weap_tesla.gsc
+
+//WEAPONS
+weapon,sp/frag_grenade_zm
+weapon,sp/tesla_gun_zm
+weapon,sp/tesla_gun_upgraded_zm
