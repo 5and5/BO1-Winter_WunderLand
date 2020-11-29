@@ -40,6 +40,9 @@ rawfile,maps/_zombiemode_weap_tesla.gsc
 //FX
 fx,misc/fx_zombie_electric_trap1
 
+//SOUNDS
+sound,dev
+
 //PREVIEW
 stringtable,maps\mapsTable.csv
 rawfile,mod.arena
