@@ -866,7 +866,7 @@ init_starting_chest_location()
                 level.chests[i] hide_chest();
             }
         }
-		if( isdefined( level.random_pandora_box_start ) && level.random_pandora_box_start == true )
+		else if( isdefined( level.random_pandora_box_start ) && level.random_pandora_box_start == true )
 		{
 			if ( start_chest_found || (IsDefined( level.chests[i].start_exclude ) && level.chests[i].start_exclude == 1) )
 			{
