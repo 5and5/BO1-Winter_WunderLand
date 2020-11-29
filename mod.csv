@@ -21,6 +21,7 @@ character,c_usa_dempsey_zt
 //SCRIPTS
 rawfile,maps/zombie_ww.gsc
 rawfile,maps/_zombiemode.gsc
+rawfile.maps/_zombiemode_weapons.gsc
 rawfile,maps/_loadout.gsc
 rawfile,maps/_custom_zapper_system.gsc
 
