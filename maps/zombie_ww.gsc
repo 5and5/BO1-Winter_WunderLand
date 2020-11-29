@@ -73,8 +73,7 @@ main()
 	//level.ignore_spawner_func = ::zombie_ww_ignore_spawner;
 	level.zone_manager_init_func = ::zombie_ww_zone_init;
 	init_zones[0] = "start_zone";
-	//init_zones[0] = "foyer_zone";
-	//init_zones[1] = "foyer2_zone";	
+	init_zones[1] = "zone1";
 	level thread maps\_zombiemode_zone_manager::manage_zones( init_zones );
 	level thread maps\_zombiemode_auto_turret::init();
 	init_sounds();
@@ -541,4 +540,3 @@ give_points()
 
 	player.score = 555555;
 }
- 
