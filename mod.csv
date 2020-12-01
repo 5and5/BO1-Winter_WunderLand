@@ -43,6 +43,11 @@ fx,misc/fx_zombie_electric_trap1
 //SOUNDS
 sound,dev
 
+//MENU
+menufile,ui/objective_info.menu
+menufile,ui/options_game_pc.menu
+menufile,ui/hud_zombie.menu
+
 //PREVIEW
 stringtable,maps\mapsTable.csv
 rawfile,mod.arena
