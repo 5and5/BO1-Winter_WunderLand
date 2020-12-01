@@ -243,6 +243,8 @@ post_all_players_connected()
 	{
 		level.music_override = false;
 	}
+
+	level thread timer_hud();
 }
 
 zombiemode_melee_miss()
@@ -1559,9 +1561,14 @@ onPlayerConnect_clientDvars()
 
 	self setClientDvar( "aim_lockon_pitch_strength", 0.0 );
 
-	if(!level.wii)
+
+	if(getDvarInt("hud_timer") == 1)
 	{
-		//self SetClientDvar("r_enablePlayerShadow", 1);
+		self setClientDvar("hud_timer", 1);
+	}
+	else
+	{
+		self setClientDvar("hud_timer", 0);
 	}
 }
 
@@ -1635,15 +1642,15 @@ onPlayerSpawned()
 		self.num_perks = 0;
 		self.on_lander_last_stand = undefined;
 
-		if ( is_true( level.player_out_of_playable_area_monitor ) )
-		{
-			self thread player_out_of_playable_area_monitor();
-		}
+		// if ( is_true( level.player_out_of_playable_area_monitor ) )
+		// {
+		// 	self thread player_out_of_playable_area_monitor();
+		// }
 
-		if ( is_true( level.player_too_many_weapons_monitor ) )
-		{
-			self thread [[level.player_too_many_weapons_monitor_func]]();
-		}
+		// if ( is_true( level.player_too_many_weapons_monitor ) )
+		// {
+		// 	self thread [[level.player_too_many_weapons_monitor_func]]();
+		// }
 
 		if( isdefined( self.initialized ) )
 		{
@@ -1682,11 +1689,6 @@ onPlayerSpawned()
 				self thread player_monitor_travel_dist();
 
 				self thread player_grenade_watcher();
-
-
-				// custom
-				//self thread get_position();
-				//spawn_nades_wallbuy();
 			}
 		}
 	}
@@ -2825,14 +2827,13 @@ spectator_respawn()
 	println( "*************************Respawn Spectator***" );
 	assert( IsDefined( self.spectator_respawn ) );
 
-	origin = self.spectator_respawn;
-	angles = (0, 0, 0);
+	origin = self.spectator_respawn.origin;
+	angles = self.spectator_respawn.angles;
 
 	self setSpectatePermissions( false );
-	self Spawn( origin, angles );
-
-/*	new_origin = undefined;
-
+								
+	new_origin = undefined;
+	
 	if ( isdefined( level.check_valid_spawn_override ) )
 	{
 		new_origin = [[ level.check_valid_spawn_override ]]( self );
@@ -2844,12 +2845,13 @@ spectator_respawn()
 	}
 
 	if( IsDefined( new_origin ) )
-	{
+	{	
 		self Spawn( new_origin, angles );
 	}
 	else
-	{*/
-//	}
+	{
+		self Spawn( origin, angles );
+	}
 
 
 /*	we are not currently supporting the shared screen tech
@@ -2946,8 +2948,11 @@ spectator_respawn()
 
 	self thread player_zombie_breadcrumb();
 
+
 	return true;
 }
+
+
 
 check_for_valid_spawn_near_team( revivee )
 {
@@ -5131,10 +5136,7 @@ end_game()
 		game_over[i].fontScale = 3;
 		game_over[i].alpha = 0;
 		game_over[i].color = ( 1.0, 1.0, 1.0 );
-		if(level.round_number < 40)
-			game_over[i] SetText( "No 40 No GG" );
-		else
-			game_over[i] SetText( "GG" );
+		game_over[i] SetText( &"ZOMBIE_GAME_OVER" );
 
 		game_over[i] FadeOverTime( 1 );
 		game_over[i].alpha = 1;
@@ -5182,10 +5184,7 @@ end_game()
 		}
 		else
 		{	
-			if(level.round_number < 40)
-				survived[i] SetText( "You baaad, only ", level.round_number );
-			else
-				survived[i] SetText( &"ZOMBIE_SURVIVED_ROUNDS", level.round_number );
+			survived[i] SetText( &"ZOMBIE_SURVIVED_ROUNDS", level.round_number );
 		}
 
 		survived[i] FadeOverTime( 1 );
@@ -6636,5 +6635,61 @@ disable_player_quotes()
 	{
 		level.player_is_speaking = 1;
 		wait 0.1;
+	}
+}
+
+timer_hud()
+{
+	self endon("disconnect");
+	self endon("end_game");
+
+	flag_wait( "all_players_spawned" );
+	wait 3.15;
+
+	timer = NewHudElem();
+	timer.horzAlign = "right";
+	timer.vertAlign = "top";
+	timer.alignX = "right";
+	timer.alignY = "top";
+	timer.y += 2;
+	timer.x -= 5;
+	timer.foreground = true;
+	timer.fontScale = 1.4;
+	timer.alpha = 0;
+	timer.color = ( 1.0, 1.0, 1.0 );
+	timer SetTimerUp(0);
+
+	start_time = int(getTime() / 1000);
+	thread display_end_time(timer);
+
+	while(1)
+	{
+		if(getDvarInt( "hud_timer" ) == 0)
+		{
+			if(timer.alpha != 0)
+				timer.alpha = 0;
+		}
+		else
+		{
+			if(timer.alpha != 1)
+				timer.alpha = 1;
+		}
+		wait 0.1;
+	}
+}
+
+display_end_time(timer)
+{	
+	start_time = int(getTime() / 1000);
+
+	level waittill( "end_game" );
+	timer.alpha = 1;
+	current_time = int(getTime() / 1000);
+	total_time = current_time - start_time;
+
+	while (1) 
+	{	
+		timer setTimer(total_time - 0.1);
+		wait 0.5;
 	}
 }

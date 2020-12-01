@@ -32,6 +32,11 @@
 				setDvar hud_timer "1";
 			}
 
+			if(dvarString(cg_fov_settings) == "")
+			{
+				setDvar cg_fov_settings 75;
+			}
+
 			LOCAL_CLOSE_ALL_BUT( options_game )
 			
 			setLocalVarBool ui_hideBack 1;
@@ -114,7 +119,7 @@
 
 		FRAME_CHOICE_DVARFLOATLIST_VIS( 23, "@MENU_MATURE_CAPS", cg_mature, { "@MENU_MATURE_UNRESTRICTED_CAPS" 1 "@MENU_MATURE_REDUCED_CAPS" 0 }, setdvar cg_blood "0", ( dvarString( "cg_mature" ) == "1" && dvarBool(cg_allow_mature) && !dvarBool(ui_multiplayer) && SHOW_MATURE ) )
    		FRAME_CHOICE_DVARFLOATLIST_VIS( 23, "@MENU_MATURE_CAPS", cg_mature, { "@MENU_MATURE_UNRESTRICTED_CAPS" 1 "@MENU_MATURE_REDUCED_CAPS" 0 }, setdvar cg_blood "1", ( dvarString( "cg_mature" ) == "0" && dvarBool(cg_allow_mature) && !dvarBool(ui_multiplayer) && SHOW_MATURE ) )
-		FRAME_CHOICE_DVARFLOATLIST_VIS( 24, "@PLATFORM_FOV_CAPS", cg_fov, { "65" 65.01 "70" 70 "75" 75 "80" 80 "85" 85 "90" 90 "95" 95 "100" 100 "105" 105 "110" 110 "115" 115 "120" 120 }, ;, 1 )
+		FRAME_CHOICE_DVARFLOATLIST_VIS( 24, "@PLATFORM_FOV_CAPS", cg_fov_settings, { "65" 65.01 "70" 70 "75" 75 "80" 80 "85" 85 "90" 90 "95" 95 "100" 100 "105" 105 "110" 110 "115" 115 "120" 120 }, ;, 1 )
 
 		//custom
 		FRAME_CHOICE_DVARYESNO_VIS( 25, "@MOD_HUD_TIMER", hud_timer, ;, 1)

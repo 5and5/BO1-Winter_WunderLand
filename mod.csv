@@ -26,6 +26,7 @@ rawfile,maps/_loadout.gsc
 rawfile,maps/_custom_zapper_system.gsc
 
 //CLIENTSCRIPTS
+rawfile,clientscripts/_zombiemode_ffotd.csc
 rawfile,clientscripts/_zombiemode_weap_tesla.csc
 
 //WEAPONS

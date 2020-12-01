@@ -8,4 +8,7 @@ LANG_ENGLISH    "Winter Wunderland"
 REFERENCE       "ZOMBIE_WWL_DESC_CAPS"
 LANG_ENGLISH    "A remake of Wunderful's WaW custom zombie map"
 
+REFERENCE       "HUD_TIMER"
+LANG_ENGLISH    "TIMER"
+
 ENDMARKER
