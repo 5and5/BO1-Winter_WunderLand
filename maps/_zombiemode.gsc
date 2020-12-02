@@ -8,7 +8,7 @@
 #using_animtree( "generic_human" );
 
 main()
-{
+{	
 	level.player_too_many_weapons_monitor = true;
 	level.player_too_many_weapons_monitor_func = ::player_too_many_weapons_monitor;
 	level._dontInitNotifyMessage = 1;
@@ -1642,15 +1642,15 @@ onPlayerSpawned()
 		self.num_perks = 0;
 		self.on_lander_last_stand = undefined;
 
-		// if ( is_true( level.player_out_of_playable_area_monitor ) )
-		// {
-		// 	self thread player_out_of_playable_area_monitor();
-		// }
+		if ( is_true( level.player_out_of_playable_area_monitor ) )
+		{
+			self thread player_out_of_playable_area_monitor();
+		}
 
-		// if ( is_true( level.player_too_many_weapons_monitor ) )
-		// {
-		// 	self thread [[level.player_too_many_weapons_monitor_func]]();
-		// }
+		if ( is_true( level.player_too_many_weapons_monitor ) )
+		{
+			self thread [[level.player_too_many_weapons_monitor_func]]();
+		}
 
 		if( isdefined( self.initialized ) )
 		{
@@ -1689,6 +1689,9 @@ onPlayerSpawned()
 				self thread player_monitor_travel_dist();
 
 				self thread player_grenade_watcher();
+				
+				//custom
+				self thread tab_hud();
 			}
 		}
 	}
@@ -6691,5 +6694,22 @@ display_end_time(timer)
 	{	
 		timer setTimer(total_time - 0.1);
 		wait 0.5;
+	}
+}
+
+tab_hud()
+{	
+	self endon("disconnect");
+	self endon("end_game");
+
+	while(1)
+	{	
+		if(self buttonPressed("tab"))
+		{
+			iPrintLn("TAB");
+			// drops hud
+			// box hit hud
+		}
+		wait 0.05;
 	}
 }
