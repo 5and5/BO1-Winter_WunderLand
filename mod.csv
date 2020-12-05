@@ -38,6 +38,10 @@ weapon,sp/tesla_gun_upgraded_zm
 rawfile,maps/_zombiemode_weap_thundergun.gsc
 rawfile,maps/_zombiemode_weap_tesla.gsc
 
+//ANIMS SCRIPT
+rawfile,animscripts/traverse/zombie_jump_up_to_climb.gsc
+rawfile,animscripts/traverse/zombie_jump_down_127.gsc
+
 //FX
 fx,misc/fx_zombie_electric_trap1
 
