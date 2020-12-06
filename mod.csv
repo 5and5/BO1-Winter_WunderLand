@@ -41,6 +41,7 @@ rawfile,maps/_zombiemode_weap_tesla.gsc
 //ANIMS SCRIPT
 rawfile,animscripts/traverse/zombie_jump_up_to_climb.gsc
 rawfile,animscripts/traverse/zombie_jump_down_127.gsc
+rawfile,animscripts/traverse/zombie_jump_up_222.gsc
 
 //FX
 fx,misc/fx_zombie_electric_trap1
