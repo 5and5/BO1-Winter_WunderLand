@@ -8,7 +8,7 @@
 #using_animtree( "generic_human" );
 
 main()
-{	
+{
 	level.player_too_many_weapons_monitor = true;
 	level.player_too_many_weapons_monitor_func = ::player_too_many_weapons_monitor;
 	level._dontInitNotifyMessage = 1;
@@ -1555,21 +1555,14 @@ onPlayerConnect_clientDvars()
 		"playerPushAmount", "1" );
 
 	self SetDepthOfField( 0, 0, 512, 4000, 4, 0 );
-
-	// Enabling the FPS counter in ship for now
-	//self setclientdvar( "cg_drawfps", "1" );
-
 	self setClientDvar( "aim_lockon_pitch_strength", 0.0 );
 
+	// no cheats
+	//self SetClientDvar("sv_cheats", 0);
 
-	if(getDvarInt("hud_timer") == 1)
-	{
-		self setClientDvar("hud_timer", 1);
-	}
-	else
-	{
-		self setClientDvar("hud_timer", 0);
-	}
+	// allows shooting while looking at players
+	self SetClientDvar("g_friendlyFireDist", 0);
+
 }
 
 
@@ -1689,7 +1682,7 @@ onPlayerSpawned()
 				self thread player_monitor_travel_dist();
 
 				self thread player_grenade_watcher();
-				
+
 				//custom
 				self thread tab_hud();
 			}
@@ -6709,6 +6702,7 @@ tab_hud()
 			iPrintLn("TAB");
 			// drops hud
 			// box hit hud
+			// zombie remaining hud maybe
 		}
 		wait 0.05;
 	}
