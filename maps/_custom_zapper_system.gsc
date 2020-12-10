@@ -256,7 +256,7 @@ player_elec_damage()
 	{
 		self.is_burning = 1;		
 		self setelectrified(1.25);
-		shocktime = 1.25;
+		shocktime = 0;		// --Just Crusader / JC
 
 		//Changed Shellshock to Electrocution so we can have different bus volumes.
 		self shellshock("electrocution", shocktime);
