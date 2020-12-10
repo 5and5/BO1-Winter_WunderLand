@@ -1312,7 +1312,7 @@ vending_trigger_think()
 			continue;
 		}
 
-		if ( player.num_perks >= 4 )
+		if ( player.num_perks >= 7 )		// --Just Crusader / JC
 		{
 			//player iprintln( "Too many perks already to buy Perk: " + perk );
 			self playsound("evt_perk_deny");
