@@ -39,7 +39,8 @@ main()
 	level.zombiemode_precache_player_model_override = ::precache_player_model_override;
 	level.zombiemode_give_player_model_override = ::give_player_model_override;
 	level.zombiemode_player_set_viewmodel_override = ::player_set_viewmodel_override;
-	level.register_offhand_weapons_for_level_defaults_override = ::register_offhand_weapons_for_level_defaults_override; 
+	level.register_offhand_weapons_for_level_defaults_override = ::register_offhand_weapons_for_level_defaults_override;
+	level.zombiemode_offhand_weapon_give_override = ::offhand_weapon_give_override;
 	
 	level.zombie_anim_override = maps\zombie_ww::anim_override_func;
 	level thread maps\_callbacksetup::SetupCallbacks();
@@ -61,6 +62,7 @@ main()
 	level.disable_protips = 1;
 	// DO ACTUAL ZOMBIEMODE INIT
 	maps\_zombiemode::main();
+	maps\_zombiemode_weap_black_hole_bomb::init();
 	// maps\_zombiemode_timer::init();
 	// Turn off generic battlechatter - Steve G
 	battlechatter_off("allies");
@@ -76,12 +78,12 @@ main()
 	init_zones[1] = "zone1";
 	level thread maps\_zombiemode_zone_manager::manage_zones( init_zones );
 	level thread maps\_zombiemode_auto_turret::init();
+	
 	init_sounds();
 	level thread add_powerups_after_round_1();
 	visionsetnaked( "zombie_ww", 0 );
-	//maps\zombie_theater_teleporter::teleport_pad_hide_use();
-	//level.round_number = 1245;
 
+	// custom
 	thread maps\_custom_zapper_system::init();
 
 	level thread give_points();
@@ -172,16 +174,18 @@ include_weapons()
 	//	Weapons - Misc
 	include_weapon( "m72_law_zm" );
 	include_weapon( "m72_law_upgraded_zm", false );
-	include_weapon( "china_lake_zm" );
-	include_weapon( "china_lake_upgraded_zm", false );
+	//include_weapon( "china_lake_zm" );
+	//include_weapon( "china_lake_upgraded_zm", false );
 	//	Weapons - Special
 	include_weapon( "zombie_cymbal_monkey" );
 	include_weapon( "ray_gun_zm" );
 	include_weapon( "ray_gun_upgraded_zm", false );
 	include_weapon( "thundergun_zm", true );
 	include_weapon( "thundergun_upgraded_zm", false );
-	include_weapon( "tesla_gun", true );
-	include_weapon( "tesla_gun_upgraded", false );
+	include_weapon( "tesla_gun_zm", true );
+	include_weapon( "tesla_gun_upgraded_zm", false );
+
+	include_weapon( "zombie_black_hole_bomb" );
 
 	include_weapon( "crossbow_explosive_zm" );
 	include_weapon( "crossbow_explosive_upgraded_zm", false );
@@ -193,7 +197,7 @@ include_weapons()
 	// limited weapons
 	maps\_zombiemode_weapons::add_limited_weapon( "m1911_zm", 0 );
 	maps\_zombiemode_weapons::add_limited_weapon( "thundergun_zm", 1 );
-	maps\_zombiemode_weapons::add_limited_weapon( "tesla_gun", 1 );
+	maps\_zombiemode_weapons::add_limited_weapon( "tesla_gun_zm", 1 );
 	maps\_zombiemode_weapons::add_limited_weapon( "crossbow_explosive_zm", 1 );
 	maps\_zombiemode_weapons::add_limited_weapon( "knife_ballistic_zm", 1 );
 	precacheItem( "explosive_bolt_zm" );
@@ -524,12 +528,46 @@ register_offhand_weapons_for_level_defaults_override()
 {
 	register_lethal_grenade_for_level( "frag_grenade_zm" );
 	level.zombie_lethal_grenade_player_init = "frag_grenade_zm";
+
 	register_tactical_grenade_for_level( "zombie_cymbal_monkey" );
+	register_tactical_grenade_for_level( "zombie_black_hole_bomb" );
 	level.zombie_tactical_grenade_player_init = undefined;
+
 	register_placeable_mine_for_level( "mine_bouncing_betty" );
+	register_placeable_mine_for_level( "claymore_zm" );
 	level.zombie_placeable_mine_player_init = undefined;
+
 	register_melee_weapon_for_level( "knife_zm" );
+	register_melee_weapon_for_level( "sickle_knife_zm" );
 	level.zombie_melee_weapon_player_init = "knife_zm";
+}
+
+// -- gives the player a black hole bomb when it comes out of the box
+offhand_weapon_give_override( str_weapon )
+{
+	self endon( "death" );
+	
+	if( is_tactical_grenade( str_weapon ) && IsDefined( self get_player_tactical_grenade() ) && !self is_player_tactical_grenade( str_weapon ) )
+	{
+		self SetWeaponAmmoClip( self get_player_tactical_grenade(), 0 );
+		self TakeWeapon( self get_player_tactical_grenade() );
+	}
+	
+	if( str_weapon == "zombie_black_hole_bomb" )
+	{
+		self maps\_zombiemode_weap_black_hole_bomb::player_give_black_hole_bomb();
+		//self maps\_zombiemode_weapons::play_weapon_vo( str_weapon ); // ww: need to figure out how we will get the sound here
+		return true;
+	}
+	
+	if( str_weapon == "zombie_cymbal_monkey" )
+	{
+		self maps\_zombiemode_weap_cymbal_monkey::player_give_cymbal_monkey();
+		//self maps\_zombiemode_weapons::play_weapon_vo( str_weapon ); // ww: need to figure out how we will get the sound here
+		return true;
+	}
+
+	return false;
 }
 
 give_points()

@@ -12,6 +12,8 @@ main()
 	clientscripts\zombie_ww_fx::main();
 	thread clientscripts\zombie_ww_amb::main();
 	clientscripts\_zombiemode_deathcard::init();
+	// black hole bomb
+	clientscripts\_zombiemode_weap_black_hole_bomb::init();
 	
 	// This needs to be called after all systems have been registered.
 	thread waitforclient(0);	
@@ -104,10 +106,11 @@ include_weapons()
 	//	Weapons - Misc
 	include_weapon( "m72_law_zm" );
 	include_weapon( "m72_law_upgraded_zm", false );
-	include_weapon( "china_lake_zm" );
-	include_weapon( "china_lake_upgraded_zm", false );
+	//include_weapon( "china_lake_zm" );
+	//include_weapon( "china_lake_upgraded_zm", false );
 	//	Weapons - Special
 	include_weapon( "zombie_cymbal_monkey" );
+	include_weapon( "zombie_black_hole_bomb" );
 	include_weapon( "ray_gun_zm" );
 	include_weapon( "ray_gun_upgraded_zm", false );
 	include_weapon( "thundergun_zm", true );
