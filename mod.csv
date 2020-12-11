@@ -102,6 +102,7 @@ sound,dev
 menufile,ui/objective_info.menu
 menufile,ui/options_game_pc.menu
 menufile,ui/hud_zombie.menu
+menufile,ui/options_shoot_pc.menu
 
 //PREVIEW
 stringtable,maps\mapsTable.csv
