@@ -1432,7 +1432,7 @@ difficulty_init()
 #/
 	for ( p=0; p<players.size; p++ )
 	{
-		players[p].score = 2000; //points; 5555
+		players[p].score = points; //points; 5555
 		players[p].score_total = players[p].score;
 		players[p].old_score = players[p].score;
 	}
@@ -3908,25 +3908,14 @@ chalk_round_over()
 
 round_think()
 {	
-	players = get_players();
+	//strat tester
+	//level.round_number = 10;
+	// level.zombie_vars["zombie_spawn_delay"] = 0.05;
+	// level.zombie_move_speed = 105; // running speed
+	// level.first_round = false; // force first round to have the proper amount of zombies
 
-	if(players.size <= 2)
-	{
-		level.round_number = 10;
-		level.zombie_vars["zombie_spawn_delay"] = 1.2605; // round 10 spawn rate
-	}
-	else if(players.size == 3)
-	{
-		level.round_number = 15;
-		level.zombie_vars["zombie_spawn_delay"] = 0.976; // round 15 spawn rate
-	}
-	else if(players.size == 4)
-	{
-		level.round_number = 20;
-		level.zombie_vars["zombie_spawn_delay"] = 0.755; // round 20 spawn rate
-	}
-	level.zombie_move_speed = 105; // running speed
-	level.first_round = false; // force first round to have the proper amount of zombies
+	// player = get_players()[0];
+	// player.score = 555555;
 
 
 	for( ;; )

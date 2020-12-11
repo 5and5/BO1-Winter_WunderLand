@@ -85,8 +85,6 @@ main()
 
 	// custom
 	thread maps\_custom_zapper_system::init();
-
-	level thread give_points();
 }
 #using_animtree( "generic_human" );
 anim_override_func()
@@ -568,13 +566,4 @@ offhand_weapon_give_override( str_weapon )
 	}
 
 	return false;
-}
-
-give_points()
-{	
-	level endon("round_start");
-	flag_wait("all_players_spawned");
-	player = get_players()[0];
-
-	player.score = 555555;
 }
