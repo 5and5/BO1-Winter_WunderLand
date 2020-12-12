@@ -110,7 +110,8 @@ include_weapons()
 	//include_weapon( "china_lake_upgraded_zm", false );
 	//	Weapons - Special
 	include_weapon( "zombie_cymbal_monkey" );
-	include_weapon( "zombie_black_hole_bomb" );
+	//include_weapon( "zombie_black_hole_bomb" );
+	include_weapon( "zombie_nesting_dolls" );
 	include_weapon( "ray_gun_zm" );
 	include_weapon( "ray_gun_upgraded_zm", false );
 	include_weapon( "thundergun_zm", true );

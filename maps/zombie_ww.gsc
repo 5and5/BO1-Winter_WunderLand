@@ -62,7 +62,8 @@ main()
 	level.disable_protips = 1;
 	// DO ACTUAL ZOMBIEMODE INIT
 	maps\_zombiemode::main();
-	maps\_zombiemode_weap_black_hole_bomb::init();
+	//maps\_zombiemode_weap_black_hole_bomb::init();
+	maps\_zombiemode_weap_nesting_dolls::init();
 	// maps\_zombiemode_timer::init();
 	// Turn off generic battlechatter - Steve G
 	battlechatter_off("allies");
@@ -182,7 +183,8 @@ include_weapons()
 	include_weapon( "tesla_gun_zm", true );
 	include_weapon( "tesla_gun_upgraded_zm", false );
 
-	include_weapon( "zombie_black_hole_bomb" );
+	//include_weapon( "zombie_black_hole_bomb" );
+	include_weapon( "zombie_nesting_dolls" );
 
 	include_weapon( "crossbow_explosive_zm" );
 	include_weapon( "crossbow_explosive_upgraded_zm", false );
@@ -527,7 +529,7 @@ register_offhand_weapons_for_level_defaults_override()
 	level.zombie_lethal_grenade_player_init = "frag_grenade_zm";
 
 	register_tactical_grenade_for_level( "zombie_cymbal_monkey" );
-	register_tactical_grenade_for_level( "zombie_black_hole_bomb" );
+	register_tactical_grenade_for_level( "zombie_nesting_dolls" );
 	level.zombie_tactical_grenade_player_init = undefined;
 
 	register_placeable_mine_for_level( "mine_bouncing_betty" );
@@ -550,9 +552,9 @@ offhand_weapon_give_override( str_weapon )
 		self TakeWeapon( self get_player_tactical_grenade() );
 	}
 	
-	if( str_weapon == "zombie_black_hole_bomb" )
+	if( str_weapon == "zombie_nesting_dolls" )
 	{
-		self maps\_zombiemode_weap_black_hole_bomb::player_give_black_hole_bomb();
+		self maps\_zombiemode_weap_nesting_dolls::player_give_nesting_dolls();
 		//self maps\_zombiemode_weapons::play_weapon_vo( str_weapon ); // ww: need to figure out how we will get the sound here
 		return true;
 	}

@@ -3931,6 +3931,8 @@ round_think()
 	player giveWeapon("ray_gun_zm");
 	player switchToWeapon("ray_gun_zm");
 
+	player maps\_zombiemode_weap_nesting_dolls::player_give_nesting_dolls();
+
 
 	for( ;; )
 	{
