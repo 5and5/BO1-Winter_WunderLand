@@ -33,7 +33,6 @@ rawfile,maps/_custom_zapper_system.gsc
 rawfile,clientscripts/zombie_ww.csc
 rawfile,clientscripts/_zombiemode_ffotd.csc
 rawfile,clientscripts/_zombiemode_weap_tesla.csc
-//rawfile,clientscripts/_zombiemode_weap_black_hole_bomb.csc
 
 //AI SCRIPTS
 rawfile,maps/_zombiemode_ai_dogs.gsc
@@ -46,20 +45,16 @@ rawfile,animscripts/traverse/zombie_jump_up_222.gsc
 //WEAPON SCRIPTS
 rawfile,maps/_zombiemode_weap_thundergun.gsc
 rawfile,maps/_zombiemode_weap_tesla.gsc
-//rawfile,maps/_zombiemode_weap_black_hole_bomb.gsc
 rawfile,maps/_zombiemode_weap_nesting_dolls.gsc
 
 //WEAPONS
 weapon,sp/frag_grenade_zm
 weapon,sp/tesla_gun_zm
 weapon,sp/tesla_gun_upgraded_zm
-//weapon,sp/zombie_black_hole_bomb
 weapon,sp/zombie_nesting_dolls
 weapon,sp/zombie_nesting_doll_single
 
 //XMODELS
-//xmodel,t7_wpn_zmb_gersch_view
-//xmodel,t7_wpn_zmb_gersch_world
 xmodel,t5_nesting_bomb_viewmodel
 xmodel,t5_nesting_bomb_world_doll1_dempsey
 xmodel,t5_nesting_bomb_world_doll1_nikolai
@@ -81,44 +76,12 @@ xmodel,t5_nesting_bomb_world_doll4_richtofen
 
 //FX
 fx,misc/fx_zombie_electric_trap1
-//fx,maps/zombie/fx_zmb_blackhole_exit
-//fx,maps/zombie/fx_zmb_blackhole_flare_marker
-//fx,maps/zombie/fx_zmb_blackhole_implode
-//fx,maps/zombie/fx_zmb_blackhole_looping
-//fx,maps/zombie/fx_zmb_blackhole_trap_end
-//fx,maps/zombie/fx_zmb_blackhole_zombie_death
-//fx,maps/zombie/fx_zmb_blackhole_zombie_flare
-//fx,maps/zombie/fx_zmb_blackhole_zombie_wisp
-//fx,maps/zombie/fx_zmb_trail_blackhole_low
-//fx,maps/zombie/fx_zmb_blackhole_exit
-//fx,maps/zombie/fx_zombie_dog_explosion
 fx,maps/zombie/fx_zmb_trail_doll_blue
 fx,maps/zombie/fx_zmb_trail_doll_green
 fx,maps/zombie/fx_zmb_trail_doll_red
 fx,maps/zombie/fx_zmb_trail_doll_yellow
 
 //XANIMS
-//xanim,ai_zombie_blackhole_walk_slow_v1
-//xanim,ai_zombie_blackhole_walk_slow_v2
-//xanim,ai_zombie_blackhole_walk_slow_v3
-//xanim,ai_zombie_blackhole_walk_fast_v1
-//xanim,ai_zombie_blackhole_walk_fast_v2
-//xanim,ai_zombie_blackhole_walk_fast_v3
-//xanim,ai_zombie_blackhole_death_v1
-//xanim,ai_zombie_blackhole_death_v2
-//xanim,ai_zombie_blackhole_death_v3
-//xanim,ai_zombie_blackhole_crawl_slow_v1
-//xanim,ai_zombie_blackhole_crawl_slow_v2
-//xanim,ai_zombie_blackhole_crawl_fast_v1
-//xanim,ai_zombie_blackhole_crawl_fast_v2
-//xanim,ai_zombie_blackhole_crawl_fast_v3
-//xanim,ai_zombie_blackhole_crawl_death_v1
-//xanim,ai_zombie_blackhole_crawl_death_v2
-//xanim,ai_zombie_blackhole_crawl_death_v3
-//xanim,ai_zombie_blackhole_death_preburst_v1
-//xanim,ai_zombie_blackhole_death_preburst_v2
-//xanim,ai_zombie_blackhole_death_preburst_v3
-//xanim,ai_zombie_blackhole_death_preburst_v4
 xanim,viewmodel_zombie_nestingdoll_idle
 xanim,viewmodel_zombie_nestingdoll_pullpin
 xanim,viewmodel_zombie_nestingdoll_throw

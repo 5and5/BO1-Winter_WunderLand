@@ -12,8 +12,6 @@ main()
 	clientscripts\zombie_ww_fx::main();
 	thread clientscripts\zombie_ww_amb::main();
 	clientscripts\_zombiemode_deathcard::init();
-	// black hole bomb
-	clientscripts\_zombiemode_weap_black_hole_bomb::init();
 	
 	// This needs to be called after all systems have been registered.
 	thread waitforclient(0);	
