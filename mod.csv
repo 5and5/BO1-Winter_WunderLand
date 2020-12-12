@@ -53,6 +53,9 @@ weapon,sp/tesla_gun_zm
 weapon,sp/tesla_gun_upgraded_zm
 weapon,sp/zombie_nesting_dolls
 weapon,sp/zombie_nesting_doll_single
+weapon,sp/zombie_perk_bottle_additionalprimaryweapon
+weapon,sp/zombie_perk_bottle_marathon
+weapon,sp/zombie_perk_bottle_nuke
 
 //XMODELS
 xmodel,t5_nesting_bomb_viewmodel
