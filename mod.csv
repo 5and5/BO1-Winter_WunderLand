@@ -75,7 +75,21 @@ xmodel,t5_nesting_bomb_world_doll4_dempsey
 xmodel,t5_nesting_bomb_world_doll4_nikolai
 xmodel,t5_nesting_bomb_world_doll4_takeo
 xmodel,t5_nesting_bomb_world_doll4_richtofen
-
+xmodel,zombie_vending_jugg
+xmodel,zombie_vending_jugg_on
+xmodel,zombie_vending_revive
+xmodel,zombie_vending_revive_on
+xmodel,zombie_vending_doubletap
+xmodel,zombie_vending_doubletap_on
+xmodel,zombie_vending_sleight
+xmodel,zombie_vending_sleight_on
+xmodel,zombie_vending_sleight
+xmodel,zombie_vending_marathon_on
+xmodel,zombie_vending_marathon
+xmodel,zombie_vending_nuke
+xmodel,zombie_vending_nuke_on
+xmodel,zombie_vending_three_gun
+xmodel,zombie_vending_three_gun_on
 
 //FX
 fx,misc/fx_zombie_electric_trap1
