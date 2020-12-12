@@ -20,26 +20,4 @@
 
 ## General
 
-### HUD
-* Timer
-
-### Wonder Weapons
-* Thunder Gun
-* Wunderwaffe DG-2
-
-### Perks
-* Removed 4 perk limit
-
-### Traps
-* Removed shell shock from running through them
-
-### Menu
-* FOV
-* FOV scale
-* Max FPS
-* Reduced content
-* Timer
-* Fast ray
-
-
 
