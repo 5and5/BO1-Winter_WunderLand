@@ -31,7 +31,7 @@
 * Removed 4 perk limit
 
 ### Traps
-* Removed shell shock from running through them
+* Removed shell shock from running through traps
 
 ### Menu
 * FOV
@@ -41,3 +41,9 @@
 * Timer
 * Fast ray
 
+
+## Credits
+* JBird Justin - for scripts
+* Just Crusader - scripting help
+* Wunderful - for .map file
+* Salamanca21 - for perk machines

@@ -11,6 +11,10 @@ main()
 	//remove fog
 	//setExpFog(0, 0, 0, 0, 0, 0);
 	//setVolFog(0, 0, 0, 0, 0, 0, 0, 0);
+	// der riese dvars
+	SetSavedDvar( "r_lightGridEnableTweaks", 1 );
+	SetSavedDvar( "r_lightGridIntensity", 1.45 );
+	SetSavedDvar( "r_lightGridContrast", 0.15 );
 
 	PreCacheModel("zombie_zapper_cagelight_red");
 	precachemodel("zombie_zapper_cagelight_green");
@@ -29,8 +33,6 @@ main()
 		return;
 	}
 	
-	level.dogs_enabled = true;	
-	level.mixed_rounds_enabled = 1;//true;
 	level.random_pandora_box_start = true;
 	level.zombiemode_using_marathon_perk = true;
 	level.zombiemode_using_divetonuke_perk = true;
@@ -45,15 +47,15 @@ main()
 	level.zombie_anim_override = maps\zombie_ww::anim_override_func;
 	level thread maps\_callbacksetup::SetupCallbacks();
 	
-	level.quad_move_speed = 350;
-	level.quad_traverse_death_fx = maps\zombie_theater_quad::quad_traverse_death_fx;
-	level.quad_explode = true;
 	level.dog_spawn_func = maps\_zombiemode_ai_dogs::dog_spawn_factory_logic;
 	level.exit_level_func = ::zombie_ww_exit_level;
 	// Special zombie types, engineer and quads.
+	level.dogs_enabled = true;	
+	level.mixed_rounds_enabled = 1;//true;
 	level.custom_ai_type = [];
-	level.custom_ai_type = array_add( level.custom_ai_type, maps\_zombiemode_ai_quad::init );
 	level.custom_ai_type = array_add( level.custom_ai_type, maps\_zombiemode_ai_dogs::init );
+	maps\_zombiemode_ai_dogs::enable_dog_rounds();
+
 	level.door_dialog_function = maps\_zombiemode::play_door_dialog;
 	level.first_round_spawn_func = true;
 	include_weapons();
@@ -68,7 +70,7 @@ main()
 	// Turn off generic battlechatter - Steve G
 	battlechatter_off("allies");
 	battlechatter_off("axis");
-	maps\_zombiemode_ai_dogs::enable_dog_rounds();
+
 	init_zombie_ww();
 	
 	// Setup the levels Zombie Zone Volumes
@@ -77,10 +79,10 @@ main()
 	level.zone_manager_init_func = ::zombie_ww_zone_init;
 	init_zones[0] = "start_zone";
 	level thread maps\_zombiemode_zone_manager::manage_zones( init_zones );
-	level thread maps\_zombiemode_auto_turret::init();
+	//level thread maps\_zombiemode_auto_turret::init();
 	
 	init_sounds();
-	level thread add_powerups_after_round_1();
+	//level thread add_powerups_after_round_1();
 	visionsetnaked( "zombie_ww", 0 );
 
 	// custom

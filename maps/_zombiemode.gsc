@@ -3909,29 +3909,29 @@ chalk_round_over()
 round_think()
 {	
 	//strat tester
-	level.round_number = 50;
-	level.zombie_vars["zombie_spawn_delay"] = 0.05;
-	level.zombie_move_speed = 105; // running speed
-	level.first_round = false; // force first round to have the proper amount of zombies
+	// level.round_number = 15;
+	// level.zombie_vars["zombie_spawn_delay"] = 0.05;
+	// level.zombie_move_speed = 105; // running speed
+	// level.first_round = false; // force first round to have the proper amount of zombies
 
-	player = get_players()[0];
-	player.score = 555555;
+	// player = get_players()[0];
+	// player.score = 555555;
 
-	player maps\_zombiemode_perks::give_perk("specialty_additionalprimaryweapon");
-	player maps\_zombiemode_perks::give_perk("specialty_fastreload");
-	player maps\_zombiemode_perks::give_perk("specialty_quickrevive");
-	player maps\_zombiemode_perks::give_perk("specialty_armorvest");
-	player maps\_zombiemode_perks::give_perk("specialty_rof");
-	player maps\_zombiemode_perks::give_perk("specialty_longersprint");
-	player maps\_zombiemode_perks::give_perk("specialty_flakjacket");
+	// player maps\_zombiemode_perks::give_perk("specialty_additionalprimaryweapon");
+	// player maps\_zombiemode_perks::give_perk("specialty_fastreload");
+	// player maps\_zombiemode_perks::give_perk("specialty_quickrevive");
+	// player maps\_zombiemode_perks::give_perk("specialty_armorvest");
+	// player maps\_zombiemode_perks::give_perk("specialty_rof");
+	// player maps\_zombiemode_perks::give_perk("specialty_longersprint");
+	// player maps\_zombiemode_perks::give_perk("specialty_flakjacket");
 
-	player takeWeapon("m1911_zm");
-	player giveWeapon("tesla_gun_zm");
-	player giveWeapon("thundergun_zm");
-	player giveWeapon("ray_gun_zm");
-	player switchToWeapon("ray_gun_zm");
+	// player takeWeapon("m1911_zm");
+	// player giveWeapon("tesla_gun_zm");
+	// player giveWeapon("thundergun_zm");
+	// player giveWeapon("ray_gun_zm");
+	// player switchToWeapon("ray_gun_zm");
 
-	player maps\_zombiemode_weap_nesting_dolls::player_give_nesting_dolls();
+	// player maps\_zombiemode_weap_nesting_dolls::player_give_nesting_dolls();
 
 
 	for( ;; )
