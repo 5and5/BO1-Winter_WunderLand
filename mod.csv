@@ -12,7 +12,7 @@ xmodel,viewmodel_rus_prisoner_arms
 xmodel,zombie_wolf
 mptype,player_t5_zm_theater
 rawfile,mptype/player_t5_zm_theater.gsc
-rawfile,maps/zombie_theater_quad.gsc
+//rawfile,maps/zombie_theater_quad.gsc
 character,c_ger_richtofen_zt
 character,c_jap_takeo_zt
 character,c_rus_nikolai_zt
@@ -51,6 +51,8 @@ rawfile,maps/_zombiemode_weap_nesting_dolls.gsc
 weapon,sp/frag_grenade_zm
 weapon,sp/tesla_gun_zm
 weapon,sp/tesla_gun_upgraded_zm
+weapon,sp/thundergun_zm
+weapon,sp/thundergun_upgraded_zm
 weapon,sp/zombie_nesting_dolls
 weapon,sp/zombie_nesting_doll_single
 weapon,sp/zombie_perk_bottle_additionalprimaryweapon

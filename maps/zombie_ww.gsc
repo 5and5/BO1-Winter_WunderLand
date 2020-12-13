@@ -79,7 +79,6 @@ main()
 	level.zone_manager_init_func = ::zombie_ww_zone_init;
 	init_zones[0] = "start_zone";
 	level thread maps\_zombiemode_zone_manager::manage_zones( init_zones );
-	//level thread maps\_zombiemode_auto_turret::init();
 	
 	init_sounds();
 	//level thread add_powerups_after_round_1();

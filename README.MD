@@ -26,6 +26,7 @@
 ### Wonder Weapons
 * Thunder Gun
 * Wunderwaffe DG-2
+* Dolls
 
 ### Perks
 * Removed 4 perk limit
@@ -44,6 +45,6 @@
 
 ## Credits
 * JBird Justin - for scripts
-* Just Crusader - scripting help
+* Just Crusader - for scripting help
 * Wunderful - for .map file
 * Salamanca21 - for perk machines
