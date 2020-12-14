@@ -49,6 +49,7 @@ rawfile,maps/_zombiemode_weap_nesting_dolls.gsc
 
 //WEAPONS
 weapon,sp/frag_grenade_zm
+weapon,sp/ray_gun_zm
 weapon,sp/tesla_gun_zm
 weapon,sp/tesla_gun_upgraded_zm
 weapon,sp/thundergun_zm
@@ -99,11 +100,6 @@ fx,maps/zombie/fx_zmb_trail_doll_blue
 fx,maps/zombie/fx_zmb_trail_doll_green
 fx,maps/zombie/fx_zmb_trail_doll_red
 fx,maps/zombie/fx_zmb_trail_doll_yellow
-
-//XANIMS
-xanim,viewmodel_zombie_nestingdoll_idle
-xanim,viewmodel_zombie_nestingdoll_pullpin
-xanim,viewmodel_zombie_nestingdoll_throw
 
 //SOUNDS
 sound,dev
