@@ -23,13 +23,28 @@
 ### HUD
 * Timer
 
-### Wonder Weapons
-* Thunder Gun
-* Wunderwaffe DG-2
-* Dolls
+### Weapons
+#### Thunder Gun
+* Changed launch angle
+* Reduced chance of failing
+* Reduced weapon swap time
+#### Wunderwaffe DG-2
+* Reduced weapon swap time
+#### Ray Gun
+* Reduced weapon swap time
+* Changed animations to bo2 animations
+#### Dolls
+* Changed damage to infinite damage
+#### Grenades
+* Reduced throw time
 
 ### Perks
-* Removed 4 perk limit
+* Removed perk limit
+* Changed perk machines to bo3/bo2 machines
+
+### Powerups
+* Removed carpenters
+* Removed fire sales
 
 ### Traps
 * Removed shell shock from running through traps
