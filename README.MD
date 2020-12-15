@@ -57,9 +57,30 @@
 * Timer
 * Fast ray
 
-
 ## Credits
-* JBird Justin - for scripts
+* JBird Justin - for scripts and anims
 * Just Crusader - for scripting help
 * Wunderful - for .map file
 * Salamanca21 - for perk machines
+* Ville88 - for tutorials
+
+
+## TODO
+* increase box hitting speed
+* weight functions
+* fake reset (15-25h)
+* insta kill rounds (120 maybe)
+* coop pause (look similar to cold war)
+* reduce claymore placing time
+
+## TODO maybe
+* drop fx after cycle finishes
+* box hit tab hud (inculding hits since last wonder weapon)
+* drops tab hud
+* zombie remaning tab hub
+* sph tab hud
+* change dog rounds so they are more random
+* guaranteed drop after 5 hoards
+* guaranteed trade after 50 hits
+* add betties
+* betties/claymores do 1/6 zombies health

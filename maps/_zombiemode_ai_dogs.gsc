@@ -86,7 +86,7 @@ dog_spawner_init()
 	for( i = 0; i < dogs.size; i++ )
 	{
 		if( maps\_zombiemode_spawner::is_spawner_targeted_by_blocker( dogs[i] ) )
-		{
+		{	
 			dogs[i].is_enabled = false;
 		}
 		else
@@ -176,7 +176,7 @@ dog_round_spawning()
 		favorite_enemy = get_favorite_enemy();
 
 		if ( IsDefined( level.dog_spawn_func ) )
-		{
+		{	
 			spawn_loc = [[level.dog_spawn_func]]( level.enemy_dog_spawns, favorite_enemy );
 
 			ai = spawn_zombie( level.enemy_dog_spawns[0] );
@@ -350,7 +350,7 @@ dog_spawn_sumpf_logic( dog_array, favorite_enemy)
 //	indicate dog spawn locations instead of constantly using ents.
 //	
 dog_spawn_factory_logic( dog_array, favorite_enemy)
-{
+{	
 	dog_locs = array_randomize( level.enemy_dog_locations );
 	//assertex( dog_locs.size > 0, "Dog Spawner locs array is empty." );
 
@@ -360,15 +360,13 @@ dog_spawn_factory_logic( dog_array, favorite_enemy)
 		{
 			continue;
 		}
-
 		dist_squared = DistanceSquared( dog_locs[i].origin, favorite_enemy.origin );
-		if(  dist_squared > ( 400 * 400 ) && dist_squared < ( 1000 * 1000 ) )
-		{
+		if(  dist_squared > ( 300 * 300 ) && dist_squared < ( 1000 * 1000 ) )
+		{	
 			level.old_dog_spawn = dog_locs[i];
 			return dog_locs[i];
 		}	
 	}
-
 	return dog_locs[0];
 }
 

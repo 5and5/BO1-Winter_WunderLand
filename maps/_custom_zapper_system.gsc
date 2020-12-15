@@ -29,7 +29,7 @@ add_zapper(zapper_name, cost, flag)
 	{
 		triggers handle_zapper_trigs(handles, "disable");
 		zapper_light_red( lights );
-		//flag_wait( flag ); //flag wont set when door is open
+		flag_wait( flag );
 		triggers handle_zapper_trigs(handles, "enable");
 	}
 	zapper_light_green( lights );
