@@ -115,13 +115,13 @@
 		//FRAME_CHOICE_SEPARATOR( CHOICE_SEP_2 )
 
 		FRAME_CHOICE_BIND_VIS( 33, "@PLATFORM_USE_EQUIPMENT_CAPS", "+actionslot 1", ;, ( dvarbool( ui_multiplayer ) ), dvarbool( ui_multiplayer ) )	//mp
-		FRAME_CHOICE_BIND_VIS( 33, "@MENU_ACTION_INVENTORY_CAPS", "+actionslot 3", ;, ( !dvarbool( ui_multiplayer ) ), !dvarbool( ui_multiplayer ) ) //sp
+		FRAME_CHOICE_BIND_VIS( 33, "@MOD_PLACEABLE_MINE", "+actionslot 3", ;, ( !dvarbool( ui_multiplayer ) ), !dvarbool( ui_multiplayer ) ) //sp
 
 		FRAME_CHOICE_BIND_VIS( 34, "@MENU_ACTION_INVENTORY_CAPS", "+actionslot 3", ;, ( dvarbool( ui_multiplayer ) ), dvarbool( ui_mulitplayer ) ) 	//mp
 		//FRAME_CHOICE_BIND_VIS( 34, "@MENU_SATCHEL_CHARGE", "+actionslot 2", ;, ( !dvarbool( ui_multiplayer ) ), !dvarbool( ui_multiplayer ) ) 	//sp
 
 		FRAME_CHOICE_BIND_VIS( 35, "@MENU_GROUND_SUPPORT_CAPS", "+actionslot 4", ;, ( dvarbool( ui_multiplayer ) ), dvarbool( ui_multiplayer )  ) 	//mp
-		FRAME_CHOICE_BIND_VIS( 34, "@PLATFORM_USE_EQUIPMENT_CAPS", "+actionslot 4", ;, ( !dvarbool( ui_multiplayer ) ), !dvarbool( ui_multiplayer ) )		//sp
+		FRAME_CHOICE_BIND_VIS( 34, "@MOD_EQUIPMENT", "+actionslot 4", ;, ( !dvarbool( ui_multiplayer ) ), !dvarbool( ui_multiplayer ) )		//sp
 
 		FRAME_CHOICE_BIND_VIS( 35, "@MOD_FAST_RAY", "+reload;wait 1;weapnext;wait 1;weapprev", ;, ( !dvarbool( ui_multiplayer ) ), !dvarbool( ui_multiplayer ) )		//sp
 		
