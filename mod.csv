@@ -96,6 +96,7 @@ xmodel,zombie_vending_three_gun_on
 
 //FX
 fx,misc/fx_zombie_electric_trap1
+fx,explosions/fx_grenade_flash
 fx,maps/zombie/fx_zmb_trail_doll_blue
 fx,maps/zombie/fx_zmb_trail_doll_green
 fx,maps/zombie/fx_zmb_trail_doll_red

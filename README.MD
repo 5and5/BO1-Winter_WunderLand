@@ -22,6 +22,7 @@
 
 ### HUD
 * Timer
+* Drop tracker 
 
 ### Box
 #### Weighted Weapons
@@ -62,8 +63,18 @@
 * Changed perk machines to bo3/bo2 machines
 
 ### Powerups
+#### Fx
+* Added custom effect to last drop of a cycle
+#### Carpenter
 * Removed carpenters
+#### Fire Sale
 * Removed fire sales
+#### Double Points
+* Double points duration stacks to top of it self
+#### Insta kill
+* Insta kill duration stacks to top of it self
+#### Nuke
+* Nukes now kill zombies twice as fast
 
 ### Traps
 * 25 second activation and recharge time

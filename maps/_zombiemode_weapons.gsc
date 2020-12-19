@@ -843,6 +843,7 @@ treasure_chest_init()
 	if (level.chests.size > 1)
 	{
 		flag_set("moving_chest_enabled");
+
 		level.chests = array_randomize(level.chests);
 
 		//determine magic box starting location at random or normal
@@ -859,8 +860,6 @@ treasure_chest_init()
 
 init_starting_chest_location()
 {
-	{	
-		if(level.script == "zombie_ww")
     level.chest_index = 0;
     start_chest_found = false;
     for( i = 0; i < level.chests.size; i++ )
@@ -878,10 +877,6 @@ init_starting_chest_location()
                 level.chests[i] hide_chest();
             }
         }
-		{
-			if ( start_chest_found || (IsDefined( level.chests[i].start_exclude ) && level.chests[i].start_exclude == 1) )
-			{
-				level.chests[i] hide_chest();	
         else if( isdefined( level.random_pandora_box_start ) && level.random_pandora_box_start == true )
         {
             if ( start_chest_found || (IsDefined( level.chests[i].start_exclude ) && level.chests[i].start_exclude == 1) )

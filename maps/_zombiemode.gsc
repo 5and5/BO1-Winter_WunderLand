@@ -6617,19 +6617,6 @@ get_position()
 	}
 }
 
-spawn_nades_wallbuy()
-{	
-	iPrintLn("nades?");
-	// spawn nades
-    model = Spawn( "script_model", ( -177, 3664, 115 ) );
-    model.angles = ( 90, 270, 0 );
-    model SetModel( "german_grenade_bag" );
-
-    trigger = Spawn( "trigger_radius_use", model.origin, 20, 20, 20 );
-    trigger.targetname = "weapon_upgrade";
-    trigger.zombie_weapon_upgrade = "stielhandgranate";
-}
-
 disable_player_quotes()
 {
 	while(1)
@@ -6699,16 +6686,43 @@ tab_hud()
 {	
 	self endon("disconnect");
 	self endon("end_game");
+	flag_wait( "all_players_spawned" );
+
+	drops_hud = create_hud( "left", "top" );
+	drops_hud.y += 2;
+	drops_hud.x += 5;
+	drops_hud.label = "Drops: ";
 
 	while(1)
 	{	
-		if(self buttonPressed("tab"))
+		while(self buttonPressed( "tab" ))
+		{	
+			if(drops_hud.alpha != 1 )
+			{
+				drops_hud.alpha = 1;
+				drops_hud setValue(level.drop_tracker_index);
+			}
+			wait 0.05;
+		}
+		if(drops_hud.alpha != 0 )
 		{
-			//iPrintLn("TAB");
-			// drops hud
-			// box hit hud
-			// zombie remaining hud maybe
+			drops_hud.alpha = 0;
 		}
 		wait 0.05;
 	}
+}
+
+create_hud( side, top )
+{
+	hud = NewClientHudElem( self );
+	hud.horzAlign = side;
+	hud.vertAlign = top;
+	hud.alignX = side;
+	hud.alignY = top;
+	hud.alpha = 0;
+	hud.fontscale = 1.3;
+	hud.color = ( 1.0, 1.0, 1.0 );
+	hud.hidewheninmenu = 1;
+
+	return hud;
 }
