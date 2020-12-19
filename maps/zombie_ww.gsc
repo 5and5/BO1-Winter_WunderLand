@@ -8,6 +8,17 @@ main()
 	maps\zombie_ww_fx::main();
 	maps\zombie_ww_amb::main();
 
+	// for weight functions
+	level.pulls_since_tesla = 0;
+	level.pulls_since_tgun = 0;
+	level.pulls_since_dolls = 0;
+	level.pulls_since_ray_gun = 0;
+
+	level.player_drops_tesla = false;
+	level.player_drops_tgun = false;
+	level.player_drops_dolls = false;
+	level.player_drops_ray_gun = false;
+
 	//remove fog
 	//setExpFog(0, 0, 0, 0, 0, 0);
 	//setVolFog(0, 0, 0, 0, 0, 0, 0, 0);
@@ -177,15 +188,15 @@ include_weapons()
 	//include_weapon( "china_lake_upgraded_zm", false );
 	//	Weapons - Special
 	include_weapon( "zombie_cymbal_monkey" );
-	include_weapon( "ray_gun_zm" );
+	include_weapon( "ray_gun_zm", true, false, maps\_zombiemode_weapons::default_ray_gun_weighting_func );
 	include_weapon( "ray_gun_upgraded_zm", false );
-	include_weapon( "thundergun_zm", true );
+	include_weapon( "thundergun_zm", true, false, maps\_zombiemode_weapons::default_tgun_weighting_func );
 	include_weapon( "thundergun_upgraded_zm", false );
-	include_weapon( "tesla_gun_zm", true );
+	include_weapon( "tesla_gun_zm", true, false, maps\_zombiemode_weapons::default_tesla_weighting_func );
 	include_weapon( "tesla_gun_upgraded_zm", false );
 
 	//include_weapon( "zombie_black_hole_bomb" );
-	include_weapon( "zombie_nesting_dolls" );
+	include_weapon( "zombie_nesting_dolls", true, false, maps\_zombiemode_weapons::default_dolls_weighting_func );
 
 	include_weapon( "crossbow_explosive_zm" );
 	include_weapon( "crossbow_explosive_upgraded_zm", false );

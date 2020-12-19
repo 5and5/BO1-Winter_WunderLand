@@ -23,6 +23,19 @@
 ### HUD
 * Timer
 
+### Box
+#### Weighted Weapons
+* Increased probability of getting Wonder Waffe, Thundergun and Dolls - by 10% every 5 hits, up to 30%
+* Increased probability of getting Raygun until round 25 - by 15% after 5 hits - 30% after 10 hits
+#### Animations
+* Decreased weapon pickup time from 12 to 10 seconds
+* Decreased box opening and closing from 0.5 to 0.3 seconds
+* Decreased weapon spinning time from 4 to 2 seconds
+* Decreased time after grabbing weapon from 3 to 1 seconds
+#### Teddy Bear
+* Increased minimum number of hit before a teddy bear from 4 to 5
+* Decreased probaility of box moving early
+
 ### Weapons
 #### Thunder Gun
 * Changed launch angle
@@ -37,6 +50,12 @@
 * Changed damage to infinite damage
 #### Grenades
 * Reduced throw time
+#### China Lake
+* Removed China Lake
+
+### Dogs
+* First dog round is always on round 5
+* Always 4 rounds between dog rounds
 
 ### Perks
 * Removed perk limit
@@ -47,6 +66,7 @@
 * Removed fire sales
 
 ### Traps
+* 25 second activation and recharge time
 * Removed shell shock from running through traps
 
 ### Menu
@@ -66,8 +86,6 @@
 
 
 ## TODO
-* increase box hitting speed
-* weight functions
 * fake reset (15-25h)
 * insta kill rounds (120 maybe)
 * coop pause (look similar to cold war)
