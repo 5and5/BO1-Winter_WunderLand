@@ -6704,7 +6704,7 @@ tab_hud()
 	{	
 		if(self buttonPressed("tab"))
 		{
-			iPrintLn("TAB");
+			//iPrintLn("TAB");
 			// drops hud
 			// box hit hud
 			// zombie remaining hud maybe

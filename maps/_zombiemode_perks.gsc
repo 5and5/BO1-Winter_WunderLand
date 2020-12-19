@@ -627,7 +627,7 @@ upgrade_knuckle_crack_begin()
 	
 	self AllowLean( false );
 	self AllowAds( false );
-	self AllowSprint( false );
+	self AllowSprint( true );
 	self AllowCrouch( true );
 	self AllowProne( false );
 	self AllowMelee( false );
@@ -1814,7 +1814,7 @@ perk_give_bottle_begin( perk )
 	
 	self AllowLean( false );
 	self AllowAds( false );
-	self AllowSprint( false );
+	self AllowSprint( true );
 	self AllowCrouch( true );
 	self AllowProne( false );
 	self AllowMelee( false );
