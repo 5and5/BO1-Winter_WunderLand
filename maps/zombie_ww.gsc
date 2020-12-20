@@ -9,10 +9,20 @@ main()
 	maps\zombie_ww_amb::main();
 
 	// for weight functions
+	level.total_chest_hits = 0;
+	
 	level.pulls_since_tesla = 0;
 	level.pulls_since_tgun = 0;
 	level.pulls_since_dolls = 0;
 	level.pulls_since_ray_gun = 0;
+
+	level.total_tesla_hits = 0;
+	level.total_tgun_hits = 0;
+	level.total_dolls_hits = 0;
+
+	level.total_tesla_trades = 0;
+	level.total_tgun_trades = 0;
+	level.total_dolls_trades = 0;
 
 	level.player_drops_tesla = false;
 	level.player_drops_tgun = false;

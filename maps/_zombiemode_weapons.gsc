@@ -1306,19 +1306,19 @@ treasure_chest_think()
 
 		// PI_CHANGE_BEGIN
 		// JMA - we only update counters when it's available
-		if( isDefined(level.pulls_since_dolls) )
+		if(!user has_weapon_or_upgrade("zombie_nesting_dolls") && isDefined(level.pulls_since_dolls) )
 		{
 			level.pulls_since_dolls += 1;
 		}
-		if( isDefined(level.pulls_since_tgun) )
+		if(!user has_weapon_or_upgrade("thundergun_zm") && isDefined(level.pulls_since_tgun) )
 		{
 			level.pulls_since_tgun += 1;
 		}
-		if( isDefined(level.pulls_since_tesla) )
+		if(!user has_weapon_or_upgrade("tesla_gun_zm") && isDefined(level.pulls_since_tesla) )
 		{
 			level.pulls_since_tesla += 1;
 		}
-		if( isDefined(level.pulls_since_ray_gun) )
+		if(!user has_weapon_or_upgrade("ray_gun_zm") && isDefined(level.pulls_since_ray_gun) )
 		{
 			level.pulls_since_ray_gun += 1;
 		}
@@ -2263,14 +2263,20 @@ treasure_chest_weapon_spawn( chest, player, respin )
 		}
 		if( rand == "tesla_gun_zm" )
 		{
+			level.total_tesla_hits += level.pulls_since_tesla;
+			level.total_tesla_trades++;
 			level.pulls_since_tesla = 0;
 		}
 		if( rand == "thundergun_zm" )
 		{
+			level.total_tgun_hits += level.pulls_since_tgun;
+			level.total_tgun_trades++;
 			level.pulls_since_tgun = 0;
 		}
 		if( rand == "zombie_nesting_dolls" )
 		{
+			level.total_dolls_hits += level.pulls_since_dolls;
+			level.total_dolls_trades++;
 			level.pulls_since_dolls = 0;
 		}
 
@@ -2482,13 +2488,13 @@ treasure_chest_give_weapon( weapon_string )
 		}
 
 		if( isdefined( current_weapon ) )
-		{
+		{	
 			if( !is_offhand_weapon( weapon_string ) )
-			{
+			{	
 				// PI_CHANGE_BEGIN
 				// JMA - player dropped the tesla gun
 				if( current_weapon == "tesla_gun_zm" )
-				{
+				{	
 					level.player_drops_tesla_gun = true;
 				}
 				// added thundergun

@@ -18,13 +18,13 @@
 
 ## Change Notes
 
-## General
-
-### HUD
+## HUD
 * Timer
 * Drop tracker 
+* Trade avarage
+* Pulls since wonder weapon
 
-### Box
+## Box
 #### Weighted Weapons
 * Increased probability of getting Wonder Waffe, Thundergun and Dolls - by 10% every 5 hits, up to 30%
 * Increased probability of getting Raygun until round 25 - by 15% after 5 hits - 30% after 10 hits
@@ -37,7 +37,7 @@
 * Increased minimum number of hit before a teddy bear from 4 to 5
 * Decreased probaility of box moving early
 
-### Weapons
+## Weapons
 #### Thunder Gun
 * Changed launch angle
 * Reduced chance of failing
@@ -54,15 +54,15 @@
 #### China Lake
 * Removed China Lake
 
-### Dogs
+## Dogs
 * First dog round is always on round 5
 * Always 4 rounds between dog rounds
 
-### Perks
+## Perks
 * Removed perk limit
-* Changed perk machines to bo3/bo2 machines
+* Changed perk machines to bo3/bo2 models
 
-### Powerups
+## Powerups
 #### Fx
 * Added custom effect to last drop of a cycle
 #### Carpenter
@@ -76,16 +76,18 @@
 #### Nuke
 * Nukes now kill zombies twice as fast
 
-### Traps
+## Traps
 * 25 second activation and recharge time
-* Removed shell shock from running through traps
+* Removed shell shock after running through traps
 
-### Menu
+## Menu
+#### Game menu
 * FOV
 * FOV scale
 * Max FPS
 * Reduced content
 * Timer
+#### Controls menu
 * Fast ray
 
 ## Credits
@@ -97,19 +99,12 @@
 
 
 ## TODO
-* fake reset (15-25h)
-* insta kill rounds (120 maybe)
+* fake reset (20h)
+* insta kill rounds (120)
 * coop pause (look similar to cold war)
+* round timer
 * reduce claymore placing time
 
 ## TODO maybe
-* drop fx after cycle finishes
-* box hit tab hud (inculding hits since last wonder weapon)
-* drops tab hud
-* zombie remaning tab hub
-* sph tab hud
-* change dog rounds so they are more random
 * guaranteed drop after 5 hoards
 * guaranteed trade after 50 hits
-* add betties
-* betties/claymores do 1/6 zombies health

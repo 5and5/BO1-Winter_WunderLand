@@ -6688,26 +6688,70 @@ tab_hud()
 	self endon("end_game");
 	flag_wait( "all_players_spawned" );
 
-	drops_hud = create_hud( "left", "top" );
-	drops_hud.y += 2;
+	drops_hud = create_hud( "left", "middle" );
+	drops_hud.y += 0;
 	drops_hud.x += 5;
-	drops_hud.label = "Drops: ";
+	drops_hud.label = &"MOD_POWER_UP_CYCLE";
+
+	tesla_hud = create_hud( "left", "middle" );
+	tesla_hud.y += 16;
+	tesla_hud.x += 5;
+
+	tgun_hud = create_hud( "left", "middle" );
+	tgun_hud.y += 32;
+	tgun_hud.x += 5;
+	
+	isButtonPressed = false;
+	buttonPressed = "tab";
+	avg = 0;
 
 	while(1)
 	{	
-		while(self buttonPressed( "tab" ))
+		if(self buttonPressed( buttonPressed ))
 		{	
-			if(drops_hud.alpha != 1 )
-			{
+			isButtonPressed = true;
+			// drop hud
+			if( drops_hud.alpha != 1 )
 				drops_hud.alpha = 1;
-				drops_hud setValue(level.drop_tracker_index);
+			drops_hud setValue(level.drop_tracker_index);
+			// tesla hud
+			if( tesla_hud.alpha != 1 )
+				tesla_hud.alpha = 1;
+			if(level.pulls_since_tesla > 0)
+			{
+				tesla_hud.label = &"MOD_PULLS_SINCE_TESLA";
+				tesla_hud setValue(level.pulls_since_tesla);
 			}
-			wait 0.05;
+			else
+			{
+				avg = level.total_tesla_hits / level.total_tesla_trades;
+				tesla_hud.label = &"MOD_AVERAGE_TESLA";
+				tesla_hud setValue(avg);
+			}
+			// tgun hud
+			if( tgun_hud.alpha != 1 )
+				tgun_hud.alpha = 1;
+			if(level.pulls_since_tgun > 0)
+			{
+				tgun_hud.label = &"MOD_PULLS_SINCE_TGUN";
+				tgun_hud setValue(level.pulls_since_tgun);
+			}
+			else
+			{
+				avg =  level.total_tgun_hits / level.total_tgun_trades;
+				tgun_hud.label = &"MOD_AVERAGE_TGUN";
+				tgun_hud setValue(avg);
+			}
 		}
-		if(drops_hud.alpha != 0 )
-		{
+		if(drops_hud.alpha != 0 && !isButtonPressed)
 			drops_hud.alpha = 0;
-		}
+		if(tesla_hud.alpha != 0 && !isButtonPressed)
+			tesla_hud.alpha = 0;
+		if(tgun_hud.alpha != 0 && !isButtonPressed)
+			tgun_hud.alpha = 0;
+
+		if(isButtonPressed != false )
+			isButtonPressed = false;
 		wait 0.05;
 	}
 }
@@ -6720,9 +6764,8 @@ create_hud( side, top )
 	hud.alignX = side;
 	hud.alignY = top;
 	hud.alpha = 0;
-	hud.fontscale = 1.3;
+	hud.fontscale = 1.1;
 	hud.color = ( 1.0, 1.0, 1.0 );
-	hud.hidewheninmenu = 1;
 
 	return hud;
 }
