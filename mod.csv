@@ -49,6 +49,7 @@ rawfile,maps/_zombiemode_weap_nesting_dolls.gsc
 
 //WEAPONS
 weapon,sp/frag_grenade_zm
+weapon,sp/claymore_zm
 weapon,sp/ray_gun_zm
 weapon,sp/tesla_gun_zm
 weapon,sp/tesla_gun_upgraded_zm

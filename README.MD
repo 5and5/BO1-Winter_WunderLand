@@ -51,6 +51,9 @@
 * Changed damage to infinite damage
 #### Grenades
 * Reduced throw time
+#### Claymores
+* Reduced weapon swap and placement time
+* Increased explosion radius
 #### China Lake
 * Removed China Lake
 
