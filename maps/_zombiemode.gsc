@@ -600,6 +600,15 @@ init_strings()
 	// POWER UPS
 	add_zombie_hint( "powerup_fire_sale_cost", &"ZOMBIE_FIRE_SALE_COST" );
 
+	//custom
+	PrecacheString( &"MOD_GAME_PAUSED" );
+	PrecacheString( &"MOD_YOU_WIN" );
+	PrecacheString( &"MOD_AVERAGE_TGUN" );
+	PrecacheString( &"MOD_AVERAGE_TESLA" );
+	PrecacheString( &"MOD_PULLS_SINCE_TGUN" );
+	PrecacheString( &"MOD_PULLS_SINCE_TESLA" );
+	PrecacheString( &"MOD_POWER_UP_CYCLE" );
+
 }
 
 init_sounds()
