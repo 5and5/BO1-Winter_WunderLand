@@ -50,4 +50,7 @@ LANG_ENGLISH    "Average Wonder Waffe Trade: "
 REFERENCE       AVERAGE_TGUN
 LANG_ENGLISH    "Average Thunder Gun Trade: "
 
+REFERENCE       YOU_WIN
+LANG_ENGLISH    "RESET!"
+
 ENDMARKER

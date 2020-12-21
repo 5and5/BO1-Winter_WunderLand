@@ -18,6 +18,10 @@
 
 ## Change Notes
 
+## General
+* 15 hour reset time
+* Disabled players quotes
+
 ## HUD
 * Timer
 * Drop tracker 
@@ -106,7 +110,6 @@
 * insta kill rounds (120)
 * coop pause (look similar to cold war)
 * round timer
-* reduce claymore placing time
 
 ## TODO maybe
 * guaranteed drop after 5 hoards

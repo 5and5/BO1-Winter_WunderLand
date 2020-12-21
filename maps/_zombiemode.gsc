@@ -5132,12 +5132,18 @@ end_game()
 		game_over[i].alignY = "middle";
 		game_over[i].horzAlign = "center";
 		game_over[i].vertAlign = "middle";
-		game_over[i].y -= 130;
+		game_over[i].y -= 150;
 		game_over[i].foreground = true;
 		game_over[i].fontScale = 3;
 		game_over[i].alpha = 0;
 		game_over[i].color = ( 1.0, 1.0, 1.0 );
-		game_over[i] SetText( &"ZOMBIE_GAME_OVER" );
+		if (level.win_game)
+		{
+			game_over[i] SetText( &"MOD_YOU_WIN" );
+		} else
+		{
+			game_over[i] SetText( &"ZOMBIE_GAME_OVER" );
+		}
 
 		game_over[i] FadeOverTime( 1 );
 		game_over[i].alpha = 1;
@@ -5151,7 +5157,7 @@ end_game()
 		survived[i].alignY = "middle";
 		survived[i].horzAlign = "center";
 		survived[i].vertAlign = "middle";
-		survived[i].y -= 100;
+		survived[i].y -= 120;
 		survived[i].foreground = true;
 		survived[i].fontScale = 2;
 		survived[i].alpha = 0;
@@ -5187,9 +5193,26 @@ end_game()
 		{	
 			survived[i] SetText( &"ZOMBIE_SURVIVED_ROUNDS", level.round_number );
 		}
-
 		survived[i] FadeOverTime( 1 );
 		survived[i].alpha = 1;
+
+		time[i] = NewClientHudElem( players[i] );
+		time[i].alignX = "center";
+		time[i].alignY = "middle";
+		time[i].horzAlign = "center";
+		time[i].vertAlign = "middle";
+		time[i].y -= 95;
+		time[i].foreground = true;
+		time[i].fontScale = 1.8;
+		time[i].alpha = 0;
+		time[i].color = ( 1.0, 1.0, 1.0 );
+
+		time[i].label = "In ";
+		time[i] setText(to_mins_short(level.total_time));
+		
+
+		time[i] FadeOverTime( 1 );
+		time[i].alpha = 1;
 	}
 
 	players = get_players();
@@ -6647,8 +6670,10 @@ timer_hud()
 	timer.color = ( 1.0, 1.0, 1.0 );
 	timer SetTimerUp(0);
 
-	start_time = int(getTime() / 1000);
-	thread display_end_time(timer);
+	level.total_time = 0;
+	level.paused_time = 0;
+	level thread destroy_hud_end_game(timer);
+	level thread fake_reset(timer);
 
 	while(1)
 	{
@@ -6666,20 +6691,68 @@ timer_hud()
 	}
 }
 
-display_end_time(timer)
-{	
-	start_time = int(getTime() / 1000);
+fake_reset(timer_hud)
+{
+    self endon ( "end_game" );
 
-	level waittill( "end_game" );
-	timer.alpha = 1;
-	current_time = int(getTime() / 1000);
-	total_time = current_time - start_time;
+    level.win_game = false;
+    start_time = int((getTime() / 1000));
 
-	while (1) 
-	{	
-		timer setTimer(total_time - 0.1);
-		wait 0.5;
+    while(1)
+    {
+        current_time = int(getTime() / 1000);
+		level.total_time = current_time - level.paused_time - start_time;
+
+
+        if (level.total_time >= 54000) // 15hr reset
+        {
+			players = Get_Players();	
+			for(i=0;i<players.size;i++)
+			{
+				players[i] FreezeControls( true );
+			}
+            level.win_game = true;
+            level notify( "end_game" );
+            break;
+        }
+
+        wait 0.05;
+    }
+}
+
+to_mins_short(seconds)
+{
+	hours = int(seconds / 3600);
+	minutes = int((seconds - (hours * 3600)) / 60);
+	seconds = int(seconds - (hours * 3600) - (minutes * 60));
+
+	if( minutes < 10 && hours >= 1 )
+	{
+		minutes = "0" + minutes;
 	}
+	if( seconds < 10 )
+	{
+		seconds = "0" + seconds;
+	}
+
+	combined = "";
+	if(hours >= 1)
+	{
+		combined = "" + hours + ":" + minutes + ":" + seconds;
+	}
+	else
+	{
+		combined = "" + minutes + ":" + seconds;
+	}
+
+	return combined;
+}
+
+destroy_hud_end_game(timer_hud)
+{	
+	level waittill( "end_game" );
+
+	timer_hud destroy();
 }
 
 tab_hud()
