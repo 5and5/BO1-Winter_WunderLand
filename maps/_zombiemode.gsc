@@ -6715,7 +6715,9 @@ timer_hud()
 }
 
 coop_pause(timer_hud, start_time)
-{
+{	
+	self endon("end_game");
+
 	paused_time = 0;
 	paused_start_time = 0;
 	paused = false;
@@ -6734,7 +6736,30 @@ coop_pause(timer_hud, start_time)
 			players[0] SetClientDvar( "ai_disableSpawn", "1" );
 
 			level waittill( "start_of_round" );
-			iprintlnbold( "game paused");
+
+			black_hud = newhudelem();
+			black_hud.horzAlign = "fullscreen";
+			black_hud.vertAlign = "fullscreen";
+			black_hud.foreground = true;
+			black_hud SetShader( "black", 640, 480 );
+			black_hud.alpha = 0;
+
+			black_hud FadeOverTime( 1.0 );
+			black_hud.alpha = 0.7;
+
+			paused_hud = newhudelem();
+			paused_hud.horzAlign = "center";
+			paused_hud.vertAlign = "middle";
+			paused_hud setText("Game Paused");
+			paused_hud.foreground = true;
+			paused_hud.fontScale = 2.3;
+			paused_hud.x -= 63;
+			paused_hud.y -= 25;
+			paused_hud.alpha = 0;
+			paused_hud.color = ( 1.0, 1.0, 1.0 );
+
+			paused_hud FadeOverTime( 1.0 );
+			paused_hud.alpha = 0.75;
 
 			for(i = 0; players.size > i; i++)
 			{
@@ -6765,6 +6790,15 @@ coop_pause(timer_hud, start_time)
 					}
 
 					players[0] SetClientDvar( "ai_disableSpawn", "0");
+
+
+					black_hud FadeOverTime( 0.5 );
+					black_hud.alpha = 0;
+					paused_hud FadeOverTime( 0.5 );
+					paused_hud.alpha = 0;
+					wait 0.5;
+					black_hud destroy();
+					paused_hud destroy();
 				}
 			}
 		}
