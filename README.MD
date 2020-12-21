@@ -16,12 +16,14 @@
 
 [YouTube](https://www.youtube.com/channel/UCUEBiSdNqUuMwLWsv1UKvRA)
 
-## Change Notes
+# Change Notes
 
 ## General
 * 15 hour reset time
+* Insta kill rounds start at round 115
 * Coop pause
 * Disabled players quotes
+* Fixed back walk speed
 
 ## HUD
 * Timer
@@ -73,44 +75,45 @@
 * Changed perk machines to bo3/bo2 models
 
 ## Powerups
-#### Fx
 * Added custom effect to last drop of a cycle
-#### Carpenter
 * Removed carpenters
-#### Fire Sale
 * Removed fire sales
-#### Double Points
-* Double points duration stacks to top of it self
-#### Insta kill
-* Insta kill duration stacks to top of it self
-#### Nuke
-* Nukes now kill zombies twice as fast
+* Double points duration stacks on top of it self
+* Insta kill duration stacks on top of it self
+* Nukes kill zombies twice as fast as base game
 
 ## Traps
 * 25 second activation and recharge time
 * Removed shell shock after running through traps
 
 ## Menu
-#### Game menu
+#### Game Menu
 * FOV
 * FOV scale
 * Max FPS
-* Reduced content
+#### HUD Menu
 * Timer
 * Round timer
+* Drops/box trackers 
+#### Host Only
+* Reduced content
 * Coop pause
 #### Controls menu
 * Fast ray
 
 ## Credits
-* JBird Justin - for scripts and anims
-* Just Crusader - for scripting help
-* Wunderful - for .map file
-* Salamanca21 - for perk machines
-* Ville88 - for tutorials
+**_JBird Justin_** - for scripts and anims
+**_Just Crusader_** - for scripting help
+**_Wunderful_** - for .map file
+**_Salamanca21_** - for perk machines
+**_Ville88_** - for tutorials
+**_SE2Dev_** - for making LinkerMod
+**_Nukem_** - for making LinkerMod
+**_Scobalula_** - for making Grey Hound
+**_DTZxPorter_** - for making Wraith Archon
 
-## TODO
-
-## TODO maybe
+### TODO maybe
+* change points system (half points on insta kill rounds, reduced points per kill after round 50)
 * guaranteed drop after 5 hoards
 * guaranteed trade after 50 hits
+* add first room and strat testing options
