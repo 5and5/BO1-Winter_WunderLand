@@ -3923,29 +3923,29 @@ chalk_round_over()
 round_think()
 {	
 	//strat tester
-	// level.round_number = 50;
-	// level.zombie_vars["zombie_spawn_delay"] = 0.08;
-	// level.zombie_move_speed = 105; // running speed
-	// level.first_round = false; // force first round to have the proper amount of zombies
+	level.round_number = 50;
+	level.zombie_vars["zombie_spawn_delay"] = 0.08;
+	level.zombie_move_speed = 105; // running speed
+	level.first_round = false; // force first round to have the proper amount of zombies
 
-	// player = get_players()[0];
-	// player.score = 555555;
+	player = get_players()[0];
+	player.score = 555555;
 
-	// player maps\_zombiemode_perks::give_perk("specialty_additionalprimaryweapon");
-	// player maps\_zombiemode_perks::give_perk("specialty_fastreload");
-	// player maps\_zombiemode_perks::give_perk("specialty_quickrevive");
-	// player maps\_zombiemode_perks::give_perk("specialty_armorvest");
-	// player maps\_zombiemode_perks::give_perk("specialty_rof");
-	// player maps\_zombiemode_perks::give_perk("specialty_longersprint");
-	// player maps\_zombiemode_perks::give_perk("specialty_flakjacket");
+	player maps\_zombiemode_perks::give_perk("specialty_additionalprimaryweapon");
+	player maps\_zombiemode_perks::give_perk("specialty_fastreload");
+	player maps\_zombiemode_perks::give_perk("specialty_quickrevive");
+	player maps\_zombiemode_perks::give_perk("specialty_armorvest");
+	player maps\_zombiemode_perks::give_perk("specialty_rof");
+	player maps\_zombiemode_perks::give_perk("specialty_longersprint");
+	player maps\_zombiemode_perks::give_perk("specialty_flakjacket");
 
-	// player takeWeapon("m1911_zm");
-	// player giveWeapon("tesla_gun_zm");
-	// player giveWeapon("thundergun_zm");
-	// player giveWeapon("ray_gun_zm");
-	// player switchToWeapon("ray_gun_zm");
+	player takeWeapon("m1911_zm");
+	player giveWeapon("tesla_gun_zm");
+	player giveWeapon("thundergun_zm");
+	player giveWeapon("ray_gun_zm");
+	player switchToWeapon("ray_gun_zm");
 
-	// player maps\_zombiemode_weap_nesting_dolls::player_give_nesting_dolls();
+	player maps\_zombiemode_weap_nesting_dolls::player_give_nesting_dolls();
 
 
 	for( ;; )
@@ -6722,14 +6722,15 @@ coop_pause(timer_hud, start_time)
 	paused_start_time = 0;
 	paused = false;
 
-	while(1)
+	players = GetPlayers();
+
+	while(players.size > 1)
 	{
 		if( getDvarInt( "coop_pause" ) == 1 )
 		{
-			players = GetPlayers();
 			if(level.zombie_total + get_enemy_count() != 0 )
 			{
-				iprintln("All Players Will be Paused at the Start of the Next Round.");
+				iprintln("All Players Will be Paused at the Start of the Next Round");
 				level waittill( "end_of_round" );
 			}
 
@@ -6745,21 +6746,21 @@ coop_pause(timer_hud, start_time)
 			black_hud.alpha = 0;
 
 			black_hud FadeOverTime( 1.0 );
-			black_hud.alpha = 0.7;
+			black_hud.alpha = 0.65;
 
 			paused_hud = newhudelem();
 			paused_hud.horzAlign = "center";
 			paused_hud.vertAlign = "middle";
-			paused_hud setText("Game Paused");
+			paused_hud setText(&"MOD_GAME_PAUSED");
 			paused_hud.foreground = true;
 			paused_hud.fontScale = 2.3;
 			paused_hud.x -= 63;
-			paused_hud.y -= 25;
+			paused_hud.y -= 20;
 			paused_hud.alpha = 0;
 			paused_hud.color = ( 1.0, 1.0, 1.0 );
 
 			paused_hud FadeOverTime( 1.0 );
-			paused_hud.alpha = 0.75;
+			paused_hud.alpha = 0.8;
 
 			for(i = 0; players.size > i; i++)
 			{
