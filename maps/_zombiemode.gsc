@@ -6671,7 +6671,10 @@ get_position()
 }
 
 disable_player_quotes()
-{
+{	
+	level endon("disconnect");
+	level endon("end_game");
+
 	while(1)
 	{
 		level.player_is_speaking = 1;
@@ -6681,51 +6684,134 @@ disable_player_quotes()
 
 timer_hud()
 {
-	self endon("disconnect");
-	self endon("end_game");
+	level endon("disconnect");
+	level endon("end_game");
 
 	flag_wait( "all_players_spawned" );
 	wait 3.15;
 
-	timer = NewHudElem();
-	timer.horzAlign = "right";
-	timer.vertAlign = "top";
-	timer.alignX = "right";
-	timer.alignY = "top";
-	timer.y += 2;
-	timer.x -= 5;
-	timer.foreground = true;
-	timer.fontScale = 1.4;
-	timer.alpha = 0;
-	timer.color = ( 1.0, 1.0, 1.0 );
-	timer SetTimerUp(0);
+	timer_hud = NewHudElem();
+	timer_hud.horzAlign = "right";
+	timer_hud.vertAlign = "top";
+	timer_hud.alignX = "right";
+	timer_hud.alignY = "top";
+	timer_hud.y += 2;
+	timer_hud.x -= 5;
+	timer_hud.foreground = true;
+	timer_hud.fontScale = 1.4;
+	timer_hud.alpha = 0;
+	timer_hud.color = ( 1.0, 1.0, 1.0 );
+	timer_hud SetTimerUp(0);
+
+	round_timer_hud = NewHudElem();
+	round_timer_hud.horzAlign = "left";
+	round_timer_hud.vertAlign = "top";
+	round_timer_hud.alignX = "left";
+	round_timer_hud.alignY = "top";
+	round_timer_hud.y += 2;
+	round_timer_hud.x += 5;
+	round_timer_hud.fontScale = 1.3;
+	round_timer_hud.alpha = 0;
+	round_timer_hud.color = ( 1.0, 1.0, 1.0 );
 
 	level.total_time = 0;
 	level.paused_time = 0;
 	start_time = int((getTime() / 1000));
-	level thread destroy_hud_end_game(timer);
-	level thread fake_reset(timer, start_time);
-	level thread coop_pause(timer, start_time);
+
+	level thread destroy_hud_end_game(timer_hud);
+	level thread round_timer_hud(round_timer_hud);
+	level thread fake_reset(timer_hud, start_time);
+	level thread coop_pause(timer_hud, start_time);
 
 	while(1)
 	{
 		if(getDvarInt( "hud_timer" ) == 0)
 		{
-			if(timer.alpha != 0)
-				timer.alpha = 0;
+			if(timer_hud.alpha != 0)
+				timer_hud.alpha = 0;
 		}
 		else
 		{
-			if(timer.alpha != 1)
-				timer.alpha = 1;
+			if(timer_hud.alpha != 1)
+				timer_hud.alpha = 1;
 		}
 		wait 0.1;
 	}
 }
 
+round_timer_hud(round_timer_hud)
+{	
+	level endon("disconnect");
+	level endon("end_game");
+
+	total_zombies = 0;
+	zombies_this_round = 0;
+	hordes = 0;
+
+	while(1)
+	{
+		start_time = int(getTime() / 1000);
+
+		if(flag( "dog_round" ))
+		{
+			level waittill( "last_dog_down" );
+		}
+		else
+		{
+			level waittill( "end_of_round" );
+		}
+
+		end_time = int(getTime() / 1000);
+
+		// round time
+		round_time = end_time - start_time - 0.1;	// need to set time below the number or it will show the next number
+		round_timer_hud.label = "Round Time: ";
+		level thread display_times(round_timer_hud, round_time);
+
+		// sph of last round
+		wait 6;
+		zombies_this_round = level.zombie_total + get_enemy_count();
+		total_zombies = total_zombies + zombies_this_round;
+		hordes = total_zombies / 24;
+		sph = Int(round_time / hordes);
+		hud_fade(round_timer_hud, 1, 0.15);
+		round_timer_hud.label = "sph: ";
+		round_timer_hud setValue(sph);
+		wait 5;
+		hud_fade(round_timer_hud, 0, 0.15);
+
+		level waittill( "start_of_round" );
+		
+		// total game time
+		total_time = level.total_time - 0.1;
+		round_timer_hud.label = "Total Time: ";
+		level thread display_times(round_timer_hud, total_time);
+	}
+}
+
+display_times( hud, time )
+{
+	level endon("start_of_round");
+
+	hud_fade(hud, 1, 0.15);
+	for(i = 0; i < 10; i++)
+	{
+		hud setTimer(time);
+		wait 0.5;
+	}
+	hud_fade(hud, 0, 0.15);
+}
+
+hud_fade( hud, alpha, duration )
+{
+	hud fadeOverTime(duration);
+	hud.alpha = alpha;
+}
+
 coop_pause(timer_hud, start_time)
 {	
-	self endon("end_game");
+	level endon("disconnect");
+	level endon("end_game");
 
 	paused_time = 0;
 	paused_start_time = 0;
@@ -6818,7 +6904,8 @@ coop_pause(timer_hud, start_time)
 
 fake_reset(timer_hud, start_time)
 {
-    self endon ( "end_game" );
+    level endon("disconnect");
+	level endon("end_game");
 
     level.win_game = false;
 
@@ -6876,6 +6963,9 @@ destroy_hud_end_game(timer_hud)
 {	
 	level waittill( "end_game" );
 
+	timer_hud FadeOverTime( 0.5 );
+	timer_hud.alpha = 0;
+	wait 0.5;
 	timer_hud destroy();
 }
 
@@ -6885,17 +6975,17 @@ tab_hud()
 	self endon("end_game");
 	flag_wait( "all_players_spawned" );
 
-	drops_hud = create_hud( "left", "middle" );
-	drops_hud.y += 0;
+	drops_hud = create_hud( "center", "top" );
+	drops_hud.y += 2;
 	drops_hud.x += 5;
 	drops_hud.label = &"MOD_POWER_UP_CYCLE";
 
-	tesla_hud = create_hud( "left", "middle" );
-	tesla_hud.y += 16;
+	tesla_hud = create_hud( "center", "top" );
+	tesla_hud.y += 18;
 	tesla_hud.x += 5;
 
-	tgun_hud = create_hud( "left", "middle" );
-	tgun_hud.y += 32;
+	tgun_hud = create_hud( "center", "top" );
+	tgun_hud.y += 34;
 	tgun_hud.x += 5;
 	
 	isButtonPressed = false;
@@ -6935,7 +7025,7 @@ tab_hud()
 			}
 			else
 			{
-				avg =  Int(level.total_tgun_hits / level.total_tgun_trades);
+				avg = Int(level.total_tgun_hits / level.total_tgun_trades);
 				tgun_hud.label = &"MOD_AVERAGE_TGUN";
 				tgun_hud setValue(avg);
 			}
@@ -6961,7 +7051,7 @@ create_hud( side, top )
 	hud.alignX = side;
 	hud.alignY = top;
 	hud.alpha = 0;
-	hud.fontscale = 1.1;
+	hud.fontscale = 1.2;
 	hud.color = ( 1.0, 1.0, 1.0 );
 
 	return hud;
