@@ -6838,12 +6838,13 @@ tab_hud()
 	tgun_hud.x += 5;
 	
 	isButtonPressed = false;
-	buttonPressed = "tab";
-	avg = Int(0);
+	if(getDvar( "hud_button" ) == "")
+		self setClientDvar( "hud_button", "tab" );
 
 	while(1)
 	{	
-		if(self buttonPressed( buttonPressed ))
+		button_pressed = getDvar( "hud_button" );
+		if(self buttonPressed( button_pressed ))
 		{	
 			isButtonPressed = true;
 			// drop hud
