@@ -25,6 +25,8 @@
 
 ## HUD
 * Timer
+* Round timer
+* Seconds per horde 
 * Drop tracker 
 * Trade avarage
 * Pulls since wonder weapon
@@ -95,6 +97,8 @@
 * Max FPS
 * Reduced content
 * Timer
+* Round timer
+* Coop pause
 #### Controls menu
 * Fast ray
 
@@ -105,9 +109,7 @@
 * Salamanca21 - for perk machines
 * Ville88 - for tutorials
 
-
 ## TODO
-* round timer
 
 ## TODO maybe
 * guaranteed drop after 5 hoards

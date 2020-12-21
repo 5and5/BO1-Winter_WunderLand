@@ -244,6 +244,7 @@ post_all_players_connected()
 		level.music_override = false;
 	}
 
+	//custom
 	level thread timer_hud();
 }
 
@@ -799,7 +800,12 @@ init_dvars()
 	//setDvar( "ik_enable", "0" );
 
 	//custom
-	SetDvar("coop_pause", "0");
+	SetDvar( "coop_pause", "0" );
+
+	if(getDvar( "hud_round_timer" ) == "")
+		SetDvar( "hud_round_timer", "1" );
+	if(getDvar( "hud_timer" ) == "")
+		SetDvar( "hud_timer", "1" );
 }
 
 
@@ -6708,7 +6714,7 @@ timer_hud()
 
 	level thread destroy_hud_end_game(timer_hud);
 	level thread round_timer_hud(round_timer_hud);
-	level thread fake_reset(timer_hud, start_time);
+	level thread fake_reset(start_time);
 	level thread coop_pause(timer_hud, start_time);
 
 	while(1)
@@ -6723,7 +6729,7 @@ timer_hud()
 			if(timer_hud.alpha != 1)
 				timer_hud.alpha = 1;
 		}
-		wait 0.1;
+		wait 0.05;
 	}
 }
 
@@ -6745,45 +6751,51 @@ round_timer_hud(round_timer_hud)
 	total_zombies = 0;
 	zombies_this_round = 0;
 	hordes = 0;
-
 	while(1)
-	{
-		start_time = int(getTime() / 1000);
-
-		if(flag( "dog_round" ))
+	{	
+		if(getDvarInt( "hud_round_timer" ) == 1)
 		{
-			level waittill( "last_dog_down" );
+			start_time = int(getTime() / 1000);
+
+			if(flag( "dog_round" ))
+			{
+				level waittill( "last_dog_down" );
+			}
+			else
+			{
+				level waittill( "end_of_round" );
+			}
+
+			end_time = int(getTime() / 1000);
+
+			// round time
+			round_time = end_time - start_time - 0.1;	// need to set time below the number or it will show the next number
+			round_timer_hud.label = "Round Time: ";
+			level thread display_times(round_timer_hud, round_time);
+
+			// sph of last round
+			wait 6;
+			zombies_this_round = level.zombie_total + get_enemy_count();
+			total_zombies = total_zombies + zombies_this_round;
+			hordes = total_zombies / 24;
+			sph = Int(round_time / hordes);
+			hud_fade(round_timer_hud, 1, 0.15);
+			round_timer_hud.label = "sph: ";
+			round_timer_hud setValue(sph);
+			wait 5;
+			hud_fade(round_timer_hud, 0, 0.15);
+
+			level waittill( "start_of_round" );
+			
+			// total game time
+			total_time = level.total_time - 0.1;
+			round_timer_hud.label = "Total Time: ";
+			level thread display_times(round_timer_hud, total_time);
 		}
 		else
-		{
-			level waittill( "end_of_round" );
-		}
-
-		end_time = int(getTime() / 1000);
-
-		// round time
-		round_time = end_time - start_time - 0.1;	// need to set time below the number or it will show the next number
-		round_timer_hud.label = "Round Time: ";
-		level thread display_times(round_timer_hud, round_time);
-
-		// sph of last round
-		wait 6;
-		zombies_this_round = level.zombie_total + get_enemy_count();
-		total_zombies = total_zombies + zombies_this_round;
-		hordes = total_zombies / 24;
-		sph = Int(round_time / hordes);
-		hud_fade(round_timer_hud, 1, 0.15);
-		round_timer_hud.label = "sph: ";
-		round_timer_hud setValue(sph);
-		wait 5;
-		hud_fade(round_timer_hud, 0, 0.15);
-
-		level waittill( "start_of_round" );
-		
-		// total game time
-		total_time = level.total_time - 0.1;
-		round_timer_hud.label = "Total Time: ";
-		level thread display_times(round_timer_hud, total_time);
+		if(round_timer_hud.alpha != 0)
+			round_timer_hud.alpha = 0;
+		wait 0.05;
 	}
 }
 
@@ -7016,7 +7028,7 @@ coop_pause(timer_hud, start_time)
 	}
 }
 
-fake_reset(timer_hud, start_time)
+fake_reset(start_time)
 {
     level endon("disconnect");
 	level endon("end_game");
