@@ -20,6 +20,7 @@
 
 ## General
 * 15 hour reset time
+* Coop pause
 * Disabled players quotes
 
 ## HUD
@@ -106,9 +107,6 @@
 
 
 ## TODO
-* fake reset (20h)
-* insta kill rounds (120)
-* coop pause (look similar to cold war)
 * round timer
 
 ## TODO maybe

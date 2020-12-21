@@ -788,6 +788,9 @@ init_dvars()
 
 	// HACK: To avoid IK crash in zombiemode: MikeA 9/18/2009
 	//setDvar( "ik_enable", "0" );
+
+	//custom
+	SetDvar("coop_pause", "0");
 }
 
 
@@ -1560,8 +1563,19 @@ onPlayerConnect_clientDvars()
 	// no cheats
 	//self SetClientDvar("sv_cheats", 0);
 
+	// dtp buffs
+	// self SetClientDvars("dtp_post_move_pause", 0,
+	// 	"dtp_exhaustion_window", 100,
+	// 	"dtp_startup_delay", 100);
+
 	// allows shooting while looking at players
 	self SetClientDvar("g_friendlyFireDist", 0);
+
+	// makes FPS area in corner smaller
+	self SetClientDvar("cg_drawFPSLabels", 0);
+
+	// make sure zombies are spawning
+	self SetClientDvar( "ai_disableSpawn", "0");
 
 }
 
@@ -6679,8 +6693,10 @@ timer_hud()
 
 	level.total_time = 0;
 	level.paused_time = 0;
+	start_time = int((getTime() / 1000));
 	level thread destroy_hud_end_game(timer);
-	level thread fake_reset(timer);
+	level thread fake_reset(timer, start_time);
+	level thread coop_pause(timer, start_time);
 
 	while(1)
 	{
@@ -6698,12 +6714,69 @@ timer_hud()
 	}
 }
 
-fake_reset(timer_hud)
+coop_pause(timer_hud, start_time)
+{
+	paused_time = 0;
+	paused_start_time = 0;
+	paused = false;
+
+	while(1)
+	{
+		if( getDvarInt( "coop_pause" ) == 1 )
+		{
+			players = GetPlayers();
+			if(level.zombie_total + get_enemy_count() != 0 )
+			{
+				iprintln("All Players Will be Paused at the Start of the Next Round.");
+				level waittill( "end_of_round" );
+			}
+
+			players[0] SetClientDvar( "ai_disableSpawn", "1" );
+
+			level waittill( "start_of_round" );
+			iprintlnbold( "game paused");
+
+			for(i = 0; players.size > i; i++)
+			{
+				players[i] freezecontrols(true);
+			}
+
+			paused = true;
+			paused_start_time = int(getTime() / 1000);
+			total_time = 0 - (paused_start_time - level.paused_time - start_time) - 0.05;
+			previous_paused_time = level.paused_time;
+
+			while(paused)
+			{
+				timer_hud SetTimerUp(total_time);
+				wait 0.2;
+
+				current_time = int(getTime() / 1000);
+				current_paused_time = current_time - paused_start_time;
+				level.paused_time = previous_paused_time + current_paused_time;
+
+				if( getDvarInt( "coop_pause" ) == 0 )
+				{
+					paused = false;
+
+					for(i = 0; players.size > i; i++)
+					{
+						players[i] freezecontrols(false);
+					}
+
+					players[0] SetClientDvar( "ai_disableSpawn", "0");
+				}
+			}
+		}
+		wait 0.05;
+	}
+}
+
+fake_reset(timer_hud, start_time)
 {
     self endon ( "end_game" );
 
     level.win_game = false;
-    start_time = int((getTime() / 1000));
 
     while(1)
     {
