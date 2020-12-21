@@ -6670,18 +6670,6 @@ get_position()
 	}
 }
 
-disable_player_quotes()
-{	
-	level endon("disconnect");
-	level endon("end_game");
-
-	while(1)
-	{
-		level.player_is_speaking = 1;
-		wait 0.1;
-	}
-}
-
 timer_hud()
 {
 	level endon("disconnect");
@@ -6737,6 +6725,16 @@ timer_hud()
 		}
 		wait 0.1;
 	}
+}
+
+destroy_hud_end_game(timer_hud)
+{	
+	level waittill( "end_game" );
+
+	timer_hud FadeOverTime( 0.5 );
+	timer_hud.alpha = 0;
+	wait 0.5;
+	timer_hud destroy();
 }
 
 round_timer_hud(round_timer_hud)
@@ -6806,6 +6804,122 @@ hud_fade( hud, alpha, duration )
 {
 	hud fadeOverTime(duration);
 	hud.alpha = alpha;
+}
+
+tab_hud()
+{	
+	self endon("disconnect");
+	self endon("end_game");
+	flag_wait( "all_players_spawned" );
+
+	drops_hud = create_hud( "center", "top" );
+	drops_hud.y += 2;
+	drops_hud.x += 5;
+	drops_hud.label = &"MOD_POWER_UP_CYCLE";
+
+	tesla_hud = create_hud( "center", "top" );
+	tesla_hud.y += 18;
+	tesla_hud.x += 5;
+
+	tgun_hud = create_hud( "center", "top" );
+	tgun_hud.y += 34;
+	tgun_hud.x += 5;
+	
+	isButtonPressed = false;
+	buttonPressed = "tab";
+	avg = Int(0);
+
+	while(1)
+	{	
+		if(self buttonPressed( buttonPressed ))
+		{	
+			isButtonPressed = true;
+			// drop hud
+			if( drops_hud.alpha != 1 )
+				drops_hud.alpha = 1;
+			drops_hud setValue(level.drop_tracker_index);
+			// tesla hud
+			if( tesla_hud.alpha != 1 )
+				tesla_hud.alpha = 1;
+			if(level.pulls_since_tesla > 0)
+			{
+				tesla_hud.label = &"MOD_PULLS_SINCE_TESLA";
+				tesla_hud setValue(level.pulls_since_tesla);
+			}
+			else
+			{
+				avg = Int(level.total_tesla_hits / level.total_tesla_trades);
+				tesla_hud.label = &"MOD_AVERAGE_TESLA";
+				tesla_hud setValue(avg);
+			}
+			// tgun hud
+			if( tgun_hud.alpha != 1 )
+				tgun_hud.alpha = 1;
+			if(level.pulls_since_tgun > 0)
+			{
+				tgun_hud.label = &"MOD_PULLS_SINCE_TGUN";
+				tgun_hud setValue(level.pulls_since_tgun);
+			}
+			else
+			{
+				avg = Int(level.total_tgun_hits / level.total_tgun_trades);
+				tgun_hud.label = &"MOD_AVERAGE_TGUN";
+				tgun_hud setValue(avg);
+			}
+		}
+		if(drops_hud.alpha != 0 && !isButtonPressed)
+			drops_hud.alpha = 0;
+		if(tesla_hud.alpha != 0 && !isButtonPressed)
+			tesla_hud.alpha = 0;
+		if(tgun_hud.alpha != 0 && !isButtonPressed)
+			tgun_hud.alpha = 0;
+
+		if(isButtonPressed != false )
+			isButtonPressed = false;
+		wait 0.05;
+	}
+}
+
+create_hud( side, top )
+{
+	hud = NewClientHudElem( self );
+	hud.horzAlign = side;
+	hud.vertAlign = top;
+	hud.alignX = side;
+	hud.alignY = top;
+	hud.alpha = 0;
+	hud.fontscale = 1.2;
+	hud.color = ( 1.0, 1.0, 1.0 );
+
+	return hud;
+}
+
+to_mins_short(seconds)
+{
+	hours = int(seconds / 3600);
+	minutes = int((seconds - (hours * 3600)) / 60);
+	seconds = int(seconds - (hours * 3600) - (minutes * 60));
+
+	if( minutes < 10 && hours >= 1 )
+	{
+		minutes = "0" + minutes;
+	}
+	if( seconds < 10 )
+	{
+		seconds = "0" + seconds;
+	}
+
+	combined = "";
+	if(hours >= 1)
+	{
+		combined = "" + hours + ":" + minutes + ":" + seconds;
+	}
+	else
+	{
+		combined = "" + minutes + ":" + seconds;
+	}
+
+	return combined;
 }
 
 coop_pause(timer_hud, start_time)
@@ -6931,128 +7045,14 @@ fake_reset(timer_hud, start_time)
     }
 }
 
-to_mins_short(seconds)
-{
-	hours = int(seconds / 3600);
-	minutes = int((seconds - (hours * 3600)) / 60);
-	seconds = int(seconds - (hours * 3600) - (minutes * 60));
-
-	if( minutes < 10 && hours >= 1 )
-	{
-		minutes = "0" + minutes;
-	}
-	if( seconds < 10 )
-	{
-		seconds = "0" + seconds;
-	}
-
-	combined = "";
-	if(hours >= 1)
-	{
-		combined = "" + hours + ":" + minutes + ":" + seconds;
-	}
-	else
-	{
-		combined = "" + minutes + ":" + seconds;
-	}
-
-	return combined;
-}
-
-destroy_hud_end_game(timer_hud)
+disable_player_quotes()
 {	
-	level waittill( "end_game" );
-
-	timer_hud FadeOverTime( 0.5 );
-	timer_hud.alpha = 0;
-	wait 0.5;
-	timer_hud destroy();
-}
-
-tab_hud()
-{	
-	self endon("disconnect");
-	self endon("end_game");
-	flag_wait( "all_players_spawned" );
-
-	drops_hud = create_hud( "center", "top" );
-	drops_hud.y += 2;
-	drops_hud.x += 5;
-	drops_hud.label = &"MOD_POWER_UP_CYCLE";
-
-	tesla_hud = create_hud( "center", "top" );
-	tesla_hud.y += 18;
-	tesla_hud.x += 5;
-
-	tgun_hud = create_hud( "center", "top" );
-	tgun_hud.y += 34;
-	tgun_hud.x += 5;
-	
-	isButtonPressed = false;
-	buttonPressed = "tab";
-	avg = Int(0);
+	level endon("disconnect");
+	level endon("end_game");
 
 	while(1)
-	{	
-		if(self buttonPressed( buttonPressed ))
-		{	
-			isButtonPressed = true;
-			// drop hud
-			if( drops_hud.alpha != 1 )
-				drops_hud.alpha = 1;
-			drops_hud setValue(level.drop_tracker_index);
-			// tesla hud
-			if( tesla_hud.alpha != 1 )
-				tesla_hud.alpha = 1;
-			if(level.pulls_since_tesla > 0)
-			{
-				tesla_hud.label = &"MOD_PULLS_SINCE_TESLA";
-				tesla_hud setValue(level.pulls_since_tesla);
-			}
-			else
-			{
-				avg = Int(level.total_tesla_hits / level.total_tesla_trades);
-				tesla_hud.label = &"MOD_AVERAGE_TESLA";
-				tesla_hud setValue(avg);
-			}
-			// tgun hud
-			if( tgun_hud.alpha != 1 )
-				tgun_hud.alpha = 1;
-			if(level.pulls_since_tgun > 0)
-			{
-				tgun_hud.label = &"MOD_PULLS_SINCE_TGUN";
-				tgun_hud setValue(level.pulls_since_tgun);
-			}
-			else
-			{
-				avg = Int(level.total_tgun_hits / level.total_tgun_trades);
-				tgun_hud.label = &"MOD_AVERAGE_TGUN";
-				tgun_hud setValue(avg);
-			}
-		}
-		if(drops_hud.alpha != 0 && !isButtonPressed)
-			drops_hud.alpha = 0;
-		if(tesla_hud.alpha != 0 && !isButtonPressed)
-			tesla_hud.alpha = 0;
-		if(tgun_hud.alpha != 0 && !isButtonPressed)
-			tgun_hud.alpha = 0;
-
-		if(isButtonPressed != false )
-			isButtonPressed = false;
-		wait 0.05;
+	{
+		level.player_is_speaking = 1;
+		wait 0.1;
 	}
-}
-
-create_hud( side, top )
-{
-	hud = NewClientHudElem( self );
-	hud.horzAlign = side;
-	hud.vertAlign = top;
-	hud.alignX = side;
-	hud.alignY = top;
-	hud.alpha = 0;
-	hud.fontscale = 1.2;
-	hud.color = ( 1.0, 1.0, 1.0 );
-
-	return hud;
 }
