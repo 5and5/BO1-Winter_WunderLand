@@ -4051,7 +4051,14 @@ award_grenades_for_survivors()
 }
 
 ai_calculate_health( round_number )
-{
+{	
+	//insta kill rounds staring at 115 then every 4 rounds
+	if(round_number >= 115 && round_number % 2 == 1)
+	{
+		level.zombie_health = 150;
+		return;
+	}
+
 	level.zombie_health = level.zombie_vars["zombie_health_start"];
 	for ( i=2; i<=round_number; i++ )
 	{
@@ -6776,7 +6783,7 @@ tab_hud()
 	
 	isButtonPressed = false;
 	buttonPressed = "tab";
-	avg = 0;
+	avg = Int(0);
 
 	while(1)
 	{	
@@ -6797,7 +6804,7 @@ tab_hud()
 			}
 			else
 			{
-				avg = level.total_tesla_hits / level.total_tesla_trades;
+				avg = Int(level.total_tesla_hits / level.total_tesla_trades);
 				tesla_hud.label = &"MOD_AVERAGE_TESLA";
 				tesla_hud setValue(avg);
 			}
@@ -6811,7 +6818,7 @@ tab_hud()
 			}
 			else
 			{
-				avg =  level.total_tgun_hits / level.total_tgun_trades;
+				avg =  Int(level.total_tgun_hits / level.total_tgun_trades);
 				tgun_hud.label = &"MOD_AVERAGE_TGUN";
 				tgun_hud setValue(avg);
 			}
