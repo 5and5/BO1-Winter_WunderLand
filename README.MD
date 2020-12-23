@@ -102,16 +102,18 @@
 * Fast ray
 
 ## Credits
-**_JBird Justin_** - for scripts and anims
-**_Just Crusader_** - for scripting help
-**_Wunderful_** - for .map file
-**_Salamanca21_** - for perk machines
-**_Ville88_** - for tutorials
-**_SE2Dev_** - for making LinkerMod
-**_Nukem_** - for making LinkerMod
-**_Scobalula_** - for making Grey Hound
-**_DTZxPorter_** - for making Wraith Archon
+* **_JBird Justin_** - for scripts and anims
+* **_Just Crusader_** - for scripting help
+* **_Wunderful_** - for .map file
+* **_Salamanca21_** - for perk machines
+* **_Ville88_** - for tutorials
+* **_SE2Dev_** - for making LinkerMod
+* **_Nukem_** - for making LinkerMod
+* **_Scobalula_** - for making Grey Hound
+* **_DTZxPorter_** - for making Wraith Archon
 
+### TODO
+* double tap 2.0
 ### TODO maybe
 * change points system (half points on insta kill rounds, reduced points per kill after round 50)
 * guaranteed drop after 5 hoards

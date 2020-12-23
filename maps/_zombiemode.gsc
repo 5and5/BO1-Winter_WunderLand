@@ -3938,29 +3938,29 @@ chalk_round_over()
 round_think()
 {	
 	//strat tester
-	level.round_number = 50;
-	level.zombie_vars["zombie_spawn_delay"] = 0.08;
-	level.zombie_move_speed = 105; // running speed
-	level.first_round = false; // force first round to have the proper amount of zombies
+	// level.round_number = 50;
+	// level.zombie_vars["zombie_spawn_delay"] = 0.08;
+	// level.zombie_move_speed = 105; // running speed
+	// level.first_round = false; // force first round to have the proper amount of zombies
 
-	player = get_players()[0];
-	player.score = 555555;
+	// player = get_players()[0];
+	// player.score = 555555;
 
-	player maps\_zombiemode_perks::give_perk("specialty_additionalprimaryweapon");
-	player maps\_zombiemode_perks::give_perk("specialty_fastreload");
-	player maps\_zombiemode_perks::give_perk("specialty_quickrevive");
-	player maps\_zombiemode_perks::give_perk("specialty_armorvest");
-	player maps\_zombiemode_perks::give_perk("specialty_rof");
-	player maps\_zombiemode_perks::give_perk("specialty_longersprint");
-	player maps\_zombiemode_perks::give_perk("specialty_flakjacket");
+	// player maps\_zombiemode_perks::give_perk("specialty_additionalprimaryweapon");
+	// player maps\_zombiemode_perks::give_perk("specialty_fastreload");
+	// player maps\_zombiemode_perks::give_perk("specialty_quickrevive");
+	// player maps\_zombiemode_perks::give_perk("specialty_armorvest");
+	// player maps\_zombiemode_perks::give_perk("specialty_rof");
+	// player maps\_zombiemode_perks::give_perk("specialty_longersprint");
+	// player maps\_zombiemode_perks::give_perk("specialty_flakjacket");
 
-	player takeWeapon("m1911_zm");
-	player giveWeapon("tesla_gun_zm");
-	player giveWeapon("thundergun_zm");
-	player giveWeapon("ray_gun_zm");
-	player switchToWeapon("ray_gun_zm");
+	// player takeWeapon("m1911_zm");
+	// player giveWeapon("tesla_gun_zm");
+	// player giveWeapon("thundergun_zm");
+	// player giveWeapon("ray_gun_zm");
+	// player switchToWeapon("ray_gun_zm");
 
-	player maps\_zombiemode_weap_nesting_dolls::player_give_nesting_dolls();
+	// player maps\_zombiemode_weap_nesting_dolls::player_give_nesting_dolls();
 
 
 	for( ;; )
@@ -5159,6 +5159,7 @@ end_game()
 
 	game_over = [];
 	survived = [];
+	time = [];
 
 	players = get_players();
 	for( i = 0; i < players.size; i++ )
@@ -5237,13 +5238,13 @@ end_game()
 		time[i].alignY = "middle";
 		time[i].horzAlign = "center";
 		time[i].vertAlign = "middle";
-		time[i].y -= 95;
+		time[i].y -= 92;
 		time[i].foreground = true;
 		time[i].fontScale = 1.8;
 		time[i].alpha = 0;
 		time[i].color = ( 1.0, 1.0, 1.0 );
 
-		time[i].label = "In ";
+		time[i].label = "Total Time ";
 		time[i] setText(to_mins_short(level.total_time));
 		
 
@@ -5282,6 +5283,8 @@ end_game()
 		survived[i].alpha = 0;
 		game_over[i] FadeOverTime( 1 );
 		game_over[i].alpha = 0;
+		time[i] FadeOverTime( 1 );
+		time[i].alpha = 0;
 	}
 
 	wait( 1.5 );
@@ -5305,6 +5308,7 @@ end_game()
 
 		survived[j] Destroy();
 		game_over[j] Destroy();
+		time[j] Destroy();
 	}
 
 	if ( level.onlineGame || level.systemLink )
@@ -6756,7 +6760,7 @@ round_timer_hud(round_timer_hud)
 		if(getDvarInt( "hud_round_timer" ) == 1)
 		{
 			start_time = int(getTime() / 1000);
-
+	
 			if(flag( "dog_round" ))
 			{
 				level waittill( "last_dog_down" );
@@ -6774,16 +6778,19 @@ round_timer_hud(round_timer_hud)
 			level thread display_times(round_timer_hud, round_time);
 
 			// sph of last round
-			wait 6;
-			zombies_this_round = level.zombie_total + get_enemy_count();
-			total_zombies = total_zombies + zombies_this_round;
-			hordes = total_zombies / 24;
-			sph = Int(round_time / hordes);
-			hud_fade(round_timer_hud, 1, 0.15);
-			round_timer_hud.label = "sph: ";
-			round_timer_hud setValue(sph);
-			wait 5;
-			hud_fade(round_timer_hud, 0, 0.15);
+			// wait 6;
+			// total_zombies = total_zombies + zombies_this_round;
+			// hordes = total_zombies / 24;
+			// sph = Int(round_time / hordes);
+
+			// iPrintLn(total_zombies);
+			// iPrintLn(zombies_this_round);
+
+			// hud_fade(round_timer_hud, 1, 0.15);
+			// round_timer_hud.label = "sph: ";
+			// round_timer_hud setValue(sph);
+			// wait 5;
+			// hud_fade(round_timer_hud, 0, 0.15);
 
 			level waittill( "start_of_round" );
 			
@@ -6804,7 +6811,7 @@ display_times( hud, time )
 	level endon("start_of_round");
 
 	hud_fade(hud, 1, 0.15);
-	for(i = 0; i < 10; i++)
+	for(i = 0; i < 12; i++)
 	{
 		hud setTimer(time);
 		wait 0.5;
@@ -6825,16 +6832,16 @@ tab_hud()
 	flag_wait( "all_players_spawned" );
 
 	drops_hud = create_hud( "center", "top" );
-	drops_hud.y += 2;
+	drops_hud.y += 4;
 	drops_hud.x += 5;
 	drops_hud.label = &"MOD_POWER_UP_CYCLE";
 
 	tesla_hud = create_hud( "center", "top" );
-	tesla_hud.y += 18;
+	tesla_hud.y += 20;
 	tesla_hud.x += 5;
 
 	tgun_hud = create_hud( "center", "top" );
-	tgun_hud.y += 34;
+	tgun_hud.y += 36;
 	tgun_hud.x += 5;
 	
 	isButtonPressed = false;
