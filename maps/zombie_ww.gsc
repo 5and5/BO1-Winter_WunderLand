@@ -103,8 +103,8 @@ main()
 	
 	init_sounds();
 	//level thread add_powerups_after_round_1();
-	visionsetnaked( "zombie_ww", 0 );
-
+	// visionsetnaked( "zombie_ww", 0 );
+	visionsetnaked( "wmd", 0 );
 	// custom
 	thread maps\_custom_zapper_system::init();
 }
@@ -219,6 +219,7 @@ include_weapons()
 	maps\_zombiemode_weapons::add_limited_weapon( "m1911_zm", 0 );
 	maps\_zombiemode_weapons::add_limited_weapon( "thundergun_zm", 1 );
 	maps\_zombiemode_weapons::add_limited_weapon( "tesla_gun_zm", 1 );
+	maps\_zombiemode_weapons::add_limited_weapon( "zombie_nesting_dolls", 1 );
 	maps\_zombiemode_weapons::add_limited_weapon( "crossbow_explosive_zm", 1 );
 	maps\_zombiemode_weapons::add_limited_weapon( "knife_ballistic_zm", 1 );
 	precacheItem( "explosive_bolt_zm" );

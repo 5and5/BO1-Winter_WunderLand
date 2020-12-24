@@ -1306,15 +1306,15 @@ treasure_chest_think()
 
 		// PI_CHANGE_BEGIN
 		// JMA - we only update counters when it's available
-		if(!user has_weapon_or_upgrade("zombie_nesting_dolls") && isDefined(level.pulls_since_dolls) )
+		if(!user any_player_has_weapon("zombie_nesting_dolls") && isDefined(level.pulls_since_dolls) )
 		{
 			level.pulls_since_dolls += 1;
 		}
-		if(!user has_weapon_or_upgrade("thundergun_zm") && isDefined(level.pulls_since_tgun) )
+		if(!user any_player_has_weapon("thundergun_zm") && isDefined(level.pulls_since_tgun) )
 		{
 			level.pulls_since_tgun += 1;
 		}
-		if(!user has_weapon_or_upgrade("tesla_gun_zm") && isDefined(level.pulls_since_tesla) )
+		if(!user any_player_has_weapon("tesla_gun_zm") && isDefined(level.pulls_since_tesla) )
 		{
 			level.pulls_since_tesla += 1;
 		}
@@ -1347,6 +1347,18 @@ treasure_chest_think()
 	self notify( "chest_accessed" );
 
 	self thread treasure_chest_think();
+}
+
+any_player_has_weapon(weap)
+{	
+	players = get_players();
+	has_weap = false;
+	for(i = 0; players.size > i; i++)
+	{
+		if(players[i] has_weapon_or_upgrade(weap))
+			has_weap = true;
+	}
+	return has_weap;
 }
 
 //-------------------------------------------------------------------------------
