@@ -5026,6 +5026,16 @@ actor_damage_override( inflictor, attacker, damage, flags, meansofdeath, weapon,
 		}
 	}
 
+	if(attacker HasPerk("specialty_rof") && (meansofdeath == "MOD_PISTOL_BULLET" || meansofdeath == "MOD_RIFLE_BULLET"))
+	{
+		final_damage = int(final_damage * 1.5);
+	}
+
+	// if(weapon == "zombie_nesting_dolls" && self.animname != "director_zombie")
+	// {
+	// 	final_damage = int(self.maxhealth) + 666;
+	// }
+
 	// return unchanged damage
 	//iPrintln( final_damage );
 	return int( final_damage );
