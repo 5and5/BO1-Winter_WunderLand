@@ -105,8 +105,10 @@ main()
 	//level thread add_powerups_after_round_1();
 	// visionsetnaked( "zombie_ww", 0 );
 	visionsetnaked( "wmd", 0 );
+
 	// custom
-	thread maps\_custom_zapper_system::init();
+	level thread maps\_custom_zapper_system::init();
+	level thread ray_gun_wallbuy();
 }
 #using_animtree( "generic_human" );
 anim_override_func()
@@ -590,4 +592,65 @@ offhand_weapon_give_override( str_weapon )
 	}
 
 	return false;
+}
+
+ray_gun_wallbuy()
+{
+	trigger = getent("ray_gun_wallbuy", "targetname");
+	trigger SetCursorHint( "HINT_NOICON" );
+	trigger UseTriggerRequireLookAt();
+	trigger setHintString("Hold ^3[{+activate}]^7 for Ray Gun [50 000]");
+
+	cost = 50000;
+	ammo_cost = 50000;
+	zombie_weapon_upgrade = "ray_gun_zm";
+
+	while (1)
+	{
+		wait(0.5);
+
+		trigger waittill( "trigger", player);
+
+		if( !player maps\_zombiemode_weapons::can_buy_weapon() )
+		{
+			wait( 0.1 );
+			continue;
+		}
+
+		// Allow people to get ammo off the wall for upgraded weapons
+		player_has_weapon = player maps\_zombiemode_weapons::has_weapon_or_upgrade( zombie_weapon_upgrade );
+
+		if( !player_has_weapon )
+		{
+			// else make the weapon show and give it
+			if( player.score >= cost )
+			{
+				player maps\_zombiemode_score::minus_to_player_score( cost );
+				player maps\_zombiemode_weapons::weapon_give( zombie_weapon_upgrade );
+			}
+			else
+			{
+				play_sound_on_ent( "no_purchase" );
+				player maps\_zombiemode_audio::create_and_play_dialog( "general", "no_money", undefined, 1 );
+
+			}
+		}
+		else
+		{
+			// if the player does have this then give him ammo.
+			if( player.score >= ammo_cost )
+			{
+				ammo_given = player maps\_zombiemode_weapons::ammo_give( zombie_weapon_upgrade );
+				if( ammo_given )
+				{
+						player maps\_zombiemode_score::minus_to_player_score( ammo_cost ); // this give him ammo to early
+				}
+			}
+			else
+			{
+				play_sound_on_ent( "no_purchase" );
+				player maps\_zombiemode_audio::create_and_play_dialog( "general", "no_money", undefined, 0 );
+			}
+		}
+	}
 }
