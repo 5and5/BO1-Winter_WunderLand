@@ -374,7 +374,7 @@ init_weapon_upgrade()
 
 		weapon_spawns[i] SetHintString( hint_string, cost );
 		weapon_spawns[i] setCursorHint( "HINT_NOICON" );
-		weapon_spawns[i] UseTriggerRequireLookAt();
+		//weapon_spawns[i] UseTriggerRequireLookAt();
 
 		weapon_spawns[i] thread weapon_spawn_think();
 		model = getent( weapon_spawns[i].target, "targetname" );
