@@ -52,12 +52,14 @@
 * Reduced chance of failing
 * Reduced weapon swap time
 #### Wunderwaffe DG-2
+* Reduced chance of failing
 * Reduced weapon swap time
 #### Ray Gun
+* Wallbuy added costing 50000 points
 * Reduced weapon swap time
 * Changed animations to bo2 animations
 #### Dolls
-* Changed damage to infinite damage
+* Infinite damage
 #### Grenades
 * Reduced throw time
 #### Claymores
@@ -65,12 +67,16 @@
 * Increased explosion radius
 #### China Lake
 * Removed China Lake
+#### Wallbuy's
+* Weapon wallbuy's can be bought without looking at them
+
 
 ## Dogs
 * First dog round is always on round 5
 * Always 4 rounds between dog rounds
 
 ## Perks
+* Double Tap increases damage of bullet based weapons by 150% 
 * Removed perk limit
 * Changed perk machines to bo3/bo2 models
 
@@ -113,7 +119,6 @@
 * **_DTZxPorter_** - for making Wraith Archon
 
 ### TODO
-* double tap 2.0
 ### TODO maybe
 * change points system (half points on insta kill rounds, reduced points per kill after round 50)
 * guaranteed drop after 5 hoards

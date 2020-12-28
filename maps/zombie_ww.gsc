@@ -104,7 +104,7 @@ main()
 	init_sounds();
 	//level thread add_powerups_after_round_1();
 	// visionsetnaked( "zombie_ww", 0 );
-	visionsetnaked( "wmd", 0 );
+	visionsetnaked( "mp_berlinwall2", 0 );
 
 	// custom
 	level thread maps\_custom_zapper_system::init();
@@ -599,7 +599,7 @@ ray_gun_wallbuy()
 	trigger = getent("ray_gun_wallbuy", "targetname");
 	trigger SetCursorHint( "HINT_NOICON" );
 	trigger UseTriggerRequireLookAt();
-	trigger setHintString("Hold ^3[{+activate}]^7 for Ray Gun [50 000]");
+	trigger setHintString("Hold ^3[{+activate}]^7 for Ray Gun [50000]");
 
 	cost = 50000;
 	ammo_cost = 50000;
