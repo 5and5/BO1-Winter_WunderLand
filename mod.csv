@@ -107,6 +107,11 @@ fx,maps/zombie/fx_zmb_trail_doll_blue
 fx,maps/zombie/fx_zmb_trail_doll_green
 fx,maps/zombie/fx_zmb_trail_doll_red
 fx,maps/zombie/fx_zmb_trail_doll_yellow
+fx,env/light/fx_light_overhead
+fx,env/weather/fx_snow_flakes_windy_med_looping
+fx,maps/zombie/fx_zombie_theater_fog_lg
+fx,env/smoke/fx_smk_plume_md_blk
+fx,maps/mp_maps/fx_mp_smk_plume_md_grey
 
 //SOUNDS
 sound,dev

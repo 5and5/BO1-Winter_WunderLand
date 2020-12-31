@@ -32,7 +32,12 @@ precache_scripted_fx()
 	
 }
 precache_createfx_fx()
-{
+{	
+	level._effect["fac_fog"]		 			    = loadfx("maps/zombie/fx_zombie_theater_fog_lg");
+	level._effect["fac_snow"]		 			    = loadfx("env/weather/fx_snow_flakes_windy_med_looping");
+	level._effect["smoke_plume"]		 			= loadfx("env/smoke/fx_smk_plume_md_blk");
+	level._effect["mp_smoke_plume_md"]								= loadfx("maps/mp_maps/fx_mp_smk_plume_md_grey");
+
 	//SE2Dev Effects
 	//level._effect["snow_flakes_windy_blizzard"] = loadfx("env/weather/fx_snow_blizzard_intense2");
 	//level._effect["axis_fx_test"] = loadFX("fx_tools/fx_tools_axis_xlg");
