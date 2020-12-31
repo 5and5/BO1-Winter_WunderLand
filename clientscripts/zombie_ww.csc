@@ -29,7 +29,7 @@ register_zombie_types()
 	//character\clientscripts\c_usa_pent_zombie_scientist::register_gibs();
 	//character\clientscripts\c_usa_pent_zombie_officeworker::register_gibs();
 	//character\clientscripts\c_usa_pent_zombie_militarypolice::register_gibs();
-}	
+}
 /*****************************************************************************
 // WEAPON FUNCTIONS
 //

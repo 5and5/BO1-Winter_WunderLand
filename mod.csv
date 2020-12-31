@@ -20,6 +20,7 @@ character,c_usa_dempsey_zt
 
 //SCRIPTS
 rawfile,maps/zombie_ww.gsc
+rawfile,maps/zombie_ww_fx.gsc
 rawfile,maps/_zombiemode.gsc
 rawfile,maps/_zombiemode_weapons.gsc
 rawfile,maps/_zombiemode_perks.gsc
@@ -31,8 +32,12 @@ rawfile,maps/_custom_zapper_system.gsc
 
 //CLIENTSCRIPTS
 rawfile,clientscripts/zombie_ww.csc
+rawfile,clientscripts/zombie_ww_fx.csc
 rawfile,clientscripts/_zombiemode_ffotd.csc
 rawfile,clientscripts/_zombiemode_weap_tesla.csc
+
+//CREATEFX
+rawfile,clientscripts/createfx/zombie_ww_fx.csc
 
 //AI SCRIPTS
 rawfile,maps/_zombiemode_ai_dogs.gsc
