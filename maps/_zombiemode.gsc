@@ -3937,6 +3937,8 @@ chalk_round_over()
 
 round_think()
 {	
+	gamemode_select();
+
 	//strat tester
 	// level.round_number = 50;
 	// level.zombie_vars["zombie_spawn_delay"] = 0.08;
@@ -7084,5 +7086,66 @@ disable_player_quotes()
 	{
 		level.player_is_speaking = 1;
 		wait 0.1;
+	}
+}
+
+gamemode_select()
+{	
+	players = get_players();
+	gamemode = getDvar( "gamemode" );
+	if(gamemode == "")
+		setDvar( "gamemode", "survival" );
+
+	switch ( getDvar( "gamemode" ) )
+	{
+		case "survival":
+			break;
+
+		case "first_room":
+			for(i=0;i<players.size;i++)
+			{
+				players[i].score = 5555;
+			}
+			if(players.size <= 2)
+			{
+				level.round_number = 10;
+				level.zombie_vars["zombie_spawn_delay"] = 1.2605; // round 10 spawn rate
+			}
+			else
+			{
+				level.round_number = 15;
+				level.zombie_vars["zombie_spawn_delay"] = 0.976; // round 15 spawn rate
+			}
+			level.zombie_move_speed = 105; // running speed
+			level.first_round = false; // force first round to have the proper amount of zombies
+			break;
+
+		case "strat_tester":
+			level.round_number = 63;
+			level.zombie_vars["zombie_spawn_delay"] = 0.08;
+			level.zombie_move_speed = 105; // running speed
+			level.first_round = false; // force first round to have the proper amount of zombies
+
+			for(i=0;i<players.size;i++)
+			{
+				players[i].score = 555555;
+
+				players[i] maps\_zombiemode_perks::give_perk("specialty_additionalprimaryweapon");
+				players[i] maps\_zombiemode_perks::give_perk("specialty_fastreload");
+				players[i] maps\_zombiemode_perks::give_perk("specialty_quickrevive");
+				players[i] maps\_zombiemode_perks::give_perk("specialty_armorvest");
+				players[i] maps\_zombiemode_perks::give_perk("specialty_rof");
+				players[i] maps\_zombiemode_perks::give_perk("specialty_longersprint");
+				players[i] maps\_zombiemode_perks::give_perk("specialty_flakjacket");
+
+				players[i] takeWeapon("m1911_zm");
+				players[i] giveWeapon("tesla_gun_zm");
+				players[i] giveWeapon("thundergun_zm");
+				players[i] giveWeapon("ray_gun_zm");
+				players[i] switchToWeapon("ray_gun_zm");
+
+				players[i] maps\_zombiemode_weap_nesting_dolls::player_give_nesting_dolls();
+			}
+			break;
 	}
 }
