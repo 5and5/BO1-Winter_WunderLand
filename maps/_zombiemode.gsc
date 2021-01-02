@@ -1995,6 +1995,8 @@ player_too_many_weapons_monitor()
 			}
 		}
 
+		if ( !level.strattesting )
+		{
 		if ( primary_weapons_to_take.size > weapon_limit )
 		{
 			if ( !isdefined( level.player_too_many_weapons_monitor_callback ) || self [[level.player_too_many_weapons_monitor_callback]]( primary_weapons_to_take ) )
@@ -2002,6 +2004,7 @@ player_too_many_weapons_monitor()
 				self thread player_too_many_weapons_monitor_takeaway_sequence( primary_weapons_to_take );
 				self waittill( "player_too_many_weapons_monitor_takeaway_sequence_done" );
 			}
+		}
 		}
 
 		wait( get_player_too_many_weapons_monitor_wait_time() );
@@ -2070,8 +2073,17 @@ player_revive_monitor()
         //self clientnotify( "revived" );
 
 		bbPrint( "zombie_playerdeaths: round %d playername %s deathtype revived x %f y %f z %f", level.round_number, self.playername, self.origin );
-
-		//self laststand_giveback_player_perks();
+		
+		if ( level.strattesting )
+		{
+			self maps\_zombiemode_perks::give_perk("specialty_additionalprimaryweapon");
+			self maps\_zombiemode_perks::give_perk("specialty_fastreload");
+			self maps\_zombiemode_perks::give_perk("specialty_quickrevive");
+			self maps\_zombiemode_perks::give_perk("specialty_armorvest");
+			self maps\_zombiemode_perks::give_perk("specialty_rof");
+			self maps\_zombiemode_perks::give_perk("specialty_longersprint");
+			self maps\_zombiemode_perks::give_perk("specialty_flakjacket");
+		}
 
 		if ( IsDefined(reviver) )
 		{
@@ -2144,6 +2156,9 @@ take_additionalprimaryweapon()
 {
 	weapon_to_take = undefined;
 
+	if ( !level.strattesting )
+	{
+
 	if ( is_true( self._retain_perks ) )
 	{
 		return weapon_to_take;
@@ -2171,6 +2186,9 @@ take_additionalprimaryweapon()
 	}
 
 	return weapon_to_take;
+
+	}
+
 }
 
 player_laststand( eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLoc, psOffsetTime, deathAnimDuration )
@@ -7099,12 +7117,15 @@ gamemode_select()
 	switch ( getDvar( "gamemode" ) )
 	{
 		case "survival":
+			level.strattesting = false;
+			level.player_too_many_weapons_monitor = true;
 			break;
 
 		case "first_room":
+			level.strattesting = false;
 			for(i=0;i<players.size;i++)
 			{
-				players[i].score = 5555;
+				players[i].score = 2000;
 			}
 			if(players.size <= 2)
 			{
@@ -7118,9 +7139,14 @@ gamemode_select()
 			}
 			level.zombie_move_speed = 105; // running speed
 			level.first_round = false; // force first round to have the proper amount of zombies
+
+			lock_doors();
 			break;
 
 		case "strat_tester":
+			level.strattesting = true;
+			level.dog_health = 1600;
+			level.player_too_many_weapons_monitor = false;
 			level.round_number = 63;
 			level.zombie_vars["zombie_spawn_delay"] = 0.08;
 			level.zombie_move_speed = 105; // running speed
@@ -7143,9 +7169,99 @@ gamemode_select()
 				players[i] giveWeapon("thundergun_zm");
 				players[i] giveWeapon("ray_gun_zm");
 				players[i] switchToWeapon("ray_gun_zm");
+				players[i] giveweapon("bowie_knife_zm");
 
 				players[i] maps\_zombiemode_weap_nesting_dolls::player_give_nesting_dolls();
 			}
+
+			thread open_windows();
+			thread open_doors();
+			trig = getent("use_elec_switch","targetname");
+			trig notify( "trigger" );
 			break;
+	}
+}
+
+open_windows()
+{
+	window_boards = getstructarray( "exterior_goal", "targetname" );
+	total = level.exterior_goals.size;
+
+	for ( i = 0; i < window_boards.size; i++ )
+	{
+		thread clearwindow(window_boards[i]);
+		wait(0.05);
+	}
+}
+
+clearwindow(window)
+{
+	if ( !all_chunks_destroyed(window.barrier_chunks) )
+	{
+		chunks = get_non_destroyed_chunks( window.barrier_chunks ); 
+		for ( j = 0; j < chunks.size; j++ )
+		{
+		
+			window thread maps\_zombiemode_blockers::remove_chunk( chunks[j], window, true );
+			wait_network_frame();
+			wait(0.05);
+		}
+			
+		if (all_chunks_destroyed(window.barrier_chunks))
+		{
+			if (IsDefined(window.clip))
+			{
+				window.clip ConnectPaths();
+				wait( 0.05 ); 
+				window.clip disable_trigger();  
+			}
+			else
+			{
+				for( k = 0; k < window.barrier_chunks.size; k++ )
+				{
+					window.barrier_chunks[k] ConnectPaths(); 
+				}
+			}
+		}
+		wait_network_frame();	
+	}
+}
+
+open_doors()
+{
+	zombie_doors = getentarray( "zombie_door", "targetname" );
+
+	for ( i = 0; i < zombie_doors.size; i++ )
+	{
+		if ( i == 2 || i == 1)
+		{}
+		else
+		{	
+		zombie_doors[i] notify( "trigger", 1, true );
+		}
+		wait( 0.05 );	
+	}
+
+	zombie_debris = getentarray( "zombie_debris", "targetname" );
+
+	for ( x = 0; x < zombie_debris.size; x++ )
+	{
+		if ( x == 4 || x == 5 )
+		{}
+		else
+		{
+		zombie_debris[x] notify( "trigger", get_players()[0], true );
+		}
+		wait( 0.05 );		
+	}
+}
+
+lock_doors()
+{
+	zombie_doors = getentarray( "zombie_door", "targetname" );
+
+	for ( i = 0; i < zombie_doors.size; i++ )
+	{
+		zombie_doors[i] trigger_off();
 	}
 }
