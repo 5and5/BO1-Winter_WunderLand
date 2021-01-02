@@ -55,7 +55,7 @@
 * Reduced chance of failing
 * Reduced weapon swap time
 #### Ray Gun
-* Wallbuy added costing 50000 points
+* Wallbuy added costing 25000 points
 * Reduced weapon swap time
 * Changed animations to bo2 animations
 #### Dolls
@@ -102,7 +102,7 @@
 * Round timer
 * Drops/box trackers 
 #### Host Only
-* gamemode
+* Gamemode
 * Reduced content
 * Coop pause
 #### Controls menu

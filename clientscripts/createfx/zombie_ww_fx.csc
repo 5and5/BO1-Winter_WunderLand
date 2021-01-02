@@ -7,10 +7,6 @@ main()
 
 precache_createfx_fx()
 {
-	level._effect["fac_snow"]		 			    = loadfx("env/weather/fx_snow_flakes_windy_med_looping");
-	level._effect["mp_smoke_plume_md"]								= loadfx("maps/mp_maps/fx_mp_smk_plume_md_grey");
-		// level._effect["fx_mp_smk_smolder_sm"]								= loadfx("maps/mp_maps/fx_mp_smk_smolder_sm");
-		// level._effect["fx_mp_smk_plume_xsm_grey"]								= loadfx("maps/mp_maps/fx_mp_smk_plume_xsm_grey");
 }
 
 spawn_my_fx()
