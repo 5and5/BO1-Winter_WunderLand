@@ -17,6 +17,10 @@ scriptedFX()
 	level._effect["kw_overhead"]												= loadfx("env/light/fx_light_overhead");
 	level._effect["smoke_plume"]		 			= loadfx("env/smoke/fx_smk_plume_md_blk");
 	level._effect["mp_smoke_plume_md"]								= loadfx("maps/mp_maps/fx_mp_smk_plume_md_grey");
+	level._effect["fx_fog_zombie_amb"]								= loadfx("maps/zombie/fx_fog_zombie_amb");
+	level._effect["fx_fog_low_green"]								= loadfx("maps/zombie/fx_fog_low_green");
+	level._effect["fx_mp_smk_smolder_sm"]								= loadfx("maps/mp_maps/fx_mp_smk_smolder_sm");
+	level._effect["fx_smoke_plume_sm_fast_blk"]								= loadfx("env/smoke/fx_smoke_plume_sm_fast_blk");
 
 	level._effect["animscript_gibtrail_fx"] 	 = LoadFx( "trail/fx_trail_blood_streak" ); 	//crashes the game	
 	level._effect["animscript_gib_fx"] 		 = LoadFx( "weapon/bullet/fx_flesh_gib_fatal_01" ); 
