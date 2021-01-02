@@ -51,6 +51,7 @@ rawfile,animscripts/traverse/zombie_jump_up_222.gsc
 rawfile,maps/_zombiemode_weap_thundergun.gsc
 rawfile,maps/_zombiemode_weap_tesla.gsc
 rawfile,maps/_zombiemode_weap_nesting_dolls.gsc
+rawfile,maps/_zombiemode_weap_cymbal_monkey.gsc
 
 //WEAPONS
 weapon,sp/frag_grenade_zm

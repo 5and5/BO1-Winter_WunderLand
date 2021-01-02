@@ -632,7 +632,7 @@ ray_gun_wallbuy()
 			}
 			else
 			{
-				play_sound_on_ent( "no_purchase" );
+				trigger play_sound_on_ent( "no_purchase" );
 				player maps\_zombiemode_audio::create_and_play_dialog( "general", "no_money", undefined, 1 );
 
 			}
@@ -650,7 +650,7 @@ ray_gun_wallbuy()
 			}
 			else
 			{
-				play_sound_on_ent( "no_purchase" );
+				trigger play_sound_on_ent( "no_purchase" );
 				player maps\_zombiemode_audio::create_and_play_dialog( "general", "no_money", undefined, 0 );
 			}
 		}

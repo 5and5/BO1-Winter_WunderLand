@@ -7051,12 +7051,6 @@ coop_pause(timer_hud, start_time)
 
 					players[0] SetClientDvar( "ai_disableSpawn", "0");
 
-
-					black_hud FadeOverTime( 0.5 );
-					black_hud.alpha = 0;
-					paused_hud FadeOverTime( 0.5 );
-					paused_hud.alpha = 0;
-					wait 0.5;
 					black_hud destroy();
 					paused_hud destroy();
 				}
@@ -7175,7 +7169,7 @@ gamemode_select()
 			}
 
 			thread open_windows();
-			thread open_doors();
+			//thread open_doors();
 			trig = getent("use_elec_switch","targetname");
 			trig notify( "trigger" );
 			break;

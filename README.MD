@@ -102,6 +102,7 @@
 * Round timer
 * Drops/box trackers 
 #### Host Only
+* gamemode
 * Reduced content
 * Coop pause
 #### Controls menu
@@ -110,6 +111,7 @@
 ## Credits
 * **_JBird Justin_** - for scripts and anims
 * **_Just Crusader_** - for scripting help
+* **_Iveez_** - for scripting help
 * **_Wunderful_** - for .map file
 * **_Salamanca21_** - for perk machines
 * **_Ville88_** - for tutorials
@@ -123,4 +125,3 @@
 * change points system (half points on insta kill rounds, reduced points per kill after round 50)
 * guaranteed drop after 5 hoards
 * guaranteed trade after 50 hits
-* add first room and strat testing options
