@@ -98,8 +98,6 @@ xmodel,zombie_vending_marathon_on
 xmodel,zombie_vending_marathon
 xmodel,zombie_vending_nuke
 xmodel,zombie_vending_nuke_on
-xmodel,zombie_vending_three_gun
-xmodel,zombie_vending_three_gun_on
 
 //FX
 fx,misc/fx_zombie_electric_trap1
@@ -110,9 +108,8 @@ fx,maps/zombie/fx_zmb_trail_doll_red
 fx,maps/zombie/fx_zmb_trail_doll_yellow
 fx,env/light/fx_light_overhead
 fx,env/weather/fx_snow_flakes_windy_med_looping
-fx,maps/zombie/fx_zombie_theater_fog_lg
-fx,env/smoke/fx_smk_plume_md_blk
 fx,maps/mp_maps/fx_mp_smk_plume_md_grey
+fx,maps/zombie/fx_fog_zombie_thick_600x600
 
 //SOUNDS
 sound,dev

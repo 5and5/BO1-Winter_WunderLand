@@ -7,7 +7,6 @@ main()
 
 precache_createfx_fx()
 {
-	level._effect["fac_fog"]		 			    = loadfx("maps/zombie/fx_zombie_theater_fog_lg");
 	level._effect["fac_snow"]		 			    = loadfx("env/weather/fx_snow_flakes_windy_med_looping");
 	level._effect["mp_smoke_plume_md"]								= loadfx("maps/mp_maps/fx_mp_smk_plume_md_grey");
 		// level._effect["fx_mp_smk_smolder_sm"]								= loadfx("maps/mp_maps/fx_mp_smk_smolder_sm");
@@ -16,15 +15,8 @@ precache_createfx_fx()
 
 spawn_my_fx()
 {
-	// ent = clientscripts\_fx::createOneshotEffect( "fac_fog" );
- //    ent.v[ "origin" ] = (5263.5, 5250.2, 444);
- //    ent.v[ "angles" ] = ( 90, 0, 0 );
- //    ent.v[ "type" ] = "oneshotfx";
- //    ent.v[ "fxid" ] = "fac_fog";
- //    ent.v[ "delay" ] = -15;
-
     ent = clientscripts\_fx::createOneshotEffect( "fac_snow" );
-    ent.v[ "origin" ] = (4800, 5700, 15);
+    ent.v[ "origin" ] = (4800, 5700, 35);
     ent.v[ "angles" ] = ( 0, 0, 0 );
     ent.v[ "type" ] = "oneshotfx";
     // ent.v[ "type" ] = "exploder";
@@ -47,39 +39,94 @@ spawn_my_fx()
     ent.v[ "delay" ] = 0;
 
         ent = clientscripts\_fx::createOneshotEffect( "fx_fog_zombie_amb" );
-    ent.v[ "origin" ] = (4800, 6696, 32);
+    ent.v[ "origin" ] = (4800, 6710, 32);
     ent.v[ "angles" ] = ( 0, 0, 0 );
     ent.v[ "type" ] = "oneshotfx";
     ent.v[ "fxid" ] = "fx_fog_zombie_amb";
     ent.v[ "delay" ] = 0;
 
-            ent = clientscripts\_fx::createOneshotEffect( "fx_fog_low_green" );
-    ent.v[ "origin" ] = (4800, 6696, 32);
+    ent = clientscripts\_fx::createOneshotEffect( "fx_fog_zombie_amb" );
+    ent.v[ "origin" ] = (4424, 4426, -22);
     ent.v[ "angles" ] = ( 0, 0, 0 );
     ent.v[ "type" ] = "oneshotfx";
-    ent.v[ "fxid" ] = "fx_fog_low_green";
+    ent.v[ "fxid" ] = "fx_fog_zombie_amb";
     ent.v[ "delay" ] = 0;
 
-    ent = clientscripts\_fx::createOneshotEffect( "maps/zombie/fx_zombie_theater_fog_lg" );
-    ent.v[ "origin" ] = (5384, 5404, 70);
+        ent = clientscripts\_fx::createOneshotEffect( "fx_fog_zombie_amb" );
+    ent.v[ "origin" ] = (4815, 3960, -38);
     ent.v[ "angles" ] = ( 0, 0, 0 );
     ent.v[ "type" ] = "oneshotfx";
-    ent.v[ "fxid" ] = "maps/zombie/fx_zombie_theater_fog_lg";
+    ent.v[ "fxid" ] = "fx_fog_zombie_amb";
     ent.v[ "delay" ] = 0;
 
-    //         ent = clientscripts\_fx::createOneshotEffect( "fx_fog_pipe_green" );
-    // ent.v[ "origin" ] = (5384, 5464, 32);
-    // ent.v[ "angles" ] = ( 0, 0, 0 );
-    // ent.v[ "type" ] = "oneshotfx";
-    // ent.v[ "fxid" ] = "fx_fog_pipe_green";
-    // ent.v[ "delay" ] = 0;
+        ent = clientscripts\_fx::createOneshotEffect( "fx_fog_zombie_amb" );
+    ent.v[ "origin" ] = (4408, 3514, -54);
+    ent.v[ "angles" ] = ( 0, 0, 0 );
+    ent.v[ "type" ] = "oneshotfx";
+    ent.v[ "fxid" ] = "fx_fog_zombie_amb";
+    ent.v[ "delay" ] = 0;
 
-    //         ent = clientscripts\_fx::createOneshotEffect( "fx_mp_smk_smolder_sm" );
-    // ent.v[ "origin" ] = (5384, 5404, 32);
-    // ent.v[ "angles" ] = ( 0, 0, 0 );
-    // ent.v[ "type" ] = "oneshotfx";
-    // ent.v[ "fxid" ] = "fx_mp_smk_smolder_sm";
-    // ent.v[ "delay" ] = 0;
+
+        ent = clientscripts\_fx::createOneshotEffect( "fx_fog_zombie_amb" );
+    ent.v[ "origin" ] = (5000, 4370, 18);
+    ent.v[ "angles" ] = ( 0, 0, 0 );
+    ent.v[ "type" ] = "oneshotfx";
+    ent.v[ "fxid" ] = "fx_fog_zombie_amb";
+    ent.v[ "delay" ] = 0;
+
+        ent = clientscripts\_fx::createOneshotEffect( "fx_fog_zombie_amb" );
+    ent.v[ "origin" ] = (4264, 4018, -70);
+    ent.v[ "angles" ] = ( 0, 0, 0 );
+    ent.v[ "type" ] = "oneshotfx";
+    ent.v[ "fxid" ] = "fx_fog_zombie_amb";
+    ent.v[ "delay" ] = 0;
+
+            ent = clientscripts\_fx::createOneshotEffect( "fx_fog_zombie_amb" );
+    ent.v[ "origin" ] = (4968, 4850, 10);
+    ent.v[ "angles" ] = ( 0, 0, 0 );
+    ent.v[ "type" ] = "oneshotfx";
+    ent.v[ "fxid" ] = "fx_fog_zombie_amb";
+    ent.v[ "delay" ] = 0;
+
+            ent = clientscripts\_fx::createOneshotEffect( "fx_fog_zombie_amb" );
+    ent.v[ "origin" ] = (4456, 4858, 2);
+    ent.v[ "angles" ] = ( 0, 0, 0 );
+    ent.v[ "type" ] = "oneshotfx";
+    ent.v[ "fxid" ] = "fx_fog_zombie_amb";
+    ent.v[ "delay" ] = 0;
+
+    ent = clientscripts\_fx::createOneshotEffect( "fx_fog_zombie_amb" );
+    ent.v[ "origin" ] = (5560, 6578, 26);
+    ent.v[ "angles" ] = ( 0, 0, 0 );
+    ent.v[ "type" ] = "oneshotfx";
+    ent.v[ "fxid" ] = "fx_fog_zombie_amb";
+    ent.v[ "delay" ] = 0;
+
+    ent = clientscripts\_fx::createOneshotEffect( "fac_fog" );
+    ent.v[ "origin" ] = (4672, 3490, -54);
+    ent.v[ "angles" ] = ( 0, 0, 0 );
+    ent.v[ "type" ] = "oneshotfx";
+    ent.v[ "fxid" ] = "fac_fog";
+    ent.v[ "delay" ] = -15;
+
+    ent = clientscripts\_fx::createOneshotEffect( "fx_fog_zombie_amb" );
+    ent.v[ "origin" ] = (4232, 6578, 34);
+    ent.v[ "angles" ] = ( 0, 0, 0 );
+    ent.v[ "type" ] = "oneshotfx";
+    ent.v[ "fxid" ] = "fx_fog_zombie_amb";
+    ent.v[ "delay" ] = 0;
+
+    ent = clientscripts\_fx::createOneshotEffect( "fx_pent_tinhat_light" );
+    ent.v[ "origin" ] = (5448.8, 5239.3, 233);
+    ent.v[ "angles" ] = ( 0, 0, 0 );
+    ent.v[ "type" ] = "oneshotfx";
+    ent.v[ "fxid" ] = "fx_pent_tinhat_light";
+    ent.v[ "delay" ] = 0;
     
-	
+    ent = clientscripts\_fx::createOneshotEffect( "kw_overhead" );
+    ent.v[ "origin" ] = (5648.8, 5241.3, 233);
+    ent.v[ "angles" ] = ( 0, 0, 0 );
+    ent.v[ "type" ] = "oneshotfx";
+    ent.v[ "fxid" ] = "kw_overhead";
+    ent.v[ "delay" ] = 0;
 } 
