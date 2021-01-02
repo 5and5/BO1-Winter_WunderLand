@@ -6763,6 +6763,16 @@ timer_hud()
 			if(timer_hud.alpha != 1)
 				timer_hud.alpha = 1;
 		}
+
+		//move timer if drawfps is enabled
+		if(getDvar( "cg_drawfps") == "Simple" && timer_hud.y != 19)
+		{	
+			timer_hud.y = 19;
+		}
+		if(getDvar( "cg_drawfps") == "Off" && timer_hud.y != 2)
+		{
+			timer_hud.y = 2;
+		}
 		wait 0.05;
 	}
 }
@@ -6860,21 +6870,7 @@ tab_hud()
 	self endon("disconnect");
 	self endon("end_game");
 	flag_wait( "all_players_spawned" );
-
-	drops_hud = create_hud( "center", "top" );
-	drops_hud.y += 4;
-	drops_hud.x += 5;
-	drops_hud.label = &"MOD_POWER_UP_CYCLE";
-
-	tesla_hud = create_hud( "center", "top" );
-	tesla_hud.y += 20;
-	tesla_hud.x += 5;
-
-	tgun_hud = create_hud( "center", "top" );
-	tgun_hud.y += 36;
-	tgun_hud.x += 5;
 	
-	isButtonPressed = false;
 	if(getDvar( "hud_button" ) == "")
 		self setClientDvar( "hud_button", "tab" );
 
@@ -6883,49 +6879,33 @@ tab_hud()
 		button_pressed = getDvar( "hud_button" );
 		if(self buttonPressed( button_pressed ))
 		{	
-			isButtonPressed = true;
+			self setClientDvar( "hud_tab", 1 );
 			// drop hud
-			if( drops_hud.alpha != 1 )
-				drops_hud.alpha = 1;
-			drops_hud setValue(level.drop_tracker_index);
+			self setClientDvar( "drops_string", "Power Up Cycle: " + level.drop_tracker_index );
 			// tesla hud
-			if( tesla_hud.alpha != 1 )
-				tesla_hud.alpha = 1;
 			if(level.pulls_since_tesla > 0)
 			{
-				tesla_hud.label = &"MOD_PULLS_SINCE_TESLA";
-				tesla_hud setValue(level.pulls_since_tesla);
+				self setClientDvar( "tesla_string", "Wunder Waffe pulls since: " + level.pulls_since_tesla );
 			}
 			else
 			{
 				avg = Int(level.total_tesla_hits / level.total_tesla_trades);
-				tesla_hud.label = &"MOD_AVERAGE_TESLA";
-				tesla_hud setValue(avg);
+				self setClientDvar( "tesla_string", "Wunder Waffe trades: " + level.total_tesla_trades + " average: " + avg);
 			}
 			// tgun hud
-			if( tgun_hud.alpha != 1 )
-				tgun_hud.alpha = 1;
 			if(level.pulls_since_tgun > 0)
 			{
-				tgun_hud.label = &"MOD_PULLS_SINCE_TGUN";
-				tgun_hud setValue(level.pulls_since_tgun);
+				self setClientDvar( "tgun_string", "Thunder Gun pulls since: " + level.pulls_since_tgun );
 			}
 			else
 			{
 				avg = Int(level.total_tgun_hits / level.total_tgun_trades);
-				tgun_hud.label = &"MOD_AVERAGE_TGUN";
-				tgun_hud setValue(avg);
+				self setClientDvar( "tgun_string", "Thunder Gun trades: " + level.total_tgun_trades + " average: " + avg);
 			}
 		}
-		if(drops_hud.alpha != 0 && !isButtonPressed)
-			drops_hud.alpha = 0;
-		if(tesla_hud.alpha != 0 && !isButtonPressed)
-			tesla_hud.alpha = 0;
-		if(tgun_hud.alpha != 0 && !isButtonPressed)
-			tgun_hud.alpha = 0;
+		else
+			self setClientDvar( "hud_tab", 0 );
 
-		if(isButtonPressed != false )
-			isButtonPressed = false;
 		wait 0.05;
 	}
 }
