@@ -17,6 +17,13 @@ player_give_cymbal_monkey()
 {
 	self giveweapon( "zombie_cymbal_monkey" );
 	self set_player_tactical_grenade( "zombie_cymbal_monkey" );
+
+	// fix for grenade ammo
+	if(is_tactical_grenade("zombie_cymbal_monkey") && self GetWeaponAmmoClip("zombie_cymbal_monkey") > 3)
+	{
+		self SetWeaponAmmoClip("zombie_cymbal_monkey", 3);
+	}
+
 	self thread player_handle_cymbal_monkey();
 }
 

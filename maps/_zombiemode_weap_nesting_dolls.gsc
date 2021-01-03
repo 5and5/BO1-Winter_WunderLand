@@ -114,6 +114,13 @@ player_give_nesting_dolls()
 
 	self giveweapon( "zombie_nesting_dolls", 0, self CalcWeaponOptions( start_cammo ) );
 	self set_player_tactical_grenade( "zombie_nesting_dolls" );
+
+	// fix for grenade ammo
+	if(is_tactical_grenade("zombie_nesting_dolls") && self GetWeaponAmmoClip("zombie_nesting_dolls") > 3)
+	{
+		self SetWeaponAmmoClip("zombie_nesting_dolls", 3);
+	}
+
 	self thread player_handle_nesting_dolls();
 }
 

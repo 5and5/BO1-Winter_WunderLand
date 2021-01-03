@@ -118,20 +118,6 @@ spawn_my_fx()
     ent.v[ "type" ] = "oneshotfx";
     ent.v[ "fxid" ] = "fx_pent_tinhat_light";
     ent.v[ "delay" ] = 0;
-    
-    ent = clientscripts\_fx::createOneshotEffect( "kw_overhead" );
-    ent.v[ "origin" ] = (5135.8, 5708.5, 111);
-    ent.v[ "angles" ] = ( 90, 0, 0 );
-    ent.v[ "type" ] = "oneshotfx";
-    ent.v[ "fxid" ] = "kw_overhead";
-    ent.v[ "delay" ] = 0;
-
-    ent = clientscripts\_fx::createOneshotEffect( "kw_overhead" );
-    ent.v[ "origin" ] = (5136.8, 5941.5, 111);
-    ent.v[ "angles" ] = ( 90, 0, 0 );
-    ent.v[ "type" ] = "oneshotfx";
-    ent.v[ "fxid" ] = "kw_overhead";
-    ent.v[ "delay" ] = 0;
 
     ent = clientscripts\_fx::createOneshotEffect( "kw_overhead" );
     ent.v[ "origin" ] = (5627.25, 5292.05, 108);
