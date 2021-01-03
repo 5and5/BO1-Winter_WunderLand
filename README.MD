@@ -24,6 +24,7 @@
 * Coop pause
 * Disabled players quotes
 * Fixed back walk speed
+* Zombies loses collision as soon as they are killed
 
 ## HUD
 * Timer
