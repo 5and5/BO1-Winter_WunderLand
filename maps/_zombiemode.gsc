@@ -5072,7 +5072,7 @@ actor_killed_override(eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDi
 		return;
 
 	self SetPlayerCollision(0); // zombies lose collision right as they die
-	
+
 	if( isai(attacker) && isDefined( attacker.script_owner ) )
 	{
 		// if the person who called the dogs in switched teams make sure they don't
@@ -7120,6 +7120,7 @@ gamemode_select()
 			break;
 
 		case "strat_tester":
+			//strat tester
 			level.strattesting = true;
 			level.dog_health = 1600;
 			level.player_too_many_weapons_monitor = false;

@@ -92,18 +92,11 @@ spawn_my_fx()
     ent.v[ "delay" ] = 0;
 
     ent = clientscripts\_fx::createOneshotEffect( "fx_fog_zombie_amb" );
-    ent.v[ "origin" ] = (5560, 6578, 26);
+    ent.v[ "origin" ] = (5564, 6728.75, 47);
     ent.v[ "angles" ] = ( 0, 0, 0 );
     ent.v[ "type" ] = "oneshotfx";
     ent.v[ "fxid" ] = "fx_fog_zombie_amb";
     ent.v[ "delay" ] = 0;
-
-    ent = clientscripts\_fx::createOneshotEffect( "fac_fog" );
-    ent.v[ "origin" ] = (4672, 3490, -54);
-    ent.v[ "angles" ] = ( 0, 0, 0 );
-    ent.v[ "type" ] = "oneshotfx";
-    ent.v[ "fxid" ] = "fac_fog";
-    ent.v[ "delay" ] = -15;
 
     ent = clientscripts\_fx::createOneshotEffect( "fx_fog_zombie_amb" );
     ent.v[ "origin" ] = (4232, 6578, 34);
@@ -118,10 +111,31 @@ spawn_my_fx()
     ent.v[ "type" ] = "oneshotfx";
     ent.v[ "fxid" ] = "fx_pent_tinhat_light";
     ent.v[ "delay" ] = 0;
-    
-    ent = clientscripts\_fx::createOneshotEffect( "kw_overhead" );
+
+    ent = clientscripts\_fx::createOneshotEffect( "fx_pent_tinhat_light" );
     ent.v[ "origin" ] = (5648.8, 5241.3, 233);
     ent.v[ "angles" ] = ( 0, 0, 0 );
+    ent.v[ "type" ] = "oneshotfx";
+    ent.v[ "fxid" ] = "fx_pent_tinhat_light";
+    ent.v[ "delay" ] = 0;
+    
+    ent = clientscripts\_fx::createOneshotEffect( "kw_overhead" );
+    ent.v[ "origin" ] = (5135.8, 5708.5, 111);
+    ent.v[ "angles" ] = ( 90, 0, 0 );
+    ent.v[ "type" ] = "oneshotfx";
+    ent.v[ "fxid" ] = "kw_overhead";
+    ent.v[ "delay" ] = 0;
+
+    ent = clientscripts\_fx::createOneshotEffect( "kw_overhead" );
+    ent.v[ "origin" ] = (5136.8, 5941.5, 111);
+    ent.v[ "angles" ] = ( 90, 0, 0 );
+    ent.v[ "type" ] = "oneshotfx";
+    ent.v[ "fxid" ] = "kw_overhead";
+    ent.v[ "delay" ] = 0;
+
+    ent = clientscripts\_fx::createOneshotEffect( "kw_overhead" );
+    ent.v[ "origin" ] = (5627.25, 5292.05, 108);
+    ent.v[ "angles" ] = ( 180, 0, 0 );
     ent.v[ "type" ] = "oneshotfx";
     ent.v[ "fxid" ] = "kw_overhead";
     ent.v[ "delay" ] = 0;
