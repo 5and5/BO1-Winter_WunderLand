@@ -4107,7 +4107,6 @@ ai_calculate_health( round_number )
 		level.zombie_health = 150;
 		return;
 	}
-
 	level.zombie_health = level.zombie_vars["zombie_health_start"];
 	for ( i=2; i<=round_number; i++ )
 	{

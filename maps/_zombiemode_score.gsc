@@ -154,23 +154,11 @@ get_points_multiplier()
 // Adjust points based on number of players (MikeA)
 get_zombie_death_player_points()
 {
-	players = get_players();
-	if( players.size == 1 )
-	{
-		points = level.zombie_vars["zombie_score_kill_1player"]; 
-	}
-	else if( players.size == 2 )
-	{
-		points = level.zombie_vars["zombie_score_kill_2player"]; 
-	}
-	else if( players.size == 3 )
-	{
-		points = level.zombie_vars["zombie_score_kill_3player"]; 
-	}
+	if(level.round_number >= 115 && level.round_number % 2 == 1)
+		points = 20;
 	else
-	{
-		points = level.zombie_vars["zombie_score_kill_4player"]; 
-	}
+		points = 50;
+	
 	return( points );
 }
 

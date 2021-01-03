@@ -135,7 +135,7 @@ spawn_my_fx()
 
     ent = clientscripts\_fx::createOneshotEffect( "kw_overhead" );
     ent.v[ "origin" ] = (5627.25, 5292.05, 108);
-    ent.v[ "angles" ] = ( 180, 0, 0 );
+    ent.v[ "angles" ] = ( 0, 257.8, 0);
     ent.v[ "type" ] = "oneshotfx";
     ent.v[ "fxid" ] = "kw_overhead";
     ent.v[ "delay" ] = 0;

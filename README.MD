@@ -22,9 +22,9 @@
 * 15 hour reset time
 * Insta kill rounds start at round 115
 * Coop pause
+* Zombies loses collision as soon as they are killed
 * Disabled players quotes
 * Fixed back walk speed
-* Zombies loses collision as soon as they are killed
 
 ## HUD
 * Timer
@@ -71,6 +71,10 @@
 #### Wallbuy's
 * Weapon wallbuy's can be bought without looking at them
 
+## Insta Kill Rounds
+* First insta kill round is on 115
+* Insta kill rounds will happen every other round after 115
+* Points per kill are reduced from 50 to 20 on insta kill rounds
 
 ## Dogs
 * First dog round is always on round 5
@@ -121,8 +125,15 @@
 * **_Scobalula_** - for making Grey Hound
 * **_DTZxPorter_** - for making Wraith Archon
 
+### Testers
+* **_Iveez_**
+* **_Niraj_**
+* **_SirModsAlot_**
+* **_Strett_**
+* **_Just Crusader_**
+* **_Wunderful_**
+
 ### TODO
 ### TODO maybe
-* change points system (half points on insta kill rounds, reduced points per kill after round 50)
 * guaranteed drop after 5 hoards
 * guaranteed trade after 50 hits
