@@ -29,7 +29,6 @@
 ## HUD
 * Timer
 * Round timer
-* Seconds per horde 
 * Drop tracker 
 * Trade avarage
 * Pulls since wonder weapon
@@ -132,6 +131,7 @@
 * **_Strett_**
 * **_Just Crusader_**
 * **_Wunderful_**
+* **_Flurh_**
 
 ### TODO
 ### TODO maybe
