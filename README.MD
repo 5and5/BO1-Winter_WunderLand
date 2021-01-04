@@ -80,7 +80,7 @@
 * Always 4 rounds between dog rounds
 
 ## Perks
-* Double Tap increases damage of bullet based weapons by 150% 
+* Double Tap increases damage of bullet based weapons by 150%
 * Removed perk limit
 * Changed perk machines to bo3/bo2 models
 
@@ -95,6 +95,7 @@
 ## Traps
 * 25 second activation and recharge time
 * Removed shell shock after running through traps
+* PHD Flopper causes traps to no longer damage players
 
 ## Menu
 #### Game Menu

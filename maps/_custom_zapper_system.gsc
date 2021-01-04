@@ -256,30 +256,25 @@ player_elec_damage()
 	{
 		self.is_burning = 1;		
 		self setelectrified(1.25);
-		shocktime = 0;		// --Just Crusader / JC
-
-		//Changed Shellshock to Electrocution so we can have different bus volumes.
-		self shellshock("electrocution", shocktime);
 		
 		if(level.elec_loop == 0)
 		{	
 			elec_loop = 1;
-			//self playloopsound ("electrocution");
 			self playsound("zmb_zombie_arc");
 		}
-		if(!self hasperk("specialty_armorvest") /*|| !self hasperk("specialty_armorvest_upgrade")*/ || self.health - 100 < 1)
+		if(!self hasperk("specialty_armorvest") || self.health - 100 < 1)
 		{
 			radiusdamage(self.origin,10,self.health + 100,self.health + 100);
-			self.is_burning = undefined;
-
+		}
+		else if(self hasperk("specialty_flakjacket"))
+		{
 		}
 		else
 		{
 			self dodamage(50, self.origin);
 			wait(.1);
-			//self playsound("zmb_zombie_arc");
-			self.is_burning = undefined;
 		}
+		self.is_burning = undefined;
 	}
 }
 zombie_flame_watch()
