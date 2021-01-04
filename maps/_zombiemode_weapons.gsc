@@ -85,17 +85,17 @@ get_percentage_increase( pulls_since_weapon )
 	num_to_add = 1;
 	if( isDefined( pulls_since_weapon ) )
 	{
-			// after 25 pulls the percentage increases to 50%
-			// if( pulls_since_weapon > 25 )
-			// {
-			// 	num_to_add += 0.5;
-			// }
-			// // after 20 pulls the percentage increases to 40%
-			// else if( pulls_since_weapon > 20 )
-			// {
-			// 	num_to_add += 0.4;
-			// }
-			// after 15 pulls the percentage increases to 30%
+			//after 25 pulls the percentage increases to 50%
+			if( pulls_since_weapon > 25 )
+			{
+				num_to_add += 0.5;
+			}
+			// after 20 pulls the percentage increases to 40%
+			else if( pulls_since_weapon > 20 )
+			{
+				num_to_add += 0.4;
+			}
+			//after 15 pulls the percentage increases to 30%
 			if( pulls_since_weapon > 15 )
 			{
 				num_to_add += 0.3;
