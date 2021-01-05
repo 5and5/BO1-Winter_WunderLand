@@ -4105,8 +4105,14 @@ ai_calculate_health( round_number )
 	if(round_number >= 115 && round_number % 2 == 1)
 	{
 		level.zombie_health = 150;
+		//level.dog_health = 150;
 		return;
 	}
+	// else if(round_number >= 115)
+	// {
+	// 	level.dog_health = 1600;
+	// }
+
 	level.zombie_health = level.zombie_vars["zombie_health_start"];
 	for ( i=2; i<=round_number; i++ )
 	{
