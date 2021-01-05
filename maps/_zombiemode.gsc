@@ -7075,9 +7075,16 @@ disable_player_quotes()
 	level endon("disconnect");
 	level endon("end_game");
 
+	if(getDvar("player_quotes") == "")
+		setDvar("player_quotes", 0);
+
 	while(1)
-	{
-		level.player_is_speaking = 1;
+	{	
+		if(getDvarInt("player_quotes") == 0)
+		{
+			level.player_is_speaking = 1;
+		}
+			
 		wait 0.1;
 	}
 }

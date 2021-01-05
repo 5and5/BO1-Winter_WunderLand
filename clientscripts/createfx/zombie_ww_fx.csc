@@ -78,13 +78,6 @@ spawn_my_fx()
     ent.v[ "delay" ] = 0;
 
             ent = clientscripts\_fx::createOneshotEffect( "fx_fog_zombie_amb" );
-    ent.v[ "origin" ] = (4968, 4850, 10);
-    ent.v[ "angles" ] = ( 0, 0, 0 );
-    ent.v[ "type" ] = "oneshotfx";
-    ent.v[ "fxid" ] = "fx_fog_zombie_amb";
-    ent.v[ "delay" ] = 0;
-
-            ent = clientscripts\_fx::createOneshotEffect( "fx_fog_zombie_amb" );
     ent.v[ "origin" ] = (4456, 4858, 2);
     ent.v[ "angles" ] = ( 0, 0, 0 );
     ent.v[ "type" ] = "oneshotfx";

@@ -108,6 +108,7 @@
 * Drops/box trackers 
 #### Host Only
 * Gamemode
+* Player quotes
 * Reduced content
 * Coop pause
 #### Controls menu
@@ -135,8 +136,6 @@
 * **_Flurh_**
 
 ### TODO
-* make m14 trigger smaller
-* make terrain in spawn
 ### TODO maybe
 * guaranteed drop after 5 hoards
 * guaranteed trade after 50 hits
