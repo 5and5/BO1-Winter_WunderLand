@@ -135,6 +135,8 @@
 * **_Flurh_**
 
 ### TODO
+* make m14 trigger smaller
+* make terrain in spawn
 ### TODO maybe
 * guaranteed drop after 5 hoards
 * guaranteed trade after 50 hits

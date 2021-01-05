@@ -123,7 +123,7 @@
 		FRAME_CHOICE_BIND_VIS( 35, "@MENU_GROUND_SUPPORT_CAPS", "+actionslot 4", ;, ( dvarbool( ui_multiplayer ) ), dvarbool( ui_multiplayer )  ) 	//mp
 		FRAME_CHOICE_BIND_VIS( 34, "@MOD_EQUIPMENT", "+actionslot 4", ;, ( !dvarbool( ui_multiplayer ) ), !dvarbool( ui_multiplayer ) )		//sp
 
-		FRAME_CHOICE_BIND_VIS( 35, "@MOD_FAST_RAY", "+reload;wait 1;weapnext;wait 1;weapprev", ;, ( !dvarbool( ui_multiplayer ) ), !dvarbool( ui_multiplayer ) )		//sp
+		FRAME_CHOICE_BIND_VIS( 35, "@MOD_FAST_RAY", "+attack;weapnext;wait 1;+reload;wait 1;-reload;wait 1;weapprev;-attack", ;, ( !dvarbool( ui_multiplayer ) ), !dvarbool( ui_multiplayer ) )		//sp
 		
 		//CHOICE_BACK( "@MENU_BACK", close self )
 
