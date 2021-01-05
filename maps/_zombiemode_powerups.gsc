@@ -139,6 +139,7 @@ init_powerups()
 	randomize_powerups();
 	level.zombie_powerup_index = 0;
 	level.drop_tracker_index = 0;
+	level.kills_since_powerup = 0;
 	randomize_powerups();
 
 	// Rare powerups
@@ -623,19 +624,33 @@ powerup_drop(drop_point)
 	rand_drop = randomint(100);
 
 	//chance of getting a drop
-	if (rand_drop > 2)
+	if (level.kills_since_powerup > 72) // 3 hordes
 	{
-		if (!level.zombie_vars["zombie_drop_item"])
+		if (rand_drop > 4)
 		{
-			return;
+			if (!level.zombie_vars["zombie_drop_item"])
+			{	
+				level.kills_since_powerup++;
+				//iPrintLn(level.kills_since_powerup);
+				return;
+			}
 		}
-
-		debug = "score";
 	}
 	else
 	{
-		debug = "random";
-	}
+		if (rand_drop > 2)
+		{
+			if (!level.zombie_vars["zombie_drop_item"])
+			{	
+				level.kills_since_powerup++;
+				//iPrintLn(level.kills_since_powerup);
+				return;
+			}
+		}
+	}	
+
+	level.kills_since_powerup = 0;
+	//iPrintLn(level.kills_since_powerup);
 
 	// Never drop unless in the playable area
 	playable_area = getentarray("player_volume","script_noteworthy");
@@ -678,7 +693,7 @@ powerup_drop(drop_point)
 
 	powerup powerup_setup();
 
-	print_powerup_drop( powerup.powerup_name, debug );
+	//print_powerup_drop( powerup.powerup_name, debug );
 
 	if(level.last_powerup)
 	{

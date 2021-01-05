@@ -86,6 +86,7 @@
 
 ## Powerups
 * Added custom effect to last drop of a cycle
+* After killing 3 hordes without a drop, drop rate is doubled until next drop
 * Removed carpenters
 * Removed fire sales
 * Double points duration stacks on top of it self
@@ -95,30 +96,33 @@
 ## Traps
 * 25 second activation and recharge time
 * Removed shell shock after running through traps
-* PHD Flopper causes traps to no longer damage players
+* PHD Flopper gives players trap immunity
 
 ## Menu
-#### Game Menu
+### Game Menu
+#### Game
 * FOV
 * FOV scale
 * Max FPS
-#### HUD Menu
+#### HUD
 * Timer
 * Round timer
 * Drops/box trackers 
-#### Host Only
+#### Host
 * Gamemode
 * Player quotes
 * Reduced content
 * Coop pause
-#### Controls menu
-* Fast ray
+### Controls Menu
+* Fast shoot
 
 ## Credits
-* **_JBird Justin_** - for scripts and anims
+### 
+* **_JBird Justin_** - for scripts, anims and weapon files
+* **_Utamia_** - for mapping help
 * **_Just Crusader_** - for scripting help
 * **_Iveez_** - for scripting help
-* **_Wunderful_** - for .map file
+* **_Wunderful_** - for .map file and art
 * **_Salamanca21_** - for perk machines
 * **_Ville88_** - for tutorials
 * **_SE2Dev_** - for making LinkerMod
@@ -134,8 +138,4 @@
 * **_Just Crusader_**
 * **_Wunderful_**
 * **_Flurh_**
-
-### TODO
-### TODO maybe
-* guaranteed drop after 5 hoards
-* guaranteed trade after 50 hits
+* **_Fazor_**
