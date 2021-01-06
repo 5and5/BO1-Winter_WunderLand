@@ -139,3 +139,14 @@
 * **_Wunderful_**
 * **_Flurh_**
 * **_Fazor_**
+
+TODO:
+-change double drop rate to 2 hordes
+-add point based drop cap
+-fix traverse
+
+TODO MAYBE:
+-2.5 drop rate
+-add sally EE
+-add round timer option
+-add sph to tab hub

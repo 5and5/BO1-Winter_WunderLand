@@ -4108,6 +4108,11 @@ ai_calculate_health( round_number )
 		//level.dog_health = 150;
 		return;
 	}
+	// else if(round_number >= 1)
+	// {
+	// 	level.zombie_health = 150;
+	// 	return;
+	// }
 	// else if(round_number >= 115)
 	// {
 	// 	level.dog_health = 1600;
@@ -5051,9 +5056,10 @@ actor_damage_override( inflictor, attacker, damage, flags, meansofdeath, weapon,
 		}
 	}
 
+	// double tap 2.0
 	if(attacker HasPerk("specialty_rof") && (meansofdeath == "MOD_PISTOL_BULLET" || meansofdeath == "MOD_RIFLE_BULLET"))
 	{
-		final_damage = int(final_damage * 1.5);
+		final_damage = int(final_damage * 2);
 	}
 
 	// if(weapon == "zombie_nesting_dolls" && self.animname != "director_zombie")
