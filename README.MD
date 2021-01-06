@@ -55,7 +55,7 @@
 * Reduced chance of failing
 * Reduced weapon swap time
 #### Ray Gun
-* Wallbuy added costing 25000 points
+* Raygun wallbuy added to the ceiling of the power room - 20k for gun - 10k for ammo
 * Reduced weapon swap time
 * Changed animations to bo2 animations
 #### Dolls
@@ -73,7 +73,7 @@
 ## Insta Kill Rounds
 * First insta kill round is on 115
 * Insta kill rounds will happen every other round after 115
-* Points per kill are reduced from 50 to 20 on insta kill rounds
+* Points per kill are reduced from 50 to 30 on insta kill rounds
 
 ## Dogs
 * First dog round is always on round 5

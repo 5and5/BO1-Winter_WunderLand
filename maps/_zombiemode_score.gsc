@@ -155,7 +155,7 @@ get_points_multiplier()
 get_zombie_death_player_points()
 {
 	if(level.round_number >= 115 && level.round_number % 2 == 1)
-		points = 30;
+		points = 30; // need to kill 8.25 zombies per nade buy to go even
 	else
 		points = 50;
 	
