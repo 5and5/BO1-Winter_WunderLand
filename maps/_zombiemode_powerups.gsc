@@ -624,7 +624,7 @@ powerup_drop(drop_point)
 	rand_drop = randomint(100);
 
 	//chance of getting a drop
-	if (level.kills_since_powerup > 72) // 3 hordes
+	if (level.kills_since_powerup > 48) // 2 hordes
 	{
 		if (rand_drop > 4)
 		{

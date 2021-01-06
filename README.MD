@@ -80,18 +80,25 @@
 * Always 4 rounds between dog rounds
 
 ## Perks
-* Double Tap increases damage of bullet based weapons by 150%
+* Double Tap doubles damage of bullet based weapons 
 * Removed perk limit
 * Changed perk machines to bo3/bo2 models
 
 ## Powerups
+### Drop Rate
+* Drop rate is doubled after killing 2 hordes without a drop
+
+### Fx
 * Added custom effect to last drop of a cycle
-* After killing 3 hordes without a drop, drop rate is doubled until next drop
+
+### Removed
 * Removed carpenters
 * Removed fire sales
+
+### Modified
 * Double points duration stacks on top of it self
 * Insta kill duration stacks on top of it self
-* Nukes kill zombies twice as fast as base game
+* Nukes kill zombies twice as fast
 
 ## Traps
 * 25 second activation and recharge time
