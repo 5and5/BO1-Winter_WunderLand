@@ -514,6 +514,7 @@ watch_for_drop()
 
 	players = get_players();
 	score_to_drop = ( players.size * level.zombie_vars["zombie_score_start_"+players.size+"p"] ) + level.zombie_vars["zombie_powerup_drop_increment"];
+	point_based_drop_cap = 100000;
 
 	while (1)
 	{
@@ -530,7 +531,14 @@ watch_for_drop()
 
 		if (curr_total_score > score_to_drop )
 		{
-			level.zombie_vars["zombie_powerup_drop_increment"] *= 1.14;
+			if(level.zombie_vars["zombie_powerup_drop_increment"] < point_based_drop_cap)
+			{
+				level.zombie_vars["zombie_powerup_drop_increment"] *= 1.14;
+			}
+			else
+			{
+				level.zombie_vars["zombie_powerup_drop_increment"] = point_based_drop_cap;
+			}
 			score_to_drop = curr_total_score + level.zombie_vars["zombie_powerup_drop_increment"];
 			level.zombie_vars["zombie_drop_item"] = 1;
 		}

@@ -87,6 +87,7 @@
 ## Powerups
 ### Drop Rate
 * Drop rate is doubled after killing 2 hordes without a drop
+* Point based drops capped at 100k 
 
 ### Fx
 * Added custom effect to last drop of a cycle
@@ -148,8 +149,6 @@
 * **_Fazor_**
 
 TODO:
--change double drop rate to 2 hordes
--add point based drop cap
 -fix traverse
 
 TODO MAYBE:
