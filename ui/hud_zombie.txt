@@ -1,5 +1,4 @@
 {
 	loadMenu { "ui/hud_zombie.menu" }
 	loadMenu { "ui/hud_spectator_zombie.menu" }
-	loadMenu { "ui/hud_custom.menu" }
 }

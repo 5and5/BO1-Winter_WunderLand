@@ -150,9 +150,8 @@
 
 TODO:
 -fix traverse
+-change drop fx to point based drops
 
 TODO MAYBE:
--2.5 drop rate
--add sally EE
 -add round timer option
 -add sph to tab hub

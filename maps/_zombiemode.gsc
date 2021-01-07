@@ -5281,7 +5281,7 @@ end_game()
 		time[i].alignY = "middle";
 		time[i].horzAlign = "center";
 		time[i].vertAlign = "middle";
-		time[i].y -= 92;
+		time[i].y -= 90;
 		time[i].foreground = true;
 		time[i].fontScale = 1.8;
 		time[i].alpha = 0;
