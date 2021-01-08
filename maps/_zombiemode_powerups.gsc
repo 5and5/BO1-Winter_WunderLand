@@ -514,7 +514,7 @@ watch_for_drop()
 
 	players = get_players();
 	score_to_drop = ( players.size * level.zombie_vars["zombie_score_start_"+players.size+"p"] ) + level.zombie_vars["zombie_powerup_drop_increment"];
-	point_based_drop_cap = 100000;
+	point_based_drop_cap = 75000;
 
 	while (1)
 	{
@@ -706,24 +706,16 @@ powerup_drop(drop_point)
 	if(level.last_powerup)
 	{
 		// //iprintln("last powerup");
-		// if(powerup.caution)
-		// {
-		// 	playfx( level._effect["powerup_grabbed_red"], powerup.origin );
-		// 	playfx(level._effect["powerup_grabbed_wave_caution"], powerup.orgin );
-		// }
-		// else
-		// {
-		// 	playfx(level._effect["powerup_grabbed_wave_caution"], powerup.orgin );
-		// 	playfx( level._effect["powerup_grabbed"], powerup.origin );
-		// }
-		// PlayFX( level._effect["powerup_last"], powerup.origin );
+		playfx(level._effect["powerup_grabbed_wave_caution"], powerup.orgin );
+		playfx( level._effect["powerup_grabbed"], powerup.origin );
+		PlayFX( level._effect["powerup_last"], powerup.origin );
 		level.last_powerup = false;
 	}
 
-	if(level.zombie_vars["zombie_drop_item"])
-	{
-		PlayFX( level._effect["powerup_last"], powerup.origin );
-	}
+	// if(level.zombie_vars["zombie_drop_item"])
+	// {
+	// 	PlayFX( level._effect["powerup_last"], powerup.origin );
+	// }
 
 	powerup thread powerup_timeout();
 	powerup thread powerup_wobble();

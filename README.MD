@@ -90,7 +90,7 @@
 * Point based powerup capped at 100k 
 
 ### Fx
-* Point based powerups have a custom fx when spawning
+* Last drop of the cycle has custom fx
 
 ### Removed
 * Removed carpenters
