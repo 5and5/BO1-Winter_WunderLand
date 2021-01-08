@@ -6898,22 +6898,22 @@ tab_hud()
 			// tesla hud
 			if(level.pulls_since_tesla > 0)
 			{
-				self setClientDvar( "tesla_string", "Wunder Waffe pulls since: " + level.pulls_since_tesla );
+				self setClientDvar( "tesla_string", "Pulls since Wunderwaffe: " + level.pulls_since_tesla );
 			}
 			else
 			{
 				avg = Int(level.total_tesla_hits / level.total_tesla_trades);
-				self setClientDvar( "tesla_string", "Wunder Waffe trades: " + level.total_tesla_trades + " average: " + avg);
+				self setClientDvar( "tesla_string", "Wunderwaffe trades: " + level.total_tesla_trades + " average: " + avg);
 			}
 			// tgun hud
 			if(level.pulls_since_tgun > 0)
 			{
-				self setClientDvar( "tgun_string", "Thunder Gun pulls since: " + level.pulls_since_tgun );
+				self setClientDvar( "tgun_string", "Pulls since Thundergun : " + level.pulls_since_tgun );
 			}
 			else
 			{
 				avg = Int(level.total_tgun_hits / level.total_tgun_trades);
-				self setClientDvar( "tgun_string", "Thunder Gun trades: " + level.total_tgun_trades + " average: " + avg);
+				self setClientDvar( "tgun_string", "Thundergun trades: " + level.total_tgun_trades + " average: " + avg);
 			}
 		}
 		else
@@ -7088,11 +7088,11 @@ disable_player_quotes()
 	level endon("end_game");
 
 	if(getDvar("player_quotes") == "")
-		setDvar("player_quotes", 0);
+		setDvar("player_quotes", 1);
 
 	while(1)
 	{	
-		if(getDvarInt("player_quotes") == 0)
+		if(getDvarInt("player_quotes") == 1)
 		{
 			level.player_is_speaking = 1;
 		}

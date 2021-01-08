@@ -86,11 +86,11 @@
 
 ## Powerups
 ### Drop Rate
-* Drop rate is doubled after killing 2 hordes without a drop
-* Point based drops capped at 100k 
+* Drop rate is doubled after killing 2 hordes without a powerup
+* Point based powerup capped at 100k 
 
 ### Fx
-* Added custom effect to last drop of a cycle
+* Point based powerups have a custom fx when spawning
 
 ### Removed
 * Removed carpenters
@@ -150,7 +150,6 @@
 
 TODO:
 -fix traverse
--change drop fx to point based drops
 
 TODO MAYBE:
 -add round timer option
