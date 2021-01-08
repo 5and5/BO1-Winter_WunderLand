@@ -268,6 +268,7 @@ player_elec_damage()
 		}
 		else if(self hasperk("specialty_flakjacket"))
 		{
+			wait(.1);
 		}
 		else
 		{
