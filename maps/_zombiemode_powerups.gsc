@@ -705,19 +705,24 @@ powerup_drop(drop_point)
 
 	if(level.last_powerup)
 	{
-		//iprintln("last powerup");
-		if(powerup.caution)
-		{
-			playfx( level._effect["powerup_grabbed_red"], powerup.origin );
-			playfx(level._effect["powerup_grabbed_wave_caution"], powerup.orgin );
-		}
-		else
-		{
-			playfx(level._effect["powerup_grabbed_wave_caution"], powerup.orgin );
-			playfx( level._effect["powerup_grabbed"], powerup.origin );
-		}
-		PlayFX( level._effect["powerup_last"], powerup.origin );
+		// //iprintln("last powerup");
+		// if(powerup.caution)
+		// {
+		// 	playfx( level._effect["powerup_grabbed_red"], powerup.origin );
+		// 	playfx(level._effect["powerup_grabbed_wave_caution"], powerup.orgin );
+		// }
+		// else
+		// {
+		// 	playfx(level._effect["powerup_grabbed_wave_caution"], powerup.orgin );
+		// 	playfx( level._effect["powerup_grabbed"], powerup.origin );
+		// }
+		// PlayFX( level._effect["powerup_last"], powerup.origin );
 		level.last_powerup = false;
+	}
+
+	if(level.zombie_vars["zombie_drop_item"])
+	{
+		PlayFX( level._effect["powerup_last"], powerup.origin );
 	}
 
 	powerup thread powerup_timeout();
