@@ -86,8 +86,9 @@
 
 ## Powerups
 ### Drop Rate
+* Drop rate increased from 2% to 2.5%
 * Drop rate is doubled after killing 2 hordes without a powerup
-* Point based powerup capped at 75k 
+* Point based powerups cap at 75k points
 
 ### Fx
 * Last drop of the cycle has custom fx

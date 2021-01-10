@@ -629,7 +629,7 @@ powerup_drop(drop_point)
 	}
 
 	// some guys randomly drop, but most of the time they check for the drop flag
-	rand_drop = randomint(100);
+	rand_drop = randomint(80);
 
 	//chance of getting a drop
 	if (level.kills_since_powerup > 48) // 2 hordes
