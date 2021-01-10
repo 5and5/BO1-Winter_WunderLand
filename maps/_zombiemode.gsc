@@ -6810,10 +6810,17 @@ round_timer_hud(round_timer_hud)
 	hordes = 0;
 	while(1)
 	{	
-		if(getDvarInt( "hud_round_timer" ) == 1)
+		if(getDvarInt( "hud_round_timer" ) != 0)
 		{
 			start_time = int(getTime() / 1000);
-	
+
+			if(getDvarInt( "hud_round_timer" ) == 2)
+			{	
+				round_timer_hud.label = "Round Time: ";
+				round_timer_hud setTimerUp(0);
+				hud_fade(round_timer_hud, 1, 0.15);
+			}
+
 			if(flag( "dog_round" ))
 			{
 				level waittill( "last_dog_down" );
@@ -6847,16 +6854,27 @@ round_timer_hud(round_timer_hud)
 
 			level waittill( "start_of_round" );
 			
-			// total game time
-			total_time = level.total_time - 0.1;
-			round_timer_hud.label = "Total Time: ";
-			level thread display_times(round_timer_hud, total_time);
+			if(getDvarInt( "hud_round_timer" ) != 2)
+			{
+				// total game time
+				total_time = level.total_time - 0.1;
+				round_timer_hud.label = "Total Time: ";
+				level thread display_times(round_timer_hud, total_time);
+			}
 		}
 		else
-		if(round_timer_hud.alpha != 0)
-			round_timer_hud.alpha = 0;
+		{
+			if(round_timer_hud.alpha != 0)
+				round_timer_hud.alpha = 0;
+		}
+
 		wait 0.05;
 	}
+}
+
+update_round_timer( start_time )
+{
+
 }
 
 display_times( hud, time )
@@ -6864,7 +6882,7 @@ display_times( hud, time )
 	level endon("start_of_round");
 
 	hud_fade(hud, 1, 0.15);
-	for(i = 0; i < 12; i++)
+	for(i = 0; i < 16; i++)
 	{
 		hud setTimer(time);
 		wait 0.5;

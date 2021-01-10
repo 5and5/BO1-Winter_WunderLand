@@ -87,7 +87,7 @@
 ## Powerups
 ### Drop Rate
 * Drop rate is doubled after killing 2 hordes without a powerup
-* Point based powerup capped at 100k 
+* Point based powerup capped at 75k 
 
 ### Fx
 * Last drop of the cycle has custom fx
@@ -149,8 +149,6 @@
 * **_Fazor_**
 
 TODO:
--fix traverse
 
 TODO MAYBE:
--add round timer option
 -add sph to tab hub
