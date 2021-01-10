@@ -23,12 +23,12 @@
 * Insta kill rounds start at round 115
 * Coop pause
 * Zombies loses collision as soon as they are killed
-* Disabled players quotes
 * Fixed back walk speed
 
 ## HUD
 * Timer
 * Round timer
+* SPH tracker
 * Drop tracker 
 * Trade avarage
 * Pulls since wonder weapon
@@ -54,10 +54,11 @@
 #### Wunderwaffe DG-2
 * Reduced chance of failing
 * Reduced weapon swap time
+* Changed sprint animations to cotd animations
 #### Ray Gun
 * Raygun wallbuy added to the ceiling of the power room - 20k for gun - 10k for ammo
 * Reduced weapon swap time
-* Changed animations to bo2 animations
+* Changed sprint animations to bo2 animations
 #### Dolls
 * Infinite damage
 #### Grenades
@@ -67,7 +68,7 @@
 * Increased explosion radius
 #### China Lake
 * Removed China Lake
-#### Wallbuy's
+#### Wallbuy
 * Weapon wallbuy's can be bought without looking at them
 
 ## Insta Kill Rounds

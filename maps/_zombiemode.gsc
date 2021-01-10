@@ -6805,21 +6805,19 @@ round_timer_hud(round_timer_hud)
 	level endon("disconnect");
 	level endon("end_game");
 
-	total_zombies = 0;
-	zombies_this_round = 0;
-	hordes = 0;
+	a = 0;
 	while(1)
 	{	
 		if(getDvarInt( "hud_round_timer" ) != 0)
-		{
+		{	
 			start_time = int(getTime() / 1000);
-
-			if(getDvarInt( "hud_round_timer" ) == 2)
+			if(	a == 0)
 			{	
-				round_timer_hud.label = "Round Time: ";
-				round_timer_hud setTimerUp(0);
-				hud_fade(round_timer_hud, 1, 0.15);
+				a = 1;
+				wait 2;
 			}
+			zombies_this_round = level.zombie_total + get_enemy_count();
+			hordes = zombies_this_round / 24;
 
 			if(flag( "dog_round" ))
 			{
@@ -6837,26 +6835,25 @@ round_timer_hud(round_timer_hud)
 			round_timer_hud.label = "Round Time: ";
 			level thread display_times(round_timer_hud, round_time);
 
-			// sph of last round
-			// wait 6;
-			// total_zombies = total_zombies + zombies_this_round;
-			// hordes = total_zombies / 24;
-			// sph = Int(round_time / hordes);
-
-			// iPrintLn(total_zombies);
-			// iPrintLn(zombies_this_round);
-
-			// hud_fade(round_timer_hud, 1, 0.15);
-			// round_timer_hud.label = "sph: ";
-			// round_timer_hud setValue(sph);
-			// wait 5;
-			// hud_fade(round_timer_hud, 0, 0.15);
+			// sph
+			wait 6.5;
+			if(level.round_number >= 50 && getDvarInt( "hud_round_timer" ) != 2 && !flag( "dog_round" ))
+			{
+					hud_fade(round_timer_hud, 1, 0.15);
+					//round_timer_hud.label = "Seconds per hoard: ";
+					round_timer_hud.label = "SPH: ";
+					//sph = Int(round_time / hordes);
+					sph = round_time / hordes;
+					round_timer_hud setValue(sph);
+					wait 5;
+					hud_fade(round_timer_hud, 0, 0.15);
+			}
 
 			level waittill( "start_of_round" );
-			
+
+			// total game time
 			if(getDvarInt( "hud_round_timer" ) != 2)
 			{
-				// total game time
 				total_time = level.total_time - 0.1;
 				round_timer_hud.label = "Total Time: ";
 				level thread display_times(round_timer_hud, total_time);
@@ -6872,17 +6869,12 @@ round_timer_hud(round_timer_hud)
 	}
 }
 
-update_round_timer( start_time )
-{
-
-}
-
 display_times( hud, time )
 {
 	level endon("start_of_round");
 
 	hud_fade(hud, 1, 0.15);
-	for(i = 0; i < 16; i++)
+	for(i = 0; i < 12; i++)
 	{
 		hud setTimer(time);
 		wait 0.5;
