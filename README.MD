@@ -152,7 +152,5 @@
 * **_Fazor_**
 
 TODO:
--first room power room
 
 TODO MAYBE:
--add sph to tab hub
