@@ -7117,6 +7117,8 @@ gamemode_select()
 	gamemode = getDvar( "gamemode" );
 	if(gamemode == "")
 		setDvar( "gamemode", "survival" );
+	if(getDvar( "start_round" ) == "")
+		setDvar( "start_round", 50 );
 
 	switch ( getDvar( "gamemode" ) )
 	{
@@ -7152,7 +7154,7 @@ gamemode_select()
 			level.strattesting = true;
 			level.dog_health = 1600;
 			level.player_too_many_weapons_monitor = false;
-			level.round_number = 50;
+			level.round_number = getDvarInt( "start_round" );
 			level.zombie_vars["zombie_spawn_delay"] = 0.08;
 			level.zombie_move_speed = 105; // running speed
 			level.first_round = false; // force first round to have the proper amount of zombies
