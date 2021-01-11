@@ -808,6 +808,8 @@ init_dvars()
 		SetDvar( "hud_round_timer", "1" );
 	if(getDvar( "hud_timer" ) == "")
 		SetDvar( "hud_timer", "1" );
+	if(getDvar( "first_room_power" ) == "")
+		SetDvar( "first_room_power", "0" );
 }
 
 
@@ -5557,7 +5559,14 @@ adjust_angles_to_player( stumble_angles )
 
 coop_player_spawn_placement()
 {
-	structs = getstructarray( "initial_spawn_points", "targetname" ); 
+	if(getdvarInt("first_room_power") == 1 && getdvar("gamemode") == "first_room")
+	{
+		structs = getstructarray( "initial_spawn_points1", "targetname" ); 
+	}
+	else
+	{
+		structs = getstructarray( "initial_spawn_points", "targetname" );
+	}	
 
 	temp_ent = Spawn( "script_model", (0,0,0) );
 	for( i = 0; i < structs.size; i++ )

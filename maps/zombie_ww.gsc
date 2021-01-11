@@ -370,6 +370,13 @@ zombie_ww_zone_init()
 	add_adjacent_zone( "zone1", "zone3", "enter_zone3" ); // PM63 Porch to Courtyard
 	add_adjacent_zone( "zone4", "zone5", "enter_zone5" ); // Speed Floor to Jug Floor
 	add_adjacent_zone( "zone5", "zone4", "enter_zone4" ); // Jug Floor to Speed Floor
+
+	if(getdvarInt("first_room_power") == 1 && getdvar("gamemode") == "first_room")
+	{
+		// activate power zone
+		zone_init( "zone2");
+		enable_zone( "zone2");
+	}
 }	
 zombie_ww_ignore_spawner( spawner )
 {
