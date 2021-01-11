@@ -56,7 +56,7 @@
 * Reduced weapon swap time
 * Changed sprint animations to cotd animations
 #### Ray Gun
-* Raygun wallbuy added to the ceiling of the power room - 20k for gun - 10k for ammo
+* Raygun wallbuy added to the ceiling of the power room, costs 15k points
 * Reduced weapon swap time
 * Changed sprint animations to bo2 animations
 #### Dolls

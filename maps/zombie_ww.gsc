@@ -601,10 +601,10 @@ ray_gun_wallbuy()
 	trigger = getent("ray_gun_wallbuy", "targetname");
 	trigger SetCursorHint( "HINT_NOICON" );
 	trigger UseTriggerRequireLookAt();
-	trigger setHintString("Hold ^3[{+activate}]^7 for Ray Gun [25000]");
+	trigger setHintString("Hold ^3[{+activate}]^7 for Ray Gun [15000]");
 
-	cost = 20000;
-	ammo_cost = 10000;
+	cost = 15000;
+	ammo_cost = 15000;
 	zombie_weapon_upgrade = "ray_gun_zm";
 
 	while (1)
