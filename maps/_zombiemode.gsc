@@ -246,6 +246,8 @@ post_all_players_connected()
 
 	//custom
 	level thread timer_hud();
+
+	level thread tab_hud();
 }
 
 zombiemode_melee_miss()
@@ -1713,7 +1715,7 @@ onPlayerSpawned()
 				self thread player_grenade_watcher();
 
 				//custom
-				self thread tab_hud();
+				//self thread tab_hud();
 			}
 		}
 	}
@@ -6888,47 +6890,96 @@ hud_fade( hud, alpha, duration )
 	hud.alpha = alpha;
 }
 
+// tab_hud()
+// {	
+// 	self endon("end_game");
+	
+// 	players = get_players();
+// 	if(getDvar( "hud_button" ) == "")
+// 		setClientDvar( "hud_button", "tab" );
+
+// 	while(1)
+// 	{	
+// 		button_pressed = getDvar( "hud_button" );
+// 		if(self buttonPressed( button_pressed ))
+// 		{	
+// 			self setClientDvar( "hud_tab", 1 ); // make hud visable
+// 			// drop hud
+// 			self setClientDvar( "drops_string", "Power Up Cycle: " + level.drop_tracker_index );
+// 			// tesla hud
+// 			if(level.pulls_since_tesla > 0)
+// 			{
+// 				self setClientDvar( "tesla_string", "Pulls since Wunderwaffe: " + level.pulls_since_tesla );
+// 			}
+// 			else
+// 			{
+// 				avg = Int(level.total_tesla_hits / level.total_tesla_trades);
+// 				self setClientDvar( "tesla_string", "Wunderwaffe trades: " + level.total_tesla_trades + " average: " + avg);
+// 			}
+// 			// tgun hud
+// 			if(level.pulls_since_tgun > 0)
+// 			{
+// 				self setClientDvar( "tgun_string", "Pulls since Thundergun : " + level.pulls_since_tgun );
+// 			}
+// 			else
+// 			{
+// 				avg = Int(level.total_tgun_hits / level.total_tgun_trades);
+// 				self setClientDvar( "tgun_string", "Thundergun trades: " + level.total_tgun_trades + " average: " + avg);
+// 			}
+// 		}
+// 		else
+// 			self setClientDvar( "hud_tab", 0 );
+
+// 		wait 0.05;
+// 	}
+// }
+
 tab_hud()
 {	
-	self endon("disconnect");
 	self endon("end_game");
-	flag_wait( "all_players_spawned" );
-	
-	if(getDvar( "hud_button" ) == "")
-		self setClientDvar( "hud_button", "tab" );
 
+	players = get_players();
+	
+	for(i = 0; players.size > i; i++)
+	{
+		if(getDvar( "hud_button" ) == "")
+			players[i] setClientDvar( "hud_button", "tab" );
+	}
+	
 	while(1)
 	{	
-		button_pressed = getDvar( "hud_button" );
-		if(self buttonPressed( button_pressed ))
-		{	
-			self setClientDvar( "hud_tab", 1 );
-			// drop hud
-			self setClientDvar( "drops_string", "Power Up Cycle: " + level.drop_tracker_index );
-			// tesla hud
-			if(level.pulls_since_tesla > 0)
-			{
-				self setClientDvar( "tesla_string", "Pulls since Wunderwaffe: " + level.pulls_since_tesla );
+		for(i = 0; players.size > i; i++)
+		{
+			button_pressed = getDvar( "hud_button" );
+			if(players[i] buttonPressed( button_pressed ))
+			{	
+				players[i] setClientDvar( "hud_tab", 1 ); // make hud visable
+				// drop hud
+				players[i] setClientDvar( "drops_string", "Power Up Cycle: " + level.drop_tracker_index );
+				// tesla hud
+				if(level.pulls_since_tesla > 0)
+				{
+					players[i] setClientDvar( "tesla_string", "Pulls since Wunderwaffe: " + level.pulls_since_tesla );
+				}
+				else
+				{
+					avg = Int(level.total_tesla_hits / level.total_tesla_trades);
+					players[i] setClientDvar( "tesla_string", "Wunderwaffe trades: " + level.total_tesla_trades + " average: " + avg);
+				}
+				// tgun hud
+				if(level.pulls_since_tgun > 0)
+				{
+					players[i] setClientDvar( "tgun_string", "Pulls since Thundergun : " + level.pulls_since_tgun );
+				}
+				else
+				{
+					avg = Int(level.total_tgun_hits / level.total_tgun_trades);
+					players[i] setClientDvar( "tgun_string", "Thundergun trades: " + level.total_tgun_trades + " average: " + avg);
+				}
 			}
 			else
-			{
-				avg = Int(level.total_tesla_hits / level.total_tesla_trades);
-				self setClientDvar( "tesla_string", "Wunderwaffe trades: " + level.total_tesla_trades + " average: " + avg);
-			}
-			// tgun hud
-			if(level.pulls_since_tgun > 0)
-			{
-				self setClientDvar( "tgun_string", "Pulls since Thundergun : " + level.pulls_since_tgun );
-			}
-			else
-			{
-				avg = Int(level.total_tgun_hits / level.total_tgun_trades);
-				self setClientDvar( "tgun_string", "Thundergun trades: " + level.total_tgun_trades + " average: " + avg);
-			}
+				players[i] setClientDvar( "hud_tab", 0 );
 		}
-		else
-			self setClientDvar( "hud_tab", 0 );
-
 		wait 0.05;
 	}
 }
