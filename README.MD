@@ -81,8 +81,9 @@
 * Always 4 rounds between dog rounds
 
 ## Perks
+* Perk limit removed
+* Multiple Players can buy a perk at the same time
 * Double Tap doubles damage of bullet based weapons 
-* Removed perk limit
 * Changed perk machines to bo3/bo2 models
 
 ## Powerups
