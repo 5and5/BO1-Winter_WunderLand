@@ -29,6 +29,7 @@ rawfile,maps/_zombiemode_spawner.gsc
 rawfile,maps/_zombiemode_zone_manager.gsc
 rawfile,maps/_loadout.gsc
 rawfile,maps/_custom_zapper_system.gsc
+rawfile,maps/_zombiemode_utility.gsc
 
 //CLIENTSCRIPTS
 rawfile,clientscripts/zombie_ww.csc
