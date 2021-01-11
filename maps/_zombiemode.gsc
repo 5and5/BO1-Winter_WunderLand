@@ -5185,7 +5185,14 @@ end_game()
 	level waittill ( "end_game" );
 
 	clientnotify( "zesn" );
-	level thread maps\_zombiemode_audio::change_zombie_music( "game_over" );
+
+	if (level.win_game)
+	{
+		level thread maps\_zombiemode_audio::change_zombie_music( "reset" );
+	} else
+	{
+		level thread maps\_zombiemode_audio::change_zombie_music( "game_over" );
+	}
 
 	//AYERS: Turn off ANY last stand audio at the end of the game
 	players = get_players();

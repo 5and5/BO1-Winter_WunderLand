@@ -636,6 +636,7 @@ ray_gun_wallbuy()
 			{
 				player maps\_zombiemode_score::minus_to_player_score( cost );
 				player maps\_zombiemode_weapons::weapon_give( zombie_weapon_upgrade );
+				playsoundatposition("mus_wonder_weapon_stinger", (0,0,0));
 			}
 			else
 			{
