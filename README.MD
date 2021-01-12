@@ -109,6 +109,11 @@
 * Removed shell shock after running through traps
 * PHD Flopper gives players trap immunity
 
+## Sounds
+* Replace round changing sounds with buired round changing sounds
+* Replace game over sound with buried game over sound
+* Added custom reset sound
+
 ## Menu
 ### Game Menu
 #### Game
