@@ -35,7 +35,7 @@ rawfile,maps/_zombiemode_audio.gsc
 
 //CLIENTSCRIPTS
 rawfile,clientscripts/zombie_ww.csc
-rawfile,clientscripts/zombie_ww_amb.csc
+//rawfile,clientscripts/zombie_ww_amb.csc
 rawfile,clientscripts/zombie_ww_fx.csc
 rawfile,clientscripts/_zombiemode_ffotd.csc
 rawfile,clientscripts/_zombiemode_weap_tesla.csc
@@ -130,3 +130,4 @@ stringtable,maps\mapsTable.csv
 rawfile,mod.arena
 localize,mod
 material,preview_zombie_apment
+material,loadscreen_zombie_ww
