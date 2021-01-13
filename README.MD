@@ -110,6 +110,7 @@
 * PHD Flopper gives players trap immunity
 
 ## Sounds
+* Easter egg song after pressing all three bears
 * Replace round changing sounds with buired round changing sounds
 * Replace game over sound with buried game over sound
 * Added custom reset sound
