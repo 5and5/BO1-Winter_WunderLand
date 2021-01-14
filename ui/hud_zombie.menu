@@ -447,7 +447,7 @@
 		name				"tab_hud"
 		rect				0 0 0 0 HORIZONTAL_ALIGN_USER_CENTER VERTICAL_ALIGN_USER_TOP
 		fullscreen			0
-		visible				when(dvarint("hud_tab") == 1)
+		visible				when(dvarBool("hud_tab") == 1)
 
 		itemDef
 		{

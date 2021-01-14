@@ -246,8 +246,6 @@ post_all_players_connected()
 
 	//custom
 	level thread timer_hud();
-
-	level thread tab_hud();
 }
 
 zombiemode_melee_miss()
@@ -1659,6 +1657,9 @@ onPlayerSpawned()
 			"player_strafeSpeedScale", 1,
 			"player_backSpeedScale", 1 );
 
+		if(getDvar( "hud_tab" ) != 0)
+			self SetClientDvar("hud_tab", 0);
+
 		self SetDepthOfField( 0, 0, 512, 4000, 4, 0 );
 
 		self cameraactivate(false);
@@ -1717,7 +1718,8 @@ onPlayerSpawned()
 				self thread player_grenade_watcher();
 
 				//custom
-				//self thread tab_hud();
+				self thread tab_hud();
+				self thread tab_hud_test();
 			}
 		}
 	}
@@ -6906,96 +6908,69 @@ hud_fade( hud, alpha, duration )
 	hud.alpha = alpha;
 }
 
-// tab_hud()
-// {	
-// 	self endon("end_game");
-	
-// 	players = get_players();
-// 	if(getDvar( "hud_button" ) == "")
-// 		setClientDvar( "hud_button", "tab" );
-
-// 	while(1)
-// 	{	
-// 		button_pressed = getDvar( "hud_button" );
-// 		if(self buttonPressed( button_pressed ))
-// 		{	
-// 			self setClientDvar( "hud_tab", 1 ); // make hud visable
-// 			// drop hud
-// 			self setClientDvar( "drops_string", "Power Up Cycle: " + level.drop_tracker_index );
-// 			// tesla hud
-// 			if(level.pulls_since_tesla > 0)
-// 			{
-// 				self setClientDvar( "tesla_string", "Pulls since Wunderwaffe: " + level.pulls_since_tesla );
-// 			}
-// 			else
-// 			{
-// 				avg = Int(level.total_tesla_hits / level.total_tesla_trades);
-// 				self setClientDvar( "tesla_string", "Wunderwaffe trades: " + level.total_tesla_trades + " average: " + avg);
-// 			}
-// 			// tgun hud
-// 			if(level.pulls_since_tgun > 0)
-// 			{
-// 				self setClientDvar( "tgun_string", "Pulls since Thundergun : " + level.pulls_since_tgun );
-// 			}
-// 			else
-// 			{
-// 				avg = Int(level.total_tgun_hits / level.total_tgun_trades);
-// 				self setClientDvar( "tgun_string", "Thundergun trades: " + level.total_tgun_trades + " average: " + avg);
-// 			}
-// 		}
-// 		else
-// 			self setClientDvar( "hud_tab", 0 );
-
-// 		wait 0.05;
-// 	}
-// }
-
 tab_hud()
 {	
 	self endon("end_game");
+	
+	if(getDvar( "hud_button" ) == "")
+		self setClientDvar( "hud_button", "tab" );
 
-	players = get_players();
-	
-	for(i = 0; players.size > i; i++)
-	{
-		if(getDvar( "hud_button" ) == "")
-			players[i] setClientDvar( "hud_button", "tab" );
-	}
-	
 	while(1)
 	{	
-		for(i = 0; players.size > i; i++)
-		{
-			button_pressed = getDvar( "hud_button" );
-			if(players[i] buttonPressed( button_pressed ))
-			{	
-				players[i] setClientDvar( "hud_tab", 1 ); // make hud visable
-				// drop hud
-				players[i] setClientDvar( "drops_string", "Power Up Cycle: " + level.drop_tracker_index );
-				// tesla hud
-				if(level.pulls_since_tesla > 0)
-				{
-					players[i] setClientDvar( "tesla_string", "Pulls since Wunderwaffe: " + level.pulls_since_tesla );
-				}
-				else
-				{
-					avg = Int(level.total_tesla_hits / level.total_tesla_trades);
-					players[i] setClientDvar( "tesla_string", "Wunderwaffe trades: " + level.total_tesla_trades + " average: " + avg);
-				}
-				// tgun hud
-				if(level.pulls_since_tgun > 0)
-				{
-					players[i] setClientDvar( "tgun_string", "Pulls since Thundergun : " + level.pulls_since_tgun );
-				}
-				else
-				{
-					avg = Int(level.total_tgun_hits / level.total_tgun_trades);
-					players[i] setClientDvar( "tgun_string", "Thundergun trades: " + level.total_tgun_trades + " average: " + avg);
-				}
+		if(self buttonPressed( "tab" ))
+		{	
+			self setClientDvar( "hud_tab", 1 ); // make hud visable
+			// drop hud
+			self setClientDvar( "drops_string", "Power Up Cycle: " + level.drop_tracker_index );
+			// tesla hud
+			if(level.pulls_since_tesla > 0)
+			{
+				self setClientDvar( "tesla_string", "Pulls since Wunderwaffe: " + level.pulls_since_tesla );
 			}
 			else
-				players[i] setClientDvar( "hud_tab", 0 );
+			{
+				avg = Int(level.total_tesla_hits / level.total_tesla_trades);
+				self setClientDvar( "tesla_string", "Wunderwaffe trades: " + level.total_tesla_trades + " average: " + avg);
+			}
+			// tgun hud
+			if(level.pulls_since_tgun > 0)
+			{
+				self setClientDvar( "tgun_string", "Pulls since Thundergun : " + level.pulls_since_tgun );
+			}
+			else
+			{
+				avg = Int(level.total_tgun_hits / level.total_tgun_trades);
+				self setClientDvar( "tgun_string", "Thundergun trades: " + level.total_tgun_trades + " average: " + avg);
+			}
 		}
+		else
+			self setClientDvar( "hud_tab", 0 );
+
+		wait 0.05;
+	}
+}
+
+tab_hud_test()
+{
+	self endon("end_game");
+
+	if(getDvar( "hud_button" ) == "")
+		self setClientDvar( "hud_button", "tab" );
+
+	drop_hud = create_hud( "left", "top" );
+	drop_hud.y += 18;
+	drop_hud.x += 5;
+	drop_hud.label = "Drops: ";
+
+	while(1)
+	{	
+		if(self buttonPressed( getDvar( "hud_button" ) ))
+		{	
+			drop_hud setValue(level.drop_tracker_index);
+			drop_hud.alpha = 1;
+		}
+		else
+			drop_hud.alpha = 0;
 		wait 0.05;
 	}
 }
@@ -7149,6 +7124,9 @@ fake_reset(start_time)
 			for(i=0;i<players.size;i++)
 			{
 				players[i] FreezeControls( true );
+        		players[i] SetClientDvar("snd_menu_master",1); 
+        		players[i] SetClientDvar("snd_menu_music",1);
+
 			}
             level.win_game = true;
             level notify( "end_game" );

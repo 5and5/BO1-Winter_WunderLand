@@ -1293,7 +1293,7 @@ init_music_states()
     level.zmb_music_states["egg1"].music                     =   "mus_egg1";
     level.zmb_music_states["egg1"].is_alias                  =   true;
     level.zmb_music_states["egg1"].override                  =   false;
-	level.zmb_music_states["egg1"].musicstate         		 =   "SILENCE";
+	// level.zmb_music_states["egg1"].musicstate         		 =   "SILENCE";
     level.zmb_music_states["egg_safe"]                      =   spawnStruct();
     level.zmb_music_states["egg_safe"].music                =   "EGG_SAFE";
     level.zmb_music_states["egg_safe"].is_alias             =   true;

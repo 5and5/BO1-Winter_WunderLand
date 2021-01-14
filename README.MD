@@ -133,13 +133,14 @@
 ### Controls Menu
 * Fast shoot
 
+
 ## Credits
 ### 
 * **_JBird Justin_** - for scripts, anims and weapon files
-* **_Utamia_** - for mapping help
+* **_Utamia_** - for mapping help and answering questions
+* **_Wunderful_** - for .map file and art
 * **_Just Crusader_** - for scripting help
 * **_Iveez_** - for scripting help
-* **_Wunderful_** - for .map file and art
 * **_Salamanca21_** - for perk machines
 * **_Ville88_** - for tutorials
 * **_SE2Dev_** - for making LinkerMod
@@ -156,7 +157,3 @@
 * **_Wunderful_**
 * **_Flurh_**
 * **_Fazor_**
-
-TODO:
-
-TODO MAYBE:

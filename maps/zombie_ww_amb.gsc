@@ -45,7 +45,7 @@ meteor_egg()
     
     self UseTriggerRequireLookAt();
     self SetCursorHint( "HINT_NOICON" ); 
-    self PlayLoopSound( "zmb_meteor_loop" );
+    //self PlayLoopSound( "zmb_meteor_loop" );
         
     self waittill( "trigger", player );
     
