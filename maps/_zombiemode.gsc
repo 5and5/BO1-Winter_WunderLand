@@ -6909,7 +6909,8 @@ hud_fade( hud, alpha, duration )
 
 tab_hud()
 {	
-	self endon("end_game");
+	self endon("disconnect");
+	level endon("end_game");
 	
 	if(getDvar( "hud_button" ) == "")
 		self setClientDvar( "hud_button", "tab" );
