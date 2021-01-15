@@ -1719,7 +1719,6 @@ onPlayerSpawned()
 
 				//custom
 				self thread tab_hud();
-				self thread tab_hud_test();
 			}
 		}
 	}
@@ -6917,7 +6916,7 @@ tab_hud()
 
 	while(1)
 	{	
-		if(self buttonPressed( "tab" ))
+		if(self buttonPressed( getDvar( "hud_button" ) ))
 		{	
 			self setClientDvar( "hud_tab", 1 ); // make hud visable
 			// drop hud
@@ -6948,45 +6947,6 @@ tab_hud()
 
 		wait 0.05;
 	}
-}
-
-tab_hud_test()
-{
-	self endon("end_game");
-
-	if(getDvar( "hud_button" ) == "")
-		self setClientDvar( "hud_button", "tab" );
-
-	drop_hud = create_hud( "left", "top" );
-	drop_hud.y += 18;
-	drop_hud.x += 5;
-	drop_hud.label = "Drops: ";
-
-	while(1)
-	{	
-		if(self buttonPressed( getDvar( "hud_button" ) ))
-		{	
-			drop_hud setValue(level.drop_tracker_index);
-			drop_hud.alpha = 1;
-		}
-		else
-			drop_hud.alpha = 0;
-		wait 0.05;
-	}
-}
-
-create_hud( side, top )
-{
-	hud = NewClientHudElem( self );
-	hud.horzAlign = side;
-	hud.vertAlign = top;
-	hud.alignX = side;
-	hud.alignY = top;
-	hud.alpha = 0;
-	hud.fontscale = 1.2;
-	hud.color = ( 1.0, 1.0, 1.0 );
-
-	return hud;
 }
 
 to_mins_short(seconds)
@@ -7045,7 +7005,7 @@ coop_pause(timer_hud, start_time)
 			black_hud = newhudelem();
 			black_hud.horzAlign = "fullscreen";
 			black_hud.vertAlign = "fullscreen";
-			black_hud.foreground = true;
+			//black_hud.foreground = true;
 			black_hud SetShader( "black", 640, 480 );
 			black_hud.alpha = 0;
 
@@ -7203,6 +7163,19 @@ gamemode_select()
 			level.zombie_vars["zombie_spawn_delay"] = 0.08;
 			level.zombie_move_speed = 105; // running speed
 			level.first_round = false; // force first round to have the proper amount of zombies
+
+			strat_tester_text = NewHudElem();
+			strat_tester_text.horzAlign = "left";
+			strat_tester_text.vertAlign = "top";
+			strat_tester_text.alignX = "left";
+			strat_tester_text.alignY = "top";
+			strat_tester_text.y += 365;
+			strat_tester_text.x += 2;
+			strat_tester_text.foreground = true;
+			strat_tester_text.fontScale = 1.6;
+			strat_tester_text.alpha = 1;
+			strat_tester_text.color = ( 0.423, 0.004, 0 );
+			strat_tester_text setText("Strat Tester");
 
 			for(i=0;i<players.size;i++)
 			{
