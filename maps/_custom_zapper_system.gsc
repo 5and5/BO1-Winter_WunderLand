@@ -262,13 +262,14 @@ player_elec_damage()
 			elec_loop = 1;
 			self playsound("zmb_zombie_arc");
 		}
-		if(!self hasperk("specialty_armorvest") || self.health - 100 < 1)
-		{
-			radiusdamage(self.origin,10,self.health + 100,self.health + 100);
-		}
-		else if(self hasperk("specialty_flakjacket"))
+		
+		if(self hasperk("specialty_flakjacket"))
 		{
 			wait(.1);
+		}
+		else if(!self hasperk("specialty_armorvest") || self.health - 100 < 1)
+		{
+			radiusdamage(self.origin,10,self.health + 100,self.health + 100);
 		}
 		else
 		{
