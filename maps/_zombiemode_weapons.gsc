@@ -131,25 +131,16 @@ default_dolls_weighting_func()
 }
 
 default_ray_gun_weighting_func()
-{
+{	
 	num_to_add = 1;
-	if( level.round_number < 25 )
+	players = get_players();
+
+	if(level.total_ray_gun_trades < players.size) //first raygun from box for all players
 	{
-		 //increase the percentage of ray gun
-		if( isDefined( level.pulls_since_last_ray_gun ) )
-		{
-			// after 10 pulls the ray gun percentage increases to 30%
-			if( level.pulls_since_last_ray_gun > 10 )
-			{
-				num_to_add += 0.3;
-			}
-			// after 5 pulls the Ray Gun percentage increases to 15%
-			else if( level.pulls_since_last_ray_gun > 5 )
-			{
-				num_to_add += 0.15;
-			}
-		}
+		amount_to_add = int(level.pulls_since_ray_gun / 5) + 1;
+		num_to_add += amount_to_add;
 	}
+
 	return num_to_add;
 }
 
@@ -2270,7 +2261,8 @@ treasure_chest_weapon_spawn( chest, player, respin )
 		acquire_weapon_toggle( rand, player );
 
 		if( rand == "ray_gun_zm" )
-		{
+		{	
+			level.total_ray_gun_trades++;
 			level.pulls_since_ray_gun = 0;
 		}
 		if( rand == "tesla_gun_zm" )

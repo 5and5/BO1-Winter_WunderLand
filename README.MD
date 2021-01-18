@@ -36,7 +36,7 @@
 ## Box
 #### Weighted Weapons
 * Increased probability of getting Wonder Waffe, Thundergun and Dolls - by 10% every 5 hits, up to 50%
-* Increased probability of getting Raygun until round 25 - by 15% after 5 hits - 30% after 10 hits
+* Increased probability of getting Raygun until all players have it - by 100% every 5 hits
 #### Animations
 * Decreased weapon pickup time from 12 to 10 seconds
 * Decreased box opening and closing from 0.5 to 0.3 seconds
@@ -157,3 +157,11 @@
 * **_Wunderful_**
 * **_Flurh_**
 * **_Fazor_**
+
+TODO
+-increase dolls throw speed
+-increase raygun chance
+-increase setup chance
+-increase weight beyond 50%
+-fix blend in spawn above step up
+-nades only buyable from any direction

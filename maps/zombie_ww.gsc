@@ -25,6 +25,7 @@ main()
 	level.total_tesla_trades = 0;
 	level.total_tgun_trades = 0;
 	level.total_dolls_trades = 0;
+	level.total_ray_gun_trades = 0;
 
 	level.player_drops_tesla = false;
 	level.player_drops_tgun = false;

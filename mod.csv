@@ -24,6 +24,7 @@ rawfile,maps/zombie_ww_amb.gsc
 rawfile,maps/zombie_ww_fx.gsc
 rawfile,maps/_zombiemode.gsc
 rawfile,maps/_zombiemode_weapons.gsc
+rawfile,maps/_zombiemode_score.gsc
 rawfile,maps/_zombiemode_perks.gsc
 rawfile,maps/_zombiemode_powerups.gsc
 rawfile,maps/_zombiemode_spawner.gsc
