@@ -159,9 +159,4 @@
 * **_Fazor_**
 
 TODO
--increase dolls throw speed
--increase raygun chance
--increase setup chance
--increase weight beyond 50%
--fix blend in spawn above step up
 -nades only buyable from any direction
