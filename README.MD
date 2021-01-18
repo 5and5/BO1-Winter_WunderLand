@@ -35,7 +35,7 @@
 
 ## Box
 #### Weighted Weapons
-* Increased probability of getting Wonder Waffe, Thundergun and Dolls - by 10% every 5 hits, up to 50%
+* Increased probability of getting Wonder Waffe, Thundergun and Dolls - by 10% every 5 hits
 * Increased probability of getting Raygun until all players have it - by 100% every 5 hits
 #### Animations
 * Decreased weapon pickup time from 12 to 10 seconds

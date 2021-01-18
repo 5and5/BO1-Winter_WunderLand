@@ -83,34 +83,9 @@ default_weighting_func()
 get_percentage_increase( pulls_since_weapon )
 {
 	num_to_add = 1;
-	if( isDefined( pulls_since_weapon ) )
-	{
-			//after 25 pulls the percentage increases to 50%
-			if( pulls_since_weapon > 25 )
-			{
-				num_to_add += 0.5;
-			}
-			// after 20 pulls the percentage increases to 40%
-			else if( pulls_since_weapon > 20 )
-			{
-				num_to_add += 0.4;
-			}
-			//after 15 pulls the percentage increases to 30%
-			if( pulls_since_weapon > 15 )
-			{
-				num_to_add += 0.3;
-			}
-			// after 10 pulls the percentage increases to 20%
-			else if( pulls_since_weapon > 10 )
-			{
-				num_to_add += 0.2;
-			}
-			// after 5 pulls the percentage increases to 10%
-			else if( pulls_since_weapon > 5 )
-			{
-				num_to_add += 0.1;
-			}
-	}
+	amount_to_add = int(pulls_since_weapon / 5) / 10; //+10% every 5 pulls 
+	num_to_add += amount_to_add;
+
 	return num_to_add;
 }
 
