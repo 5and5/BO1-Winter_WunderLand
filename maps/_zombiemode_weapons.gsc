@@ -80,11 +80,19 @@ default_weighting_func()
 	return 1;
 }
 
-get_percentage_increase( pulls_since_weapon )
-{
+get_percentage_increase( pulls_since_weapon, player_dropped )
+{	
 	num_to_add = 1;
-	amount_to_add = int(pulls_since_weapon / 5) / 10; //+10% every 5 pulls 
-	num_to_add += amount_to_add;
+
+	if(!player_dropped)
+	{
+		num_to_add += 1; //200% for settup
+	}
+	else
+	{
+		amount_to_add = int(pulls_since_weapon / 5) / 10; //+10% every 5 pulls 
+		num_to_add += amount_to_add;
+	}
 
 	return num_to_add;
 }
@@ -92,17 +100,17 @@ get_percentage_increase( pulls_since_weapon )
 // increase the chance of getting a wonder weapon after every 5 hits
 default_tesla_weighting_func()
 {	
-	return get_percentage_increase( level.pulls_since_tesla );
+	return get_percentage_increase( level.pulls_since_tesla, level.player_drops_tesla_gun );
 }
 
 default_tgun_weighting_func()
 {	
-	return get_percentage_increase( level.pulls_since_tgun );
+	return get_percentage_increase( level.pulls_since_tgun, level.player_drops_thundergun );
 }
 
 default_dolls_weighting_func()
 {
-	return get_percentage_increase( level.pulls_since_dolls );
+	return get_percentage_increase( level.pulls_since_dolls, level.player_drops_dolls );
 }
 
 default_ray_gun_weighting_func()
