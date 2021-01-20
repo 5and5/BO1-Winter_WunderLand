@@ -158,5 +158,7 @@
 * **_Flurh_**
 * **_Fazor_**
 
-TODO
--nades only buyable from any direction
+Version 1.0.1
+-Greatly increased probability of getting raygun in setup
+-Only grenades wallbuy can be bought without looking at them
+-Adjusted ground spawns in starting room
