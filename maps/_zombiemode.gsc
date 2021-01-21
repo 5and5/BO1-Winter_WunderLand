@@ -6993,9 +6993,9 @@ coop_pause(timer_hud, start_time)
 	{
 		if( getDvarInt( "coop_pause" ) == 1 )
 		{
-			if(level.zombie_total + get_enemy_count() != 0 )
+			if(level.zombie_total + get_enemy_count() != 0 || flag( "dog_round" ) )
 			{
-				iprintln("All Players Will be Paused at the Start of the Next Round");
+				iprintln("All players will be paused at the start of the next round");
 				level waittill( "end_of_round" );
 			}
 
@@ -7057,6 +7057,11 @@ coop_pause(timer_hud, start_time)
 
 					players[0] SetClientDvar( "ai_disableSpawn", "0");
 
+					paused_hud FadeOverTime( 0.5 );
+					paused_hud.alpha = 0;
+					black_hud FadeOverTime( 0.5 );
+					black_hud.alpha = 0;
+					wait 0.5;
 					black_hud destroy();
 					paused_hud destroy();
 				}

@@ -86,7 +86,7 @@ get_percentage_increase( pulls_since_weapon, player_dropped )
 
 	if(!player_dropped)
 	{
-		num_to_add += 1; //200% for settup
+		num_to_add += 0.5; //150% for settup
 	}
 	else
 	{
