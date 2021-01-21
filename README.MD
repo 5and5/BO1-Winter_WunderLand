@@ -37,6 +37,7 @@
 #### Weighted Weapons
 * Increased probability of getting Wonder Waffe, Thundergun and Dolls - by 10% every 5 hits
 * Increased probability of getting Raygun until all players have it - by 100% every 5 hits
+* Increased probability of getting Wonder Waffe, Thundergun and Dolls for the first time - by 200% 
 #### Animations
 * Decreased weapon pickup time from 12 to 10 seconds
 * Decreased box opening and closing from 0.5 to 0.3 seconds
@@ -88,7 +89,7 @@
 
 ## Powerups
 ### Drop Rate
-* Drop rate increased from 2% to 2.5%
+* Drop rate increased from 2% to 3%
 * Drop rate is doubled after killing 2 hordes without a powerup
 * Point based powerups cap at 75k points
 
@@ -158,7 +159,9 @@
 * **_Flurh_**
 * **_Fazor_**
 
-Version 1.0.1
--Greatly increased probability of getting raygun in setup
--Only grenades wallbuy can be bought without looking at them
--Adjusted ground spawns in starting room
+## Version 1.0.1
+* Greatly increased probability of getting a setup
+* Increased drop rate
+* Only grenades wallbuy can be bought without looking at them
+* Adjusted ground spawns in starting room
+* Fixed 4th players spawn point
