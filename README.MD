@@ -161,7 +161,8 @@
 
 ## Version 1.0.1
 * Greatly increased probability of getting a setup
-* Increased drop rate
-* Only grenades wallbuy can be bought without looking at them
+* Increased drop rate from 2.5% to 3%
+* Only grenades wallbuy's can be bought without looking at them
 * Adjusted ground spawns in starting room
 * Fixed 4th players spawn point
+* Fixed bug with coop pause
